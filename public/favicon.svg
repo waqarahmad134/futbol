@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Soccer ball">
+  <defs>
+    <linearGradient id="pitch" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#16a34a"/>
+      <stop offset="100%" style="stop-color:#15803d"/>
+    </linearGradient>
+  </defs>
+  <circle cx="16" cy="16" r="15" fill="url(#pitch)"/>
+  <circle cx="16" cy="16" r="9.5" fill="#ffffff" stroke="#14532d" stroke-width="0.5"/>
+  <path
+    fill="#1e293b"
+    d="M16 8.5l2.1 3.8 4.2-.9-2.3 3.6 2.3 3.6-4.2-.9L16 21.5l-2.1-3.8-4.2.9 2.3-3.6-2.3-3.6 4.2.9z"
+  />
+</svg>

@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+@layer base {
+  :root {
+    --background: 200 30% 8%;
+    --foreground: 180 10% 90%;
+    --card: 200 25% 12%;
+    --card-foreground: 180 10% 90%;
+    --popover: 200 25% 12%;
+    --popover-foreground: 180 10% 90%;
+    --primary: 50 100% 50%;
+    --primary-foreground: 200 30% 8%;
+    --secondary: 190 60% 40%;
+    --secondary-foreground: 180 10% 95%;
+    --muted: 200 20% 16%;
+    --muted-foreground: 200 10% 55%;
+    --accent: 170 80% 45%;
+    --accent-foreground: 200 30% 8%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 200 20% 18%;
+    --input: 200 20% 18%;
+    --ring: 50 100% 50%;
+    --radius: 0.75rem;
+    --sidebar-background: 200 25% 10%;
+    --sidebar-foreground: 180 10% 90%;
+    --sidebar-primary: 50 100% 50%;
+    --sidebar-primary-foreground: 200 30% 8%;
+    --sidebar-accent: 200 20% 16%;
+    --sidebar-accent-foreground: 180 10% 90%;
+    --sidebar-border: 200 20% 18%;
+    --sidebar-ring: 50 100% 50%;
+    --game-card: 200 25% 14%;
+    --game-card-hover: 200 25% 18%;
+    --game-card-border: 190 40% 25%;
+    --success: 150 80% 45%;
+    --danger: 0 80% 55%;
+  }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Russo+One&family=Inter:wght@400;500;600;700&display=swap');
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
