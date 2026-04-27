@@ -7,6 +7,66 @@ import { ArrowLeft, Clock, BarChart3, Tag } from "lucide-react";
 import WordleGame from "@/components/games/WordleGame";
 import GuessPlayerGame from "@/components/games/GuessPlayerGame";
 import TriviaQuizGame from "@/components/games/TriviaQuizGame";
+import LineupGuessGame from "@/components/games/LineupGuessGame";
+import LegacyGame from "@/components/games/LegacyGame";
+import ImpostorGame from "@/components/games/ImpostorGame";
+import GridGame from "@/components/games/GridGame";
+import ConnectionsGame from "@/components/games/ConnectionsGame";
+import ClubsGame from "@/components/games/ClubsGame";
+import LinkGame from "@/components/games/LinkGame";
+import BingoGame from "@/components/games/BingoGame";
+import Top10Game from "@/components/games/Top10Game";
+
+const renderGame = (slug: string | undefined) => {
+  switch (slug) {
+    case "futbol11-wordle":
+      return <WordleGame />;
+    case "guess-the-footballer":
+      return <GuessPlayerGame />;
+    case "futbol11-pyramid":
+      return <TriviaQuizGame />;
+    case "futbol11-goltexto":
+      return <LineupGuessGame setKey="goltexto" storageKey="f11-goltexto-state" />;
+    case "futbol11":
+      return <LineupGuessGame setKey="countries" storageKey="f11-countries-state" />;
+    case "futbol11-legends":
+      return <LineupGuessGame setKey="legends" storageKey="f11-legends-state" />;
+    case "futbol11-america":
+      return <LineupGuessGame setKey="america" storageKey="f11-america-state" />;
+    case "futbol11-euro2024":
+      return <LineupGuessGame setKey="euro2024" storageKey="f11-euro2024-state" />;
+    case "futbol11-copaamerica":
+      return <LineupGuessGame setKey="copaamerica" storageKey="f11-copa-state" />;
+    case "futbol11-worldcup":
+      return <LineupGuessGame setKey="worldcup" storageKey="f11-worldcup-state" />;
+    case "futbol11-legacy":
+      return <LegacyGame />;
+    case "futbol11-impostor":
+      return <ImpostorGame />;
+    case "futbol-grid":
+      return <GridGame />;
+    case "futbol11-connections":
+      return <ConnectionsGame />;
+    case "futbol11-clubs":
+      return <ClubsGame />;
+    case "futbol11-link":
+      return <LinkGame />;
+    case "futbol11-bingo":
+      return <BingoGame setKey="modern" storageKey="f11-bingo-modern-state" />;
+    case "futbol11-bingo-legends":
+      return <BingoGame setKey="retro" storageKey="f11-bingo-retro-state" />;
+    case "futbol-top10":
+      return <Top10Game />;
+    default:
+      return (
+        <div className="text-center py-16">
+          <span className="text-4xl block mb-4">🎮</span>
+          <h3 className="font-display text-lg text-foreground mb-2">Coming Soon</h3>
+          <p className="text-muted-foreground text-sm">This challenge is being built.</p>
+        </div>
+      );
+  }
+};
 
 const GameDetail = () => {
   const { slug } = useParams();
@@ -49,20 +109,7 @@ const GameDetail = () => {
         </div>
 
         <div className="rounded-xl border border-border bg-card p-6 mb-8">
-          {game.slug === "futbol11-wordle" ? (
-            <WordleGame />
-          ) : game.slug === "guess-the-footballer" ? (
-            <GuessPlayerGame />
-          ) : game.slug === "futbol11-pyramid" ? (
-            <TriviaQuizGame />
-          ) : (
-            <div className="text-center py-16">
-              <span className="text-4xl block mb-4">🎮</span>
-              <h3 className="font-display text-lg text-foreground mb-2">Coming Soon</h3>
-              <p className="text-muted-foreground text-sm">The daily {game.title} challenge is being built.</p>
-              <p className="text-muted-foreground text-xs mt-2">Try <Link to="/game/futbol11-wordle" className="text-primary hover:underline">Futbol11 Wordle</Link> — it's fully playable!</p>
-            </div>
-          )}
+          {renderGame(game.slug)}
         </div>
 
         <div className="space-y-8">
