@@ -108,9 +108,12 @@ const PrivacyPolicy = () => {
 
       <h2>Your choices</h2>
       <p>
-        You can manage cookies and local storage through your browser settings, opt out of
-        personalized ads using the links above, and clear your locally stored game data at any time
-        by clearing your browser storage for this Site.
+        When you first visit, a cookie banner lets you accept or reject non-essential (advertising
+        and analytics) cookies. Until you accept, these are disabled by default through Google
+        Consent Mode. You can change your decision at any time by clearing this Site's browser
+        storage, which makes the banner appear again. You can also manage cookies through your
+        browser settings, opt out of personalized ads using the links above, and clear your locally
+        stored game data the same way.
       </p>
 
       <h2>Third-party links</h2>
