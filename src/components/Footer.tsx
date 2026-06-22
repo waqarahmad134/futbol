@@ -75,6 +75,12 @@ const Footer = () => {
           </div>
         </div>
         <div className="border-t border-border mt-8 pt-6 text-center text-xs text-muted-foreground">
+          <nav aria-label="Legal" className="flex flex-wrap justify-center gap-x-4 gap-y-2 mb-4">
+            <Link to="/about" className="hover:text-foreground transition-colors">About</Link>
+            <Link to="/privacy-policy" className="hover:text-foreground transition-colors">Privacy Policy</Link>
+            <Link to="/terms" className="hover:text-foreground transition-colors">Terms of Service</Link>
+            <Link to="/contact" className="hover:text-foreground transition-colors">Contact</Link>
+          </nav>
           <p>© {new Date().getFullYear()} Futbol11. Daily football trivia games for fans worldwide.</p>
           <p className="mt-1">Premier League • La Liga • Serie A • Bundesliga • Champions League • World Cup</p>
         </div>

@@ -8,9 +8,28 @@ import HowToPlay from "@/components/HowToPlay";
 import SEOContent from "@/components/SEOContent";
 import FAQ from "@/components/FAQ";
 import Footer from "@/components/Footer";
+import { faqs } from "@/data/faqs";
+import { useSeo } from "@/hooks/use-seo";
+import { SITE_TAGLINE } from "@/lib/site";
 
 const Index = () => {
   const location = useLocation();
+
+  useSeo({
+    title: `Futbol11 - ${SITE_TAGLINE}`,
+    description:
+      "Play 20 free daily football trivia games. Guess lineups, solve football puzzles, play Wordle, Grid, Connections & more. New challenges every day.",
+    path: "/",
+    jsonLd: {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: faqs.map((faq) => ({
+        "@type": "Question",
+        name: faq.q,
+        acceptedAnswer: { "@type": "Answer", text: faq.a },
+      })),
+    },
+  });
 
   // Scroll to a section when arriving with a hash (e.g. from a game page).
   useEffect(() => {
