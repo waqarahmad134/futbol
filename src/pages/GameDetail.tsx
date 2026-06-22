@@ -155,7 +155,7 @@ const GameDetail = () => {
         </nav>
 
         <div className="text-center mb-8">
-          <span className="text-6xl block mb-4">{game.emoji}</span>
+          <span className="text-6xl block mb-4" aria-hidden="true">{game.emoji}</span>
           <h1 className="font-display text-3xl text-foreground mb-2">{game.title}</h1>
           <p className="text-muted-foreground max-w-xl mx-auto">{game.description}</p>
           <div className="flex items-center justify-center gap-3 mt-4">
@@ -199,19 +199,19 @@ const GameDetail = () => {
             <h2 className="font-display text-xl text-foreground mb-3">Tips & Strategy</h2>
             <div className="grid sm:grid-cols-2 gap-4">
               <div className="rounded-lg border border-border bg-muted/30 p-4">
-                <h4 className="text-foreground font-semibold text-sm mb-1">🧠 Start Broad</h4>
+                <h3 className="text-foreground font-semibold text-sm mb-1">🧠 Start Broad</h3>
                 <p className="text-muted-foreground text-xs">Begin with well-known players and obvious answers. Save risky guesses for later when you have more context.</p>
               </div>
               <div className="rounded-lg border border-border bg-muted/30 p-4">
-                <h4 className="text-foreground font-semibold text-sm mb-1">📅 Play Daily</h4>
+                <h3 className="text-foreground font-semibold text-sm mb-1">📅 Play Daily</h3>
                 <p className="text-muted-foreground text-xs">Consistency is key. Daily play builds your football knowledge base and helps you recognize patterns across games.</p>
               </div>
               <div className="rounded-lg border border-border bg-muted/30 p-4">
-                <h4 className="text-foreground font-semibold text-sm mb-1">🌍 Think Global</h4>
+                <h3 className="text-foreground font-semibold text-sm mb-1">🌍 Think Global</h3>
                 <p className="text-muted-foreground text-xs">Don't just focus on the top 5 leagues. South American, African, and Asian football often feature in our challenges.</p>
               </div>
               <div className="rounded-lg border border-border bg-muted/30 p-4">
-                <h4 className="text-foreground font-semibold text-sm mb-1">📖 Learn From Mistakes</h4>
+                <h3 className="text-foreground font-semibold text-sm mb-1">📖 Learn From Mistakes</h3>
                 <p className="text-muted-foreground text-xs">Every wrong answer teaches you something new. Review the correct answers after each game to expand your knowledge.</p>
               </div>
             </div>
