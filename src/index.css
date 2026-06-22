@@ -56,4 +56,9 @@ All colors MUST be HSL.
   body {
     @apply bg-background text-foreground;
   }
+
+  /* Offset in-page anchor scrolling so the sticky header doesn't cover headings */
+  section[id] {
+    scroll-margin-top: 5rem;
+  }
 }

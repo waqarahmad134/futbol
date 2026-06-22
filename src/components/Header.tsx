@@ -1,18 +1,38 @@
 import { Instagram, Twitter } from "lucide-react";
+import { Link } from "react-router-dom";
+import { useSectionNav } from "@/hooks/use-section-nav";
+
+const NAV_ITEMS = [
+  { id: "games", label: "Games" },
+  { id: "how-to-play", label: "How to Play" },
+  { id: "about", label: "About" },
+  { id: "faq", label: "FAQ" },
+];
 
 const Header = () => {
+  const goToSection = useSectionNav();
+
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
       <div className="container flex h-16 items-center justify-between">
-        <a href="/" className="font-display text-2xl tracking-wider">
+        <Link to="/" className="font-display text-2xl tracking-wider">
           <span className="text-foreground">FUTBOL</span>
           <span className="text-primary">11</span>
-        </a>
+        </Link>
         <nav className="hidden md:flex items-center gap-6 font-body text-sm text-muted-foreground">
-          <a href="#games" className="hover:text-foreground transition-colors">Games</a>
-          <a href="#how-to-play" className="hover:text-foreground transition-colors">How to Play</a>
-          <a href="#about" className="hover:text-foreground transition-colors">About</a>
-          <a href="#faq" className="hover:text-foreground transition-colors">FAQ</a>
+          {NAV_ITEMS.map((item) => (
+            <a
+              key={item.id}
+              href={`/#${item.id}`}
+              onClick={(e) => {
+                e.preventDefault();
+                goToSection(item.id);
+              }}
+              className="hover:text-foreground transition-colors"
+            >
+              {item.label}
+            </a>
+          ))}
         </nav>
         <div className="flex items-center gap-3">
           <a href="#" aria-label="Instagram" className="text-muted-foreground hover:text-foreground transition-colors">
