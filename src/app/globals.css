@@ -1,12 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Russo+One&family=Inter:wght@400;500;600;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
-All colors MUST be HSL.
-*/
-
-@layer base {
+/* Design system tokens. All colors are HSL. */
 @layer base {
   :root {
     --background: 200 30% 8%;
@@ -43,9 +41,6 @@ All colors MUST be HSL.
     --success: 150 80% 45%;
     --danger: 0 80% 55%;
   }
-}
-
-@import url('https://fonts.googleapis.com/css2?family=Russo+One&family=Inter:wght@400;500;600;700&display=swap');
 }
 
 @layer base {

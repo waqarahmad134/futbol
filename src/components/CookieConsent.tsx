@@ -1,5 +1,7 @@
+"use client";
+
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 const STORAGE_KEY = "f11-cookie-consent";
 
@@ -48,7 +50,7 @@ const CookieConsent = () => {
         <p className="text-xs text-muted-foreground leading-relaxed max-w-2xl">
           We use cookies to keep your daily progress and to serve ads. Third parties, including
           Google, may use cookies to personalise ads.{" "}
-          <Link to="/privacy-policy" className="text-primary hover:underline">
+          <Link href="/privacy-policy" className="text-primary hover:underline">
             Learn more
           </Link>
           .

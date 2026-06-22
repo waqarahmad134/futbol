@@ -1,18 +1,20 @@
+"use client";
+
 import { useCallback } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { usePathname, useRouter } from "next/navigation";
 
 // Navigates to an in-page section by id. Works from any route:
 // - On the home page it smooth-scrolls to the section.
-// - From another route (e.g. a game page) it navigates home with the hash,
-//   and the home page scrolls to the section once it mounts.
+// - From another route (e.g. a game page) it navigates home with the hash;
+//   the home page's HashScroll then scrolls to the section once it mounts.
 export function useSectionNav() {
-  const navigate = useNavigate();
-  const location = useLocation();
+  const router = useRouter();
+  const pathname = usePathname();
 
   return useCallback(
     (id: string) => {
-      if (location.pathname !== "/") {
-        navigate(`/#${id}`);
+      if (pathname !== "/") {
+        router.push(`/#${id}`);
         return;
       }
       const el = document.getElementById(id);
@@ -21,6 +23,6 @@ export function useSectionNav() {
         window.history.replaceState(null, "", `#${id}`);
       }
     },
-    [navigate, location.pathname],
+    [router, pathname],
   );
 }

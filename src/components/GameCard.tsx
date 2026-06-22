@@ -1,7 +1,9 @@
+"use client";
+
 import { motion } from "framer-motion";
 import { Game } from "@/data/games";
 import { Badge } from "@/components/ui/badge";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 interface GameCardProps {
   game: Game;
@@ -16,7 +18,7 @@ const GameCard = ({ game, index }: GameCardProps) => {
       transition={{ delay: index * 0.05, duration: 0.3 }}
     >
       <Link
-        to={`/game/${game.slug}`}
+        href={`/game/${game.slug}`}
         className="group block rounded-xl border border-border bg-game-card hover:bg-game-card-hover hover:border-game-card-border transition-all duration-300 overflow-hidden"
       >
         <div className="flex items-center justify-center h-36 text-6xl bg-muted/30" aria-hidden="true">

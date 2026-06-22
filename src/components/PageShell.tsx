@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
@@ -17,7 +17,7 @@ const PageShell = ({ title, intro, crumb, children }: PageShellProps) => (
     <Header />
     <main className="container max-w-3xl py-12">
       <nav aria-label="Breadcrumb" className="mb-6 text-sm text-muted-foreground">
-        <Link to="/" className="hover:text-foreground transition-colors">Home</Link>
+        <Link href="/" className="hover:text-foreground transition-colors">Home</Link>
         <span className="mx-2" aria-hidden="true">/</span>
         <span className="text-foreground">{crumb ?? title}</span>
       </nav>

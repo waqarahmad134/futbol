@@ -1,9 +1,11 @@
-import { useParams, Link } from "react-router-dom";
+"use client";
+
+import Link from "next/link";
+import { ArrowLeft, Clock, BarChart3, Tag } from "lucide-react";
 import { games } from "@/data/games";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Badge } from "@/components/ui/badge";
-import { ArrowLeft, Clock, BarChart3, Tag } from "lucide-react";
 import WordleGame from "@/components/games/WordleGame";
 import GuessPlayerGame from "@/components/games/GuessPlayerGame";
 import TriviaQuizGame from "@/components/games/TriviaQuizGame";
@@ -18,11 +20,9 @@ import BingoGame from "@/components/games/BingoGame";
 import Top10Game from "@/components/games/Top10Game";
 import HigherLowerGame from "@/components/games/HigherLowerGame";
 import RelatedGames from "@/components/RelatedGames";
-import { useSeo } from "@/hooks/use-seo";
 import { useSectionNav } from "@/hooks/use-section-nav";
-import { SITE_NAME, SITE_URL } from "@/lib/site";
 
-const renderGame = (slug: string | undefined) => {
+const renderGame = (slug: string) => {
   switch (slug) {
     case "futbol11-wordle":
       return <WordleGame />;
@@ -67,7 +67,7 @@ const renderGame = (slug: string | undefined) => {
     default:
       return (
         <div className="text-center py-16">
-          <span className="text-4xl block mb-4">🎮</span>
+          <span className="text-4xl block mb-4" aria-hidden="true">🎮</span>
           <h3 className="font-display text-lg text-foreground mb-2">Coming Soon</h3>
           <p className="text-muted-foreground text-sm">This challenge is being built.</p>
         </div>
@@ -75,57 +75,16 @@ const renderGame = (slug: string | undefined) => {
   }
 };
 
-const GameDetail = () => {
-  const { slug } = useParams();
+const GameView = ({ slug }: { slug: string }) => {
   const game = games.find((g) => g.slug === slug);
   const goToSection = useSectionNav();
-
-  useSeo({
-    title: game
-      ? `${game.title} — Play Free Daily | Futbol11`
-      : "Game Not Found — Futbol11",
-    description:
-      game?.description ?? "The football game you are looking for could not be found.",
-    path: game ? `/game/${game.slug}` : "/",
-    noIndex: !game,
-    jsonLd: game
-      ? [
-          {
-            "@context": "https://schema.org",
-            "@type": "Game",
-            name: game.title,
-            description: game.longDescription,
-            url: `${SITE_URL}/game/${game.slug}`,
-            genre: game.category,
-            gamePlatform: "Web browser",
-            inLanguage: "en",
-            isAccessibleForFree: true,
-            publisher: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
-          },
-          {
-            "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            itemListElement: [
-              { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
-              { "@type": "ListItem", position: 2, name: "Games", item: `${SITE_URL}/#games` },
-              {
-                "@type": "ListItem",
-                position: 3,
-                name: game.title,
-                item: `${SITE_URL}/game/${game.slug}`,
-              },
-            ],
-          },
-        ]
-      : undefined,
-  });
 
   if (!game) {
     return (
       <div className="min-h-screen bg-background flex items-center justify-center">
         <div className="text-center">
           <h1 className="font-display text-2xl text-foreground mb-4">Game Not Found</h1>
-          <Link to="/" className="text-primary hover:underline">← Back to all games</Link>
+          <Link href="/" className="text-primary hover:underline">← Back to all games</Link>
         </div>
       </div>
     );
@@ -136,7 +95,7 @@ const GameDetail = () => {
       <Header />
       <main className="container py-10 max-w-3xl">
         <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-sm text-muted-foreground mb-6">
-          <Link to="/" className="inline-flex items-center gap-1 hover:text-foreground transition-colors">
+          <Link href="/" className="inline-flex items-center gap-1 hover:text-foreground transition-colors">
             <ArrowLeft className="w-4 h-4" /> Home
           </Link>
           <span aria-hidden="true">/</span>
@@ -227,4 +186,4 @@ const GameDetail = () => {
   );
 };
 
-export default GameDetail;
+export default GameView;
