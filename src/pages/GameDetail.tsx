@@ -16,6 +16,7 @@ import ClubsGame from "@/components/games/ClubsGame";
 import LinkGame from "@/components/games/LinkGame";
 import BingoGame from "@/components/games/BingoGame";
 import Top10Game from "@/components/games/Top10Game";
+import HigherLowerGame from "@/components/games/HigherLowerGame";
 
 const renderGame = (slug: string | undefined) => {
   switch (slug) {
@@ -57,6 +58,8 @@ const renderGame = (slug: string | undefined) => {
       return <BingoGame setKey="retro" storageKey="f11-bingo-retro-state" />;
     case "futbol-top10":
       return <Top10Game />;
+    case "futbol11-higher-lower":
+      return <HigherLowerGame />;
     default:
       return (
         <div className="text-center py-16">

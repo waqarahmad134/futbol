@@ -221,6 +221,18 @@ export const games: Game[] = [
     category: "Trivia",
     emoji: "🏆"
   },
+  {
+    id: "higherlower",
+    title: "Futbol11 Higher or Lower",
+    slug: "futbol11-higher-lower",
+    description: "Higher or lower? Guess which footballer scored more career goals and build your streak.",
+    longDescription: "Higher or Lower is a fast, addictive football guessing game. You're shown two footballers side by side — one with their career goal tally revealed, the other hidden. Your job is simple: decide whether the mystery player scored more or fewer career goals. Get it right and the chain continues, your streak climbs, and the next player slides in. Get it wrong and the run ends. From Cristiano Ronaldo and Lionel Messi to historic marksmen like Pelé, Puskás and Gerd Müller, this game tests how well you really know football's greatest goalscorers across every era.",
+    howToPlay: ["Compare the two footballers shown", "Decide if the hidden player scored Higher or Lower career goals", "Each correct guess extends your streak", "One wrong guess ends the run — chase your best streak"],
+    difficulty: "Easy",
+    category: "Trivia",
+    isNew: true,
+    emoji: "🔼"
+  },
 ];
 
 export const otherSites = [

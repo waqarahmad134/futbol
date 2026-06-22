@@ -8,7 +8,7 @@ import {
 const faqs = [
   {
     q: "What is Futbol11?",
-    a: "Futbol11 is your home for daily football games. Test your knowledge of clubs, players, and iconic football moments through games like Grid, Bingo, Wordle, and Connections with new challenges every single day. With 19 unique games covering everything from World Cup history to current league action, there's always a new way to test your football IQ."
+    a: "Futbol11 is your home for daily football games. Test your knowledge of clubs, players, and iconic football moments through games like Grid, Bingo, Wordle, and Connections with new challenges every single day. With 20 unique games covering everything from World Cup history to current league action, there's always a new way to test your football IQ."
   },
   {
     q: "When do daily games reset?",
