@@ -1,5 +1,7 @@
+"use client";
+
 import { Instagram, Twitter } from "lucide-react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { useSectionNav } from "@/hooks/use-section-nav";
 
 const POPULAR_GAMES = [
@@ -26,7 +28,7 @@ const Footer = () => {
       <div className="container">
         <div className="grid md:grid-cols-3 gap-8 text-sm">
           <div>
-            <Link to="/" className="font-display text-lg">
+            <Link href="/" className="font-display text-lg">
               <span className="text-foreground">FUTBOL</span>
               <span className="text-primary">11</span>
             </Link>
@@ -39,7 +41,7 @@ const Footer = () => {
             <ul className="space-y-1.5 text-muted-foreground text-xs">
               {POPULAR_GAMES.map((game) => (
                 <li key={game.slug}>
-                  <Link to={`/game/${game.slug}`} className="hover:text-foreground transition-colors">
+                  <Link href={`/game/${game.slug}`} className="hover:text-foreground transition-colors">
                     {game.label}
                   </Link>
                 </li>
@@ -76,10 +78,10 @@ const Footer = () => {
         </div>
         <div className="border-t border-border mt-8 pt-6 text-center text-xs text-muted-foreground">
           <nav aria-label="Legal" className="flex flex-wrap justify-center gap-x-4 gap-y-2 mb-4">
-            <Link to="/about" className="hover:text-foreground transition-colors">About</Link>
-            <Link to="/privacy-policy" className="hover:text-foreground transition-colors">Privacy Policy</Link>
-            <Link to="/terms" className="hover:text-foreground transition-colors">Terms of Service</Link>
-            <Link to="/contact" className="hover:text-foreground transition-colors">Contact</Link>
+            <Link href="/about" className="hover:text-foreground transition-colors">About</Link>
+            <Link href="/privacy-policy" className="hover:text-foreground transition-colors">Privacy Policy</Link>
+            <Link href="/terms" className="hover:text-foreground transition-colors">Terms of Service</Link>
+            <Link href="/contact" className="hover:text-foreground transition-colors">Contact</Link>
           </nav>
           <p>© {new Date().getFullYear()} Futbol11. Daily football trivia games for fans worldwide.</p>
           <p className="mt-1">Premier League • La Liga • Serie A • Bundesliga • Champions League • World Cup</p>

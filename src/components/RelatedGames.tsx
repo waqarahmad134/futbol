@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { games, Game } from "@/data/games";
 
 interface RelatedGamesProps {
@@ -25,7 +25,7 @@ const RelatedGames = ({ currentSlug, category, limit = 6 }: RelatedGamesProps) =
         {related.map((g) => (
           <Link
             key={g.id}
-            to={`/game/${g.slug}`}
+            href={`/game/${g.slug}`}
             className="group flex items-center gap-3 rounded-lg border border-border bg-muted/20 p-3 transition-colors hover:border-game-card-border hover:bg-game-card-hover"
           >
             <span className="text-2xl" aria-hidden="true">{g.emoji}</span>

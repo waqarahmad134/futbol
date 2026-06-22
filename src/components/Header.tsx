@@ -1,5 +1,7 @@
+"use client";
+
 import { Instagram, Twitter } from "lucide-react";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 import { useSectionNav } from "@/hooks/use-section-nav";
 
 const NAV_ITEMS = [
@@ -15,7 +17,7 @@ const Header = () => {
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
       <div className="container flex h-16 items-center justify-between">
-        <Link to="/" className="font-display text-2xl tracking-wider">
+        <Link href="/" className="font-display text-2xl tracking-wider">
           <span className="text-foreground">FUTBOL</span>
           <span className="text-primary">11</span>
         </Link>
