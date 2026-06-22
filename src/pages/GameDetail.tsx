@@ -17,6 +17,10 @@ import LinkGame from "@/components/games/LinkGame";
 import BingoGame from "@/components/games/BingoGame";
 import Top10Game from "@/components/games/Top10Game";
 import HigherLowerGame from "@/components/games/HigherLowerGame";
+import RelatedGames from "@/components/RelatedGames";
+import { useSeo } from "@/hooks/use-seo";
+import { useSectionNav } from "@/hooks/use-section-nav";
+import { SITE_NAME, SITE_URL } from "@/lib/site";
 
 const renderGame = (slug: string | undefined) => {
   switch (slug) {
@@ -74,6 +78,47 @@ const renderGame = (slug: string | undefined) => {
 const GameDetail = () => {
   const { slug } = useParams();
   const game = games.find((g) => g.slug === slug);
+  const goToSection = useSectionNav();
+
+  useSeo({
+    title: game
+      ? `${game.title} — Play Free Daily | Futbol11`
+      : "Game Not Found — Futbol11",
+    description:
+      game?.description ?? "The football game you are looking for could not be found.",
+    path: game ? `/game/${game.slug}` : "/",
+    noIndex: !game,
+    jsonLd: game
+      ? [
+          {
+            "@context": "https://schema.org",
+            "@type": "Game",
+            name: game.title,
+            description: game.longDescription,
+            url: `${SITE_URL}/game/${game.slug}`,
+            genre: game.category,
+            gamePlatform: "Web browser",
+            inLanguage: "en",
+            isAccessibleForFree: true,
+            publisher: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "Home", item: `${SITE_URL}/` },
+              { "@type": "ListItem", position: 2, name: "Games", item: `${SITE_URL}/#games` },
+              {
+                "@type": "ListItem",
+                position: 3,
+                name: game.title,
+                item: `${SITE_URL}/game/${game.slug}`,
+              },
+            ],
+          },
+        ]
+      : undefined,
+  });
 
   if (!game) {
     return (
@@ -90,9 +135,24 @@ const GameDetail = () => {
     <div className="min-h-screen bg-background font-body">
       <Header />
       <main className="container py-10 max-w-3xl">
-        <Link to="/" className="inline-flex items-center gap-1 text-muted-foreground hover:text-foreground text-sm mb-6">
-          <ArrowLeft className="w-4 h-4" /> Back to all games
-        </Link>
+        <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-sm text-muted-foreground mb-6">
+          <Link to="/" className="inline-flex items-center gap-1 hover:text-foreground transition-colors">
+            <ArrowLeft className="w-4 h-4" /> Home
+          </Link>
+          <span aria-hidden="true">/</span>
+          <a
+            href="/#games"
+            onClick={(e) => {
+              e.preventDefault();
+              goToSection("games");
+            }}
+            className="hover:text-foreground transition-colors"
+          >
+            Games
+          </a>
+          <span aria-hidden="true">/</span>
+          <span className="text-foreground">{game.title}</span>
+        </nav>
 
         <div className="text-center mb-8">
           <span className="text-6xl block mb-4">{game.emoji}</span>
@@ -155,6 +215,10 @@ const GameDetail = () => {
                 <p className="text-muted-foreground text-xs">Every wrong answer teaches you something new. Review the correct answers after each game to expand your knowledge.</p>
               </div>
             </div>
+          </section>
+
+          <section>
+            <RelatedGames currentSlug={game.slug} category={game.category} />
           </section>
         </div>
       </main>
