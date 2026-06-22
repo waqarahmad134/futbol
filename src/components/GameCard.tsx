@@ -19,7 +19,7 @@ const GameCard = ({ game, index }: GameCardProps) => {
         to={`/game/${game.slug}`}
         className="group block rounded-xl border border-border bg-game-card hover:bg-game-card-hover hover:border-game-card-border transition-all duration-300 overflow-hidden"
       >
-        <div className="flex items-center justify-center h-36 text-6xl bg-muted/30">
+        <div className="flex items-center justify-center h-36 text-6xl bg-muted/30" aria-hidden="true">
           {game.emoji}
         </div>
         <div className="p-4 text-center">

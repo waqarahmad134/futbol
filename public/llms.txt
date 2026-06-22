@@ -1,0 +1,31 @@
+# Futbol11
+
+> Futbol11 is a free daily football (soccer) games website with 20 trivia, puzzle and word challenges that reset every day at midnight. No account or download is required — every game is played in the browser, and progress is stored locally. Games cover the Premier League, La Liga, Serie A, Bundesliga, Champions League, World Cup, Copa América and football history from the 1930s to today.
+
+## Games
+- [Futbol11 Goltexto](https://futbol11.live/game/futbol11-goltexto): Guess the football lineup from text clues. Identify all 11 players from a historic match.
+- [Futbol11 Legacy](https://futbol11.live/game/futbol11-legacy): Test your knowledge of legendary footballers and their career paths across top European clubs.
+- [Futbol11 Impostor](https://futbol11.live/game/futbol11-impostor): Find the impostor! One player doesn't belong in the group — can you spot them?
+- [Futbol11 Grid](https://futbol11.live/game/futbol-grid): Fill the football grid! Match players to intersecting club and country criteria.
+- [Futbol11 Pyramid](https://futbol11.live/game/futbol11-pyramid): Build the football knowledge pyramid from easy clues at the base to hard ones at the top.
+- [Futbol11 Connections](https://futbol11.live/game/futbol11-connections): Group 16 football items into 4 categories. Find the hidden connections!
+- [Futbol11 Clubs](https://futbol11.live/game/futbol11-clubs): Identify football clubs from visual clues, badge fragments, and jersey colors.
+- [Futbol11 Link](https://futbol11.live/game/futbol11-link): Connect footballers through shared clubs, forming a chain of linked careers.
+- [Futbol11 Bingo](https://futbol11.live/game/futbol11-bingo): Football bingo! Match players to criteria on your bingo card to complete lines.
+- [Futbol11 Top10](https://futbol11.live/game/futbol-top10): Can you name all players in the top 10 of famous football rankings and records?
+- [Futbol11 Wordle](https://futbol11.live/game/futbol11-wordle): The classic word game meets football. Guess the footballer's name in 6 tries!
+- [Futbol11 Bingo Retro](https://futbol11.live/game/futbol11-bingo-legends): Retro bingo featuring legendary footballers from the 70s, 80s, and 90s.
+- [Futbol11](https://futbol11.live/game/futbol11): The original! Guess the international lineup of a national football team.
+- [Guess the Footballer](https://futbol11.live/game/guess-the-footballer): Blurred photos, silhouettes, and partial images — can you identify the footballer?
+- [Futbol11 Legends](https://futbol11.live/game/futbol11-legends): Name the legendary XI! Identify all-time great lineups from football history.
+- [Futbol11 America](https://futbol11.live/game/futbol11-america): South and North American football trivia — Copa América, MLS, Liga MX and more.
+- [Futbol11 Euro 2024](https://futbol11.live/game/futbol11-euro2024): Relive Euro 2024! Guess the starting lineups from every match of the tournament.
+- [F11 Copa America](https://futbol11.live/game/futbol11-copaamerica): Copa América edition — guess lineups from the Americas' premier tournament.
+- [Futbol11 World Cup](https://futbol11.live/game/futbol11-worldcup): World Cup lineups from 1930 to 2022 — the ultimate international football challenge.
+- [Futbol11 Higher or Lower](https://futbol11.live/game/futbol11-higher-lower): Higher or lower? Guess which footballer scored more career goals and build your streak.
+
+## About
+- [About Futbol11](https://futbol11.live/about): what Futbol11 is and how the daily games work
+- [Privacy Policy](https://futbol11.live/privacy-policy): data, cookies and advertising disclosures
+- [Terms of Service](https://futbol11.live/terms): terms and conditions of use
+- [Contact](https://futbol11.live/contact): how to reach the Futbol11 team
