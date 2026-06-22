@@ -1,7 +1,7 @@
 import { Gamepad2, Clock, Trophy, Users } from "lucide-react";
 
 const steps = [
-  { icon: Gamepad2, title: "Pick a Game", desc: "Choose from 19 unique football games — trivia, puzzles, word games, and strategy challenges." },
+  { icon: Gamepad2, title: "Pick a Game", desc: "Choose from 20 unique football games — trivia, puzzles, word games, and strategy challenges." },
   { icon: Clock, title: "Play Daily", desc: "New challenges drop every day at midnight. Build your streak and track your daily score across all games." },
   { icon: Trophy, title: "Test Your Knowledge", desc: "From Premier League to World Cup, from 1930 to today. Every era, league, and competition is covered." },
   { icon: Users, title: "Share & Compete", desc: "Compare scores with friends and the global community. Who really knows football best?" },

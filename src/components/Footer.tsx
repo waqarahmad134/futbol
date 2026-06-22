@@ -11,7 +11,7 @@ const Footer = () => {
               <span className="text-primary">11</span>
             </span>
             <p className="text-muted-foreground mt-3 leading-relaxed text-xs">
-              The ultimate daily football trivia and puzzle platform. 19 unique games covering every league, competition, and era of the beautiful game. New challenges every day at midnight.
+              The ultimate daily football trivia and puzzle platform. 20 unique games covering every league, competition, and era of the beautiful game. New challenges every day at midnight.
             </p>
           </div>
           <div>

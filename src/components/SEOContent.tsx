@@ -11,7 +11,7 @@ const SEOContent = () => {
             <div className="space-y-4">
               <h3 className="text-foreground font-semibold text-base">Why Play Futbol11?</h3>
               <p>
-                Futbol11 is the internet's premier destination for daily football trivia games and puzzles. Whether you're a lifelong supporter who remembers every World Cup lineup since 1966, or a newer fan eager to learn about football history, our collection of 19 unique games offers something for everyone.
+                Futbol11 is the internet's premier destination for daily football trivia games and puzzles. Whether you're a lifelong supporter who remembers every World Cup lineup since 1966, or a newer fan eager to learn about football history, our collection of 20 unique games offers something for everyone.
               </p>
               <p>
                 Every day at midnight, fresh challenges await. Our games cover the full spectrum of football knowledge — from current Premier League, La Liga, and Serie A squads to historic international lineups, from transfer trivia to tactical puzzles. Each game is carefully crafted to be both entertaining and educational.
