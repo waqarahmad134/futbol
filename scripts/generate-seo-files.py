@@ -59,8 +59,8 @@ for m in GAME_RE.finditer(src):
         }
     )
 
-if len(games) != 20:
-    sys.exit(f"expected 20 games, parsed {len(games)}")
+if len(games) != 23:
+    sys.exit(f"expected 23 games, parsed {len(games)}")
 
 # ---------------- blog ----------------
 blog_src = (ROOT / "src/data/blog.ts").read_text(encoding="utf-8")
@@ -127,7 +127,7 @@ for p in posts:
 
 INFO = [
     ("About Futbol11", "about",
-     "Learn about Futbol11, the home of 20 free daily football trivia games, puzzles and word challenges covering every league, competition and era."),
+     "Learn about Futbol11, the home of 23 free daily football trivia games, puzzles and word challenges covering every league, competition and era."),
     ("Privacy Policy", "privacy-policy",
      "How Futbol11 handles data, cookies and third-party advertising, including the use of Google AdSense cookies, and how you can opt out of personalized ads."),
     ("Terms of Service", "terms",
@@ -136,7 +136,7 @@ INFO = [
      "Get in touch with the Futbol11 team. Send feedback, report an issue, or suggest a new daily football game."),
 ]
 HOME_DESC = (
-    "Play 20 free daily football trivia games. Guess lineups, solve football puzzles, "
+    "Play 23 free daily football trivia games. Guess lineups, solve football puzzles, "
     "play Wordle, Grid, Connections and more. New challenges every day."
 )
 
@@ -186,9 +186,9 @@ parts += ["  </channel>", "</rss>", ""]
 lines = [
     "# Futbol11",
     "",
-    "> Futbol11 is a free daily football (soccer) games website with 20 trivia, puzzle and word challenges that reset every day at midnight. No account or download is required, every game is played in the browser, and progress is stored locally. Games cover the Premier League, La Liga, Serie A, Bundesliga, Champions League, World Cup, Copa America and football history from the 1930s to today.",
+    "> Futbol11 is a free daily football (soccer) games website with 23 trivia, puzzle and word challenges that reset every day at midnight. No account or download is required, every game is played in the browser, and progress is stored locally. Games cover the Premier League, La Liga, Serie A, Bundesliga, Champions League, World Cup, Copa America and football history from the 1930s to today.",
     "",
-    f"- [Futbol11]({SITE}/): home page with all 20 daily games",
+    f"- [Futbol11]({SITE}/): home page with all 23 daily games",
     "",
     "## Games",
     "",

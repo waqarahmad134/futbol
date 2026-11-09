@@ -45,6 +45,7 @@ export default function BlogArticlePage({ params }: { params: { slug: string } }
       description: post.metaDescription,
       image: `${SITE_URL}${post.heroImage}`,
       datePublished: post.date,
+      dateModified: post.date,
       author: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
       publisher: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
       mainEntityOfPage: `${SITE_URL}/blog/${post.slug}/`,

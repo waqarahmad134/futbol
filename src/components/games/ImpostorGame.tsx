@@ -162,7 +162,7 @@ const ImpostorGame = () => {
           className="w-full max-w-md"
         >
           <div className="rounded-xl border border-border bg-muted/20 p-4 mb-4 text-center">
-            <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">Three share this trait — one is the impostor</p>
+            <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">Three share this trait, one is the impostor</p>
             <p className="font-display text-foreground">{round.trait}</p>
           </div>
 

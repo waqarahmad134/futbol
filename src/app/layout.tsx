@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     template: `%s | ${SITE_NAME}`,
   },
   description:
-    "Play 20 free daily football trivia games — guess lineups, solve puzzles, play Wordle, Grid & Connections. Premier League, La Liga & World Cup, new daily.",
+    "Play 23 free daily football trivia games, guess lineups, solve puzzles, play Wordle, Grid & Connections. Premier League, La Liga & World Cup, new daily.",
   applicationName: SITE_NAME,
   authors: [{ name: SITE_NAME }],
   keywords: [
@@ -34,13 +34,13 @@ export const metadata: Metadata = {
     url: `${SITE_URL}/`,
     title: `${SITE_NAME} - Daily Football Trivia Games & Puzzles`,
     description:
-      "20 free daily football games. Guess lineups, solve puzzles, play Wordle & more. New challenges every day at midnight.",
+      "23 free daily football games. Guess lineups, solve puzzles, play Wordle & more. New challenges every day at midnight.",
     images: [OG_IMAGE],
   },
   twitter: {
     card: "summary_large_image",
     title: `${SITE_NAME} - Daily Football Trivia Games`,
-    description: "20 free daily football games. Guess lineups, solve puzzles, play Wordle & more.",
+    description: "23 free daily football games. Guess lineups, solve puzzles, play Wordle & more.",
     images: ["/og-image.webp"],
   },
   icons: {
@@ -67,7 +67,7 @@ const siteJsonLd = [
     url: `${SITE_URL}/`,
     inLanguage: "en",
     description:
-      "Daily football trivia games and puzzles. 20 unique games covering World Cup, Premier League, La Liga, Champions League and more.",
+      "Daily football trivia games and puzzles. 23 unique games covering World Cup, Premier League, La Liga, Champions League and more.",
     potentialAction: {
       "@type": "SearchAction",
       target: `${SITE_URL}/?q={search_term_string}`,

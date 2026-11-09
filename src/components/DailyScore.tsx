@@ -1,10 +1,12 @@
 "use client";
 
-import { CheckCircle, XCircle } from "lucide-react";
+import { CheckCircle, XCircle, Flame } from "lucide-react";
 import { useState, useEffect } from "react";
+import { getServerStreak } from "@/lib/backend";
 
 const DailyScore = () => {
   const [score, setScore] = useState({ correct: 0, wrong: 0 });
+  const [streak, setStreak] = useState<number | null>(null);
 
   useEffect(() => {
     const saved = localStorage.getItem("futbol11-daily-score");
@@ -15,6 +17,11 @@ const DailyScore = () => {
         setScore({ correct: parsed.correct, wrong: parsed.wrong });
       }
     }
+    // Server streak when the backend is up; otherwise the widget
+    // simply shows the local daily score as it does today.
+    getServerStreak().then((server) => {
+      if (server && server.current > 0) setStreak(server.current);
+    });
   }, []);
 
   return (
@@ -27,6 +34,12 @@ const DailyScore = () => {
         <span className="text-foreground">{score.wrong}</span>
         <XCircle className="w-6 h-6 text-danger" />
       </div>
+      {streak !== null && (
+        <span className="flex items-center gap-1 text-sm font-body text-muted-foreground">
+          <Flame className="w-4 h-4 text-foreground" />
+          {streak} day streak
+        </span>
+      )}
     </div>
   );
 };

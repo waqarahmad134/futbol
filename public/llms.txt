@@ -1,6 +1,6 @@
 # Futbol11
 
-> Futbol11 is a free daily football (soccer) games website with 20 trivia, puzzle and word challenges that reset every day at midnight. No account or download is required, every game is played in the browser, and progress is stored locally. Games cover the Premier League, La Liga, Serie A, Bundesliga, Champions League, World Cup, Copa América and football history from the 1930s to today.
+> Futbol11 is a free daily football (soccer) games website with 23 trivia, puzzle and word challenges that reset every day at midnight. No account or download is required, every game is played in the browser, and progress is stored locally. Games cover the Premier League, La Liga, Serie A, Bundesliga, Champions League, World Cup, Copa América and football history from the 1930s to today.
 
 ## Games
 - [Futbol11 Goltexto](https://futbol11.live/game/futbol11-goltexto/): Guess the football lineup from text clues. Identify all 11 players from a historic match.
@@ -23,6 +23,9 @@
 - [F11 Copa America](https://futbol11.live/game/futbol11-copaamerica/): Copa América edition, guess lineups from the Americas' premier tournament.
 - [Futbol11 World Cup](https://futbol11.live/game/futbol11-worldcup/): World Cup lineups from 1930 to 2022, the ultimate international football challenge.
 - [Futbol11 Higher or Lower](https://futbol11.live/game/futbol11-higher-lower/): Higher or lower? Guess which footballer scored more career goals and build your streak.
+- [Octadle](https://futbol11.live/game/octadle/): Eight football words at once. Solve all 8 words in 13 guesses with Wordle-style color clues.
+- [Formudle](https://futbol11.live/game/formudle/): Guess the Formula 1 driver. Every guess compares nationality, team, debut, titles and first win.
+- [WrestlePlay](https://futbol11.live/game/wrestleplay/): Guess the wrestler. Every guess compares nationality, promotion, debut, height and world titles.
 
 ## Blog
 - [Futbol11 Blog](https://futbol11.live/blog/): all game guides
@@ -30,7 +33,7 @@
 - [Football Grid Game: How to Play and Win](https://futbol11.live/blog/football-grid-game-how-to-play-and-win/): fill all 9 squares in 9 guesses
 
 ## About
-- [Futbol11](https://futbol11.live/): home page with all 20 daily games
+- [Futbol11](https://futbol11.live/): home page with all 23 daily games
 - [About Futbol11](https://futbol11.live/about/): what Futbol11 is and how the daily games work
 - [Privacy Policy](https://futbol11.live/privacy-policy/): data, cookies and advertising disclosures
 - [Terms of Service](https://futbol11.live/terms/): terms and conditions of use

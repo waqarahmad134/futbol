@@ -31,6 +31,8 @@ const jsonLd = {
   url: `${SITE_URL}/blog/`,
   description:
     "Guides and tips for Futbol11 games: how to play Wordle, win the Football Grid, and more.",
+  datePublished: BLOG_POSTS[BLOG_POSTS.length - 1].date,
+  dateModified: BLOG_POSTS[0].date,
   publisher: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
   blogPost: BLOG_POSTS.map((post) => ({
     "@type": "BlogPosting",
@@ -38,6 +40,7 @@ const jsonLd = {
     description: post.description,
     url: `${SITE_URL}/blog/${post.slug}/`,
     datePublished: post.date,
+    dateModified: post.date,
   })),
 };
 

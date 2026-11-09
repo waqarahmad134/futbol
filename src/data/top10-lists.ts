@@ -1,4 +1,4 @@
-// Top10 — name as many of a top-10 list as possible.
+// Top10: name as many of a top-10 list as possible.
 export interface Top10List {
   id: string;
   title: string;

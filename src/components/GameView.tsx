@@ -19,6 +19,9 @@ import LinkGame from "@/components/games/LinkGame";
 import BingoGame from "@/components/games/BingoGame";
 import Top10Game from "@/components/games/Top10Game";
 import HigherLowerGame from "@/components/games/HigherLowerGame";
+import OctadleGame from "@/components/games/OctadleGame";
+import FormudleGame from "@/components/games/FormudleGame";
+import WrestlePlayGame from "@/components/games/WrestlePlayGame";
 import RelatedGames from "@/components/RelatedGames";
 import { useSectionNav } from "@/hooks/use-section-nav";
 
@@ -64,6 +67,12 @@ const renderGame = (slug: string) => {
       return <Top10Game />;
     case "futbol11-higher-lower":
       return <HigherLowerGame />;
+    case "octadle":
+      return <OctadleGame />;
+    case "formudle":
+      return <FormudleGame />;
+    case "wrestleplay":
+      return <WrestlePlayGame />;
     default:
       return (
         <div className="text-center py-16">

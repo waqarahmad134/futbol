@@ -4,6 +4,10 @@
 // (win or loss) so the widget actually moves off 0-0.
 // The per-game guard stops reloads (state is restored from localStorage)
 // from counting the same result twice.
+// The localStorage write always happens first and unconditionally;
+// the server call is fire-and-forget and never blocks the game.
+import { recordGameResult } from "./backend";
+
 const KEY = "futbol11-daily-score";
 
 interface DailyScoreRecord {
@@ -37,4 +41,7 @@ export function recordDailyResult(gameId: string, won: boolean): void {
   } catch {
     // localStorage unavailable or corrupted; the daily score just stays empty.
   }
+  // Server streak + leaderboard, best effort only. recordGameResult
+  // never throws and falls back silently to a localStorage queue.
+  recordGameResult(gameId, won);
 }

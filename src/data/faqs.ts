@@ -8,7 +8,7 @@ export interface Faq {
 export const faqs: Faq[] = [
   {
     q: "What is Futbol11?",
-    a: "Futbol11 is your home for daily football games. Test your knowledge of clubs, players, and iconic football moments through games like Grid, Bingo, Wordle, and Connections with new challenges every single day. With 20 unique games covering everything from World Cup history to current league action, there's always a new way to test your football IQ."
+    a: "Futbol11 is your home for daily football games. Test your knowledge of clubs, players, and iconic football moments through games like Grid, Bingo, Wordle, and Connections with new challenges every single day. With 23 unique games covering everything from World Cup history to current league action, there's always a new way to test your football IQ."
   },
   {
     q: "When do daily games reset?",
@@ -20,7 +20,7 @@ export const faqs: Faq[] = [
   },
   {
     q: "Will new games be added?",
-    a: "Absolutely! We regularly add new game modes based on community feedback and emerging football events. Past additions include tournament-specific editions for Euro 2024 and Copa América. Follow us on social media to be the first to know about new releases."
+    a: "Absolutely! We regularly add new game modes based on community feedback and emerging football events. Past additions include tournament-specific editions for Euro 2024 and Copa América, plus Octadle, Formudle and WrestlePlay in November 2026. Check the home page and the blog to be the first to know about new releases."
   },
   {
     q: "Do I need an account to play?",
@@ -32,7 +32,7 @@ export const faqs: Faq[] = [
   },
   {
     q: "Can I play on mobile?",
-    a: "Yes! All Futbol11 games are fully optimized for mobile devices. Whether you're on a smartphone or tablet, the experience is smooth and responsive. No app download required — just visit the site in your mobile browser and start playing."
+    a: "Yes! All Futbol11 games are fully optimized for mobile devices. Whether you're on a smartphone or tablet, the experience is smooth and responsive. No app download required, just visit the site in your mobile browser and start playing."
   },
   {
     q: "How is the daily score calculated?",
@@ -44,6 +44,6 @@ export const faqs: Faq[] = [
   },
   {
     q: "How can I suggest a new game or feature?",
-    a: "We love hearing from our community! Reach out to us on Instagram or Twitter with your suggestions. Many of our best game ideas have come from player feedback. Whether it's a new game mode, a specific competition to cover, or a quality-of-life improvement, we're all ears."
+    a: "We love hearing from our community! Send us your suggestion through the Contact page. Many of our best game ideas have come from player feedback. Whether it's a new game mode, a specific competition to cover, or a quality-of-life improvement, we're all ears."
   },
 ];

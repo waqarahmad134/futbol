@@ -157,7 +157,7 @@ const GuessPlayerGame = () => {
                   : "border-border/30 bg-muted/10 text-muted-foreground"
               }`}
             >
-              {i < revealedClues ? clue : `Clue ${i + 1} — guess wrong to reveal`}
+              {i < revealedClues ? clue : `Clue ${i + 1}: guess wrong to reveal`}
             </motion.div>
           ))}
         </div>

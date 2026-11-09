@@ -168,7 +168,7 @@ const ClubsGame = () => {
                 open ? "border-border bg-muted/20 text-foreground" : "border-border/30 bg-muted/5 text-muted-foreground italic"
               }`}
             >
-              {open ? c : `Clue ${i + 1} — guess wrong to reveal`}
+              {open ? c : `Clue ${i + 1}: guess wrong to reveal`}
             </div>
           );
         })}

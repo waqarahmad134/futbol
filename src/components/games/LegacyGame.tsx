@@ -65,7 +65,7 @@ const LegacyGame = () => {
     if (correct) {
       setFinished(true);
       setWon(true);
-      toast({ title: "🎉 Got it!", description: `${legend.name} — ${next.length} guess${next.length > 1 ? "es" : ""}` });
+      toast({ title: "🎉 Got it!", description: `${legend.name} - ${next.length} guess${next.length > 1 ? "es" : ""}` });
       return;
     }
 
@@ -103,7 +103,7 @@ const LegacyGame = () => {
               <span className="w-5 h-5 rounded-full bg-primary/15 text-primary text-xs flex items-center justify-center font-display flex-shrink-0">
                 {i + 1}
               </span>
-              <span>{open ? clue : `Clue ${i + 1} — guess wrong to reveal`}</span>
+              <span>{open ? clue : `Clue ${i + 1}: guess wrong to reveal`}</span>
             </motion.div>
           );
         })}

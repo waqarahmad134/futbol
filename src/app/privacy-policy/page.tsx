@@ -1,22 +1,22 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import PageShell from "@/components/PageShell";
-import { CONTACT_EMAIL, SITE_NAME, SITE_URL, OG_IMAGE } from "@/lib/site";
+import { CONTACT_EMAIL, SITE_NAME, SITE_URL, OG_IMAGE, SITE_PUBLISHED, SITE_MODIFIED } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy — Futbol11",
+  title: "Privacy Policy - Futbol11",
   description:
     "How Futbol11 handles data, cookies and third-party advertising, including the use of Google AdSense cookies, and how you can opt out of personalized ads.",
   alternates: { canonical: "/privacy-policy/" },
   openGraph: {
-    title: "Privacy Policy — Futbol11",
+    title: "Privacy Policy - Futbol11",
     description:
       "How Futbol11 handles data, cookies and third-party advertising, including the use of Google AdSense cookies, and how you can opt out of personalized ads.",
     url: `${SITE_URL}/privacy-policy/`,
     images: [OG_IMAGE],
   },
   twitter: {
-    title: "Privacy Policy — Futbol11",
+    title: "Privacy Policy - Futbol11",
     description:
       "How Futbol11 handles data, cookies and third-party advertising, including the use of Google AdSense cookies, and how you can opt out of personalized ads.",
     images: ["/og-image.webp"],
@@ -28,6 +28,8 @@ const jsonLd = {
   "@type": "WebPage",
   name: "Privacy Policy",
   url: `${SITE_URL}/privacy-policy/`,
+  datePublished: SITE_PUBLISHED,
+  dateModified: SITE_MODIFIED,
   publisher: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
 };
 
@@ -35,7 +37,7 @@ export default function PrivacyPolicyPage() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <PageShell title="Privacy Policy" crumb="Privacy Policy" intro="Last updated: June 22, 2026">
+      <PageShell title="Privacy Policy" crumb="Privacy Policy" intro="Last updated: November 9, 2026">
         <p>
           This Privacy Policy explains how Futbol11 ("we", "us" or "our") collects, uses and protects
           information when you visit <a href={SITE_URL}>{SITE_URL.replace("https://", "")}</a> (the
@@ -47,14 +49,30 @@ export default function PrivacyPolicyPage() {
           Futbol11 does not require you to create an account, and we do not ask for personal
           information such as your name, email address or payment details to play our games. Your game
           progress, daily score and preferences are stored locally in your browser using{" "}
-          <strong>local storage</strong> — this data stays on your device and is not transmitted to
-          our servers.
+          <strong>local storage</strong>. Game results may also be sent to our server as described in
+          the &quot;Game results, streaks and leaderboard&quot; section below, using only a random
+          device ID and never your name or email.
         </p>
         <p>
           Like most websites, our hosting provider and third-party services may automatically receive
           standard technical information such as your IP address, browser type, device type and the
           pages you visit. This information is used in aggregate to keep the Site secure and to
           understand how it is used.
+        </p>
+
+        <h2>Game results, streaks and leaderboard</h2>
+        <p>
+          When you finish a game, your browser may send the result to our server: the game name,
+          whether you won, and your score. It is sent with a random device ID that your browser
+          creates, not with your name, email address or any account. We use these results only to
+          run your streak, which counts the consecutive days you played, and the leaderboard, which
+          ranks the top players by wins and best streak.
+        </p>
+        <p>
+          The leaderboard shows anonymous labels taken from the device ID, such as &quot;Player
+          7F3A1C9E&quot;, never your name. If the server cannot be reached, results wait in your
+          browser and are sent later. Clearing your browser storage removes your local progress and
+          resets the device ID, which starts a fresh streak and leaderboard entry.
         </p>
 
         <h2>Cookies and local storage</h2>
