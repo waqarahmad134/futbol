@@ -119,6 +119,13 @@ export default function BlogArticlePage({ params }: { params: { slug: string } }
             {post.ctaLabel}
           </Link>
         </p>
+        {post.relatedHref && post.relatedLabel && (
+          <p>
+            <Link href={post.relatedHref} className="font-display not-prose inline-block rounded-lg border border-border px-4 py-2 text-sm hover:bg-muted transition-colors">
+              {post.relatedLabel}
+            </Link>
+          </p>
+        )}
         <p>
           <Link href="/blog">Back to all guides</Link>
         </p>

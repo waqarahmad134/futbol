@@ -31,6 +31,9 @@
 - [Futbol11 Blog](https://futbol11.live/blog/): all game guides
 - [How to Play Futbol11 Wordle](https://futbol11.live/blog/how-to-play-futbol11-wordle/): rules, clues and tips for the daily football guessing game
 - [Football Grid Game: How to Play and Win](https://futbol11.live/blog/football-grid-game-how-to-play-and-win/): fill all 9 squares in 9 guesses
+- [Futbol Bingo Game: How to Play and Win](https://futbol11.live/blog/futbol-bingo-game-how-to-play-and-win/): mark players to bingo criteria and complete a line
+- [Football Quiz Game: How to Play and Win](https://futbol11.live/blog/football-quiz-game-how-to-play-and-win/): answer daily trivia and climb the pyramid
+- [Futbol Goltexto: Guess Today's Lineup](https://futbol11.live/blog/futbol-goltexto-todays-lineup/): guess today's starting 11 from text clues
 
 ## About
 - [Futbol11](https://futbol11.live/): home page with all 23 daily games
