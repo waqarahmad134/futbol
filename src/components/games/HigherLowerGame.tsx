@@ -2,6 +2,9 @@ import { useEffect, useMemo, useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronUp, ChevronDown, Flame, Trophy, RotateCcw } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { recordDailyResult } from "@/lib/daily-score";
+import { SITE_URL } from "@/lib/site";
+import ShareResultButton from "@/components/ShareResultButton";
 import {
   getDailySequence,
   getDayIndex,
@@ -18,6 +21,7 @@ interface SavedState {
   index: number;
   streak: number;
   status: "playing" | "over";
+  won: boolean;
 }
 
 const HigherLowerGame = () => {
@@ -30,6 +34,7 @@ const HigherLowerGame = () => {
   const [best, setBest] = useState(0);
   const [status, setStatus] = useState<"playing" | "over">("playing");
   const [revealed, setRevealed] = useState(false);
+  const [won, setWon] = useState(false);
   const [lastCorrect, setLastCorrect] = useState<boolean | null>(null);
 
   const current = seq[index];
@@ -49,6 +54,7 @@ const HigherLowerGame = () => {
         setIndex(parsed.index);
         setStreak(parsed.streak);
         setStatus(parsed.status);
+        setWon(Boolean(parsed.won));
         if (parsed.status === "over") setRevealed(true);
       }
     } catch {
@@ -58,9 +64,15 @@ const HigherLowerGame = () => {
 
   // Persist today's run.
   useEffect(() => {
-    const state: SavedState = { day, index, streak, status };
+    const state: SavedState = { day, index, streak, status, won };
     localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-  }, [day, index, streak, status]);
+  }, [day, index, streak, status, won]);
+
+  // Record the daily result once (guarded per game per day in the helper).
+  // Only clearing the whole deck is a win; a run ended by a wrong answer is a loss.
+  useEffect(() => {
+    if (status === "over") recordDailyResult("futbol11-higher-lower", won);
+  }, [status, won]);
 
   const recordBest = useCallback(
     (value: number) => {
@@ -93,6 +105,7 @@ const HigherLowerGame = () => {
             setLastCorrect(null);
           } else {
             // Cleared the whole deck.
+            setWon(true);
             setStatus("over");
             toast({ title: "🏆 Perfect run!", description: `You cleared all ${seq.length} players!` });
           }
@@ -221,6 +234,11 @@ const HigherLowerGame = () => {
             <p className="mt-1 inline-flex items-center gap-1 text-xs text-muted-foreground">
               <RotateCcw className="w-3 h-3" /> New players tomorrow! Best streak: {best}
             </p>
+            <div className="mt-3 flex justify-center">
+              <ShareResultButton
+                text={`Futbol11 Higher or Lower\n${won ? "🏆 Perfect run!" : "❌ Run ended"} Streak: ${streak} (Best: ${best})\nPlay: ${SITE_URL}/game/futbol11-higher-lower`}
+              />
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

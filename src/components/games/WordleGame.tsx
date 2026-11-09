@@ -2,6 +2,9 @@ import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { getDailyWord, evaluateGuess, LetterResult, LetterStatus } from "@/data/wordle-players";
 import { useToast } from "@/hooks/use-toast";
+import { recordDailyResult } from "@/lib/daily-score";
+import { SITE_URL } from "@/lib/site";
+import ShareResultButton from "@/components/ShareResultButton";
 
 const MAX_GUESSES = 6;
 const WORD_LENGTH = 5;
@@ -61,6 +64,11 @@ const WordleGame = () => {
       }));
     }
   }, [guesses, gameOver, won]);
+
+  // Record the daily result once (guarded per game per day in the helper)
+  useEffect(() => {
+    if (gameOver) recordDailyResult("futbol11-wordle", won);
+  }, [gameOver, won]);
 
   // Keyboard status map
   const keyboardStatus = useCallback((): Record<string, LetterStatus> => {
@@ -209,6 +217,11 @@ const WordleGame = () => {
               </p>
             )}
             <p className="text-muted-foreground text-xs mt-2">Come back tomorrow for a new challenge!</p>
+            <div className="mt-3 flex justify-center">
+              <ShareResultButton
+                text={`Futbol11 Wordle ${won ? `${guesses.length}/${MAX_GUESSES}` : `X/${MAX_GUESSES}`}\n${guesses.map((row) => row.map((l) => (l.status === "correct" ? "🟩" : l.status === "present" ? "🟨" : "⬜")).join("")).join("\n")}\nPlay: ${SITE_URL}/game/futbol11-wordle`}
+              />
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

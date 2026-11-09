@@ -38,7 +38,7 @@ const jsonLd = [
       "@type": "ListItem",
       position: i + 1,
       name: game.title,
-      url: `${SITE_URL}/game/${game.slug}`,
+      url: `${SITE_URL}/game/${game.slug}/`,
     })),
   },
 ];

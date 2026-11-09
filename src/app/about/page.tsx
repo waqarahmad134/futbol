@@ -1,20 +1,33 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import PageShell from "@/components/PageShell";
-import { SITE_NAME, SITE_URL } from "@/lib/site";
+import { SITE_NAME, SITE_URL, OG_IMAGE } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "About Futbol11 — Daily Football Games & Puzzles",
   description:
     "Learn about Futbol11, the home of 20 free daily football trivia games, puzzles and word challenges covering every league, competition and era.",
-  alternates: { canonical: "/about" },
+  alternates: { canonical: "/about/" },
+  openGraph: {
+    title: "About Futbol11 — Daily Football Games & Puzzles",
+    description:
+      "Learn about Futbol11, the home of 20 free daily football trivia games, puzzles and word challenges covering every league, competition and era.",
+    url: `${SITE_URL}/about/`,
+    images: [OG_IMAGE],
+  },
+  twitter: {
+    title: "About Futbol11 — Daily Football Games & Puzzles",
+    description:
+      "Learn about Futbol11, the home of 20 free daily football trivia games, puzzles and word challenges covering every league, competition and era.",
+    images: ["/og-image.webp"],
+  },
 };
 
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "AboutPage",
   name: "About Futbol11",
-  url: `${SITE_URL}/about`,
+  url: `${SITE_URL}/about/`,
   publisher: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
 };
 

@@ -2,20 +2,33 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Mail } from "lucide-react";
 import PageShell from "@/components/PageShell";
-import { CONTACT_EMAIL, SITE_NAME, SITE_URL } from "@/lib/site";
+import { CONTACT_EMAIL, SITE_NAME, SITE_URL, OG_IMAGE } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Contact Us — Futbol11",
   description:
     "Get in touch with the Futbol11 team. Send feedback, report an issue, or suggest a new daily football game.",
-  alternates: { canonical: "/contact" },
+  alternates: { canonical: "/contact/" },
+  openGraph: {
+    title: "Contact Us — Futbol11",
+    description:
+      "Get in touch with the Futbol11 team. Send feedback, report an issue, or suggest a new daily football game.",
+    url: `${SITE_URL}/contact/`,
+    images: [OG_IMAGE],
+  },
+  twitter: {
+    title: "Contact Us — Futbol11",
+    description:
+      "Get in touch with the Futbol11 team. Send feedback, report an issue, or suggest a new daily football game.",
+    images: ["/og-image.webp"],
+  },
 };
 
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "ContactPage",
   name: "Contact Futbol11",
-  url: `${SITE_URL}/contact`,
+  url: `${SITE_URL}/contact/`,
   publisher: { "@type": "Organization", name: SITE_NAME, url: SITE_URL, email: CONTACT_EMAIL },
 };
 

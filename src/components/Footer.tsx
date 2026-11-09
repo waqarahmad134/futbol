@@ -1,6 +1,5 @@
 "use client";
 
-import { Instagram, Twitter } from "lucide-react";
 import Link from "next/link";
 import { useSectionNav } from "@/hooks/use-section-nav";
 
@@ -66,14 +65,6 @@ const Footer = () => {
                 </li>
               ))}
             </ul>
-            <div className="flex gap-3 mt-4">
-              <a href="#" aria-label="Instagram" className="text-muted-foreground hover:text-foreground transition-colors">
-                <Instagram className="w-4 h-4" />
-              </a>
-              <a href="#" aria-label="Twitter" className="text-muted-foreground hover:text-foreground transition-colors">
-                <Twitter className="w-4 h-4" />
-              </a>
-            </div>
           </div>
         </div>
         <div className="border-t border-border mt-8 pt-6 text-center text-xs text-muted-foreground">
@@ -82,6 +73,8 @@ const Footer = () => {
             <Link href="/privacy-policy" className="hover:text-foreground transition-colors">Privacy Policy</Link>
             <Link href="/terms" className="hover:text-foreground transition-colors">Terms of Service</Link>
             <Link href="/contact" className="hover:text-foreground transition-colors">Contact</Link>
+            <Link href="/blog" className="hover:text-foreground transition-colors">Blog</Link>
+            <a href="/feed.xml" className="hover:text-foreground transition-colors">RSS Feed</a>
           </nav>
           <p>© {new Date().getFullYear()} Futbol11. Daily football trivia games for fans worldwide.</p>
           <p className="mt-1">Premier League • La Liga • Serie A • Bundesliga • Champions League • World Cup</p>

@@ -2,6 +2,9 @@ import { useEffect, useMemo, useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ArrowRight, RotateCcw, Trophy, Eye, ChevronRight } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { recordDailyResult } from "@/lib/daily-score";
+import { SITE_URL } from "@/lib/site";
+import ShareResultButton from "@/components/ShareResultButton";
 import { getDailyLink, LinkPuzzle } from "@/data/link-puzzles";
 import { normaliseName } from "@/data/lineups";
 
@@ -14,6 +17,7 @@ interface SavedState {
   failedTries: number;
   finished: boolean;
   revealed: boolean;
+  won: boolean;
 }
 
 interface ChainStep {
@@ -29,6 +33,7 @@ const LinkGame = () => {
   const [failedTries, setFailedTries] = useState(0);
   const [finished, setFinished] = useState(false);
   const [revealed, setRevealed] = useState(false);
+  const [won, setWon] = useState(false);
 
   useEffect(() => {
     const raw = localStorage.getItem(STORAGE_KEY);
@@ -41,6 +46,7 @@ const LinkGame = () => {
         setFailedTries(parsed.failedTries);
         setFinished(parsed.finished);
         setRevealed(parsed.revealed);
+        setWon(Boolean(parsed.won));
       }
     } catch {
       // ignore
@@ -54,9 +60,16 @@ const LinkGame = () => {
       failedTries,
       finished,
       revealed,
+      won,
     };
     localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
-  }, [puzzle.id, chain, failedTries, finished, revealed]);
+  }, [puzzle.id, chain, failedTries, finished, revealed, won]);
+
+  // Record the daily result once (guarded per game per day in the helper).
+  // Only reaching the end player is a win; out of links and give-up are losses.
+  useEffect(() => {
+    if (finished) recordDailyResult("futbol11-link", won);
+  }, [finished, won]);
 
   const previousClubs: string[] = chain.length === 0 ? puzzle.startClubs : findClubsForName(puzzle, chain[chain.length - 1].name);
 
@@ -92,6 +105,7 @@ const LinkGame = () => {
     setDraft("");
 
     if (finalShared) {
+      setWon(true);
       setFinished(true);
       toast({ title: "🎉 Chain complete!", description: `${intermediate.name} → ${puzzle.end} via ${finalShared}` });
       return;
@@ -179,7 +193,7 @@ const LinkGame = () => {
             animate={{ opacity: 1, y: 0 }}
             className="text-center space-y-2 max-w-md"
           >
-            {chain.length > 0 && !revealed ? (
+            {won ? (
               <div className="flex items-center justify-center gap-2 text-success">
                 <Trophy className="w-5 h-5" />
                 <span className="font-display">Chain solved!</span>
@@ -201,6 +215,11 @@ const LinkGame = () => {
             <p className="text-xs text-muted-foreground flex items-center justify-center gap-1">
               <RotateCcw className="w-3 h-3" /> New link tomorrow!
             </p>
+            <div className="mt-2 flex justify-center">
+              <ShareResultButton
+                text={`Futbol11 Link, ${puzzle.start} to ${puzzle.end}\n${won ? "✅ Chain complete" : "❌ Out of links"} in ${chain.length} link${chain.length === 1 ? "" : "s"}\nPlay: ${SITE_URL}/game/futbol11-link`}
+              />
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

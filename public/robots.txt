@@ -33,3 +33,6 @@ User-agent: *
 Allow: /
 
 Sitemap: https://futbol11.live/sitemap.xml
+
+# RSS feed with all games and pages
+# Feed: https://futbol11.live/feed.xml

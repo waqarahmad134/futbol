@@ -2,6 +2,9 @@ import { useState, useEffect, useMemo, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Check, X, Trophy, RotateCcw } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { recordDailyResult } from "@/lib/daily-score";
+import { SITE_URL } from "@/lib/site";
+import ShareResultButton from "@/components/ShareResultButton";
 import { getDailyGrid } from "@/data/grid-puzzles";
 import { normaliseName } from "@/data/lineups";
 
@@ -54,6 +57,12 @@ const GridGame = () => {
   const filledCount = cells.flat().filter(Boolean).length;
   const remainingGuesses = MAX_GUESSES - guessesUsed;
 
+  // Record the daily result once (guarded per game per day in the helper).
+  // Only a fully filled grid is a win.
+  useEffect(() => {
+    if (finished) recordDailyResult("futbol-grid", filledCount === 9);
+  }, [finished, filledCount]);
+
   const submit = useCallback(() => {
     if (!active || finished) return;
     const value = draft.trim();
@@ -99,6 +108,11 @@ const GridGame = () => {
         <p className="text-xs text-muted-foreground flex items-center gap-1">
           <RotateCcw className="w-3 h-3" /> New grid tomorrow!
         </p>
+        <div className="mt-2 flex justify-center">
+          <ShareResultButton
+            text={`Futbol11 Grid\n${cells.map((row) => row.map((c) => (c ? "🟩" : "⬜")).join("")).join("\n")}\n${filledCount}/9 filled\nPlay: ${SITE_URL}/game/futbol-grid`}
+          />
+        </div>
       </motion.div>
     );
   }

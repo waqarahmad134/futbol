@@ -2,6 +2,9 @@ import { useState, useEffect, useCallback, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { CheckCircle, XCircle, RotateCcw, Trophy, UserSearch } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { recordDailyResult } from "@/lib/daily-score";
+import { SITE_URL } from "@/lib/site";
+import ShareResultButton from "@/components/ShareResultButton";
 import { getDailyRounds, ROUNDS_PER_DAY, ImpostorRound } from "@/data/impostor-rounds";
 import { Progress } from "@/components/ui/progress";
 
@@ -50,6 +53,12 @@ const ImpostorGame = () => {
     };
     localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
   }, []);
+
+  // Record the daily result once (guarded per game per day in the helper).
+  // A win is 60%+ correct, matching the game's own celebration bar.
+  useEffect(() => {
+    if (finished) recordDailyResult("futbol11-impostor", score / ROUNDS_PER_DAY >= 0.6);
+  }, [finished, score]);
 
   const round = rounds[index];
 
@@ -125,6 +134,11 @@ const ImpostorGame = () => {
         <p className="text-xs text-muted-foreground flex items-center gap-1">
           <RotateCcw className="w-3 h-3" /> New rounds tomorrow!
         </p>
+        <div className="mt-2 flex justify-center">
+          <ShareResultButton
+            text={`Futbol11 Impostor\n${score}/${ROUNDS_PER_DAY} impostors spotted\nPlay: ${SITE_URL}/game/futbol11-impostor`}
+          />
+        </div>
       </motion.div>
     );
   }

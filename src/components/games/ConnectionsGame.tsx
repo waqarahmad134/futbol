@@ -2,6 +2,9 @@ import { useEffect, useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Check, RotateCcw, Trophy, Shuffle } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { recordDailyResult } from "@/lib/daily-score";
+import { SITE_URL } from "@/lib/site";
+import ShareResultButton from "@/components/ShareResultButton";
 import {
   getDailyConnections,
   shuffleItemsForPuzzle,
@@ -61,6 +64,11 @@ const ConnectionsGame = () => {
     };
     localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
   }, [puzzle.id, solved, mistakes, finished, remaining]);
+
+  // Record the daily result once (guarded per game per day in the helper)
+  useEffect(() => {
+    if (finished) recordDailyResult("futbol11-connections", solved.length === 4);
+  }, [finished, solved.length]);
 
   const toggle = (item: string) => {
     if (finished) return;
@@ -224,6 +232,11 @@ const ConnectionsGame = () => {
           <p className="text-xs text-muted-foreground flex items-center justify-center gap-1">
             <RotateCcw className="w-3 h-3" /> New connections tomorrow!
           </p>
+          <div className="mt-2 flex justify-center">
+            <ShareResultButton
+              text={`Futbol11 Connections\n${puzzle.groups.map((g) => (solved.some((s) => s.category === g.category) ? ({ 1: "🟩", 2: "🟨", 3: "🟦", 4: "🟪" } as Record<number, string>)[g.difficulty].repeat(4) : "⬜⬜⬜⬜")).join("\n")}\nMistakes: ${mistakes}/${MAX_MISTAKES}\nPlay: ${SITE_URL}/game/futbol11-connections`}
+            />
+          </div>
         </motion.div>
       )}
 

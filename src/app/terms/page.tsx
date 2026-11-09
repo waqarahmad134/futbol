@@ -1,20 +1,33 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import PageShell from "@/components/PageShell";
-import { CONTACT_EMAIL, SITE_NAME, SITE_URL } from "@/lib/site";
+import { CONTACT_EMAIL, SITE_NAME, SITE_URL, OG_IMAGE } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Terms of Service — Futbol11",
   description:
     "The terms and conditions for using Futbol11's free daily football games, including intellectual property, disclaimers and limitations of liability.",
-  alternates: { canonical: "/terms" },
+  alternates: { canonical: "/terms/" },
+  openGraph: {
+    title: "Terms of Service — Futbol11",
+    description:
+      "The terms and conditions for using Futbol11's free daily football games, including intellectual property, disclaimers and limitations of liability.",
+    url: `${SITE_URL}/terms/`,
+    images: [OG_IMAGE],
+  },
+  twitter: {
+    title: "Terms of Service — Futbol11",
+    description:
+      "The terms and conditions for using Futbol11's free daily football games, including intellectual property, disclaimers and limitations of liability.",
+    images: ["/og-image.webp"],
+  },
 };
 
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "WebPage",
   name: "Terms of Service",
-  url: `${SITE_URL}/terms`,
+  url: `${SITE_URL}/terms/`,
   publisher: { "@type": "Organization", name: SITE_NAME, url: SITE_URL },
 };
 

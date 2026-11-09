@@ -2,6 +2,9 @@ import { useEffect, useMemo, useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Trophy, RotateCcw, Check, ArrowRight } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { recordDailyResult } from "@/lib/daily-score";
+import { SITE_URL } from "@/lib/site";
+import ShareResultButton from "@/components/ShareResultButton";
 import { BINGO_SETS, getDailyPlayers, BingoPlayer } from "@/data/bingo-data";
 
 type SetKey = keyof typeof BINGO_SETS;
@@ -31,6 +34,12 @@ const WIN_LINES: number[][] = [
   [0, 4, 8],
   [2, 4, 6],
 ];
+
+// Game page slug per bingo set, used for the daily-score record and share text.
+const SLUG_BY_SET: Record<SetKey, string> = {
+  modern: "futbol11-bingo",
+  retro: "futbol11-bingo-legends",
+};
 
 const BingoGame = ({ setKey, storageKey }: BingoGameProps) => {
   const { toast } = useToast();
@@ -76,6 +85,11 @@ const BingoGame = ({ setKey, storageKey }: BingoGameProps) => {
   );
 
   const player = players[revealedIdx];
+
+  // Record the daily result once (guarded per game per day in the helper)
+  useEffect(() => {
+    if (finished) recordDailyResult(`bingo-${setKey}`, win);
+  }, [finished, win, setKey]);
 
   const checkWin = (m: boolean[]) => WIN_LINES.some((line) => line.every((i) => m[i]));
 
@@ -184,13 +198,14 @@ const BingoGame = ({ setKey, storageKey }: BingoGameProps) => {
 
       <AnimatePresence>
         {finished && (
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="text-xs text-muted-foreground flex items-center gap-1"
-          >
-            <RotateCcw className="w-3 h-3" /> New bingo card tomorrow!
-          </motion.p>
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex flex-col items-center gap-2">
+            <p className="text-xs text-muted-foreground flex items-center gap-1">
+              <RotateCcw className="w-3 h-3" /> New bingo card tomorrow!
+            </p>
+            <ShareResultButton
+              text={`Futbol11 Bingo\n${win ? "✅ BINGO!" : "❌ No bingo"} in ${revealedIdx + 1} reveal${revealedIdx === 0 ? "" : "s"}\nPlay: ${SITE_URL}/game/${SLUG_BY_SET[setKey]}`}
+            />
+          </motion.div>
         )}
       </AnimatePresence>
     </div>
