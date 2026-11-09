@@ -5,19 +5,19 @@ import { BLOG_POSTS } from "@/data/blog";
 import { SITE_NAME, SITE_URL, OG_IMAGE } from "@/lib/site";
 
 export const metadata: Metadata = {
-  title: { absolute: "Futbol11 Blog — Football Game Guides and Tips" },
+  title: { absolute: "Futbol11 Blog - Football Game Guides and Tips" },
   description:
     "Guides and tips for Futbol11 games: how to play Wordle, win the Football Grid, and more. Free daily football puzzles explained.",
   alternates: { canonical: "/blog/" },
   openGraph: {
-    title: "Futbol11 Blog — Football Game Guides and Tips",
+    title: "Futbol11 Blog - Football Game Guides and Tips",
     description:
       "Guides and tips for Futbol11 games: how to play Wordle, win the Football Grid, and more. Free daily football puzzles explained.",
     url: `${SITE_URL}/blog/`,
     images: [OG_IMAGE],
   },
   twitter: {
-    title: "Futbol11 Blog — Football Game Guides and Tips",
+    title: "Futbol11 Blog - Football Game Guides and Tips",
     description:
       "Guides and tips for Futbol11 games: how to play Wordle, win the Football Grid, and more. Free daily football puzzles explained.",
     images: ["/og-image.webp"],
