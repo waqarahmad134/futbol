@@ -2,6 +2,9 @@ import { useEffect, useMemo, useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Check, X, RotateCcw, Trophy, Eye } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { recordDailyResult } from "@/lib/daily-score";
+import { SITE_URL } from "@/lib/site";
+import ShareResultButton from "@/components/ShareResultButton";
 import { getDailyClub, ClubEntry } from "@/data/clubs";
 import { normaliseName } from "@/data/lineups";
 
@@ -120,6 +123,11 @@ const ClubsGame = () => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
   }, [club.name, guesses, cluesShown, finished, won]);
 
+  // Record the daily result once (guarded per game per day in the helper)
+  useEffect(() => {
+    if (finished) recordDailyResult("futbol11-clubs", won);
+  }, [finished, won]);
+
   const remaining = MAX_GUESSES - guesses.length;
   const blur = won || finished ? 0 : Math.max(0, 16 - cluesShown * 4);
 
@@ -160,7 +168,7 @@ const ClubsGame = () => {
                 open ? "border-border bg-muted/20 text-foreground" : "border-border/30 bg-muted/5 text-muted-foreground italic"
               }`}
             >
-              {open ? c : `Clue ${i + 1} — guess wrong to reveal`}
+              {open ? c : `Clue ${i + 1}: guess wrong to reveal`}
             </div>
           );
         })}
@@ -225,6 +233,11 @@ const ClubsGame = () => {
             <p className="text-xs text-muted-foreground flex items-center justify-center gap-1">
               <RotateCcw className="w-3 h-3" /> New club tomorrow!
             </p>
+            <div className="mt-2 flex justify-center">
+              <ShareResultButton
+                text={`Futbol11 Clubs\n${won ? "✅ Solved" : "❌ Not solved"} in ${guesses.length}/${MAX_GUESSES} guesses\nPlay: ${SITE_URL}/game/futbol11-clubs`}
+              />
+            </div>
           </motion.div>
         </AnimatePresence>
       )}

@@ -1,0 +1,39 @@
+// Prisma schema for the Futbol11 backend.
+//
+// Anonymous players only: a random device id stored in the browser
+// (localStorage key "futbol11-device-id"). No accounts, no login,
+// no names, emails or any personal data. Streaks are derived from
+// the distinct play dates in GameResult, never stored separately.
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  // Prisma 7 keeps the connection URL out of the schema: it lives in
+  // prisma.config.ts (for Migrate) and in the PrismaMariaDb adapter
+  // in src/lib/prisma.ts (for the client).
+}
+
+model Player {
+  id        String       @id @default(uuid())
+  deviceId  String       @unique @db.VarChar(64)
+  createdAt DateTime     @default(now())
+  results   GameResult[]
+
+  @@map("players")
+}
+
+model GameResult {
+  id       String   @id @default(uuid())
+  playerId String
+  player   Player   @relation(fields: [playerId], references: [id], onDelete: Cascade)
+  game     String   @db.VarChar(80)
+  won      Boolean
+  score    Int?
+  playedAt DateTime @default(now())
+
+  @@index([playerId, playedAt])
+  @@index([game])
+  @@map("game_results")
+}

@@ -2,6 +2,9 @@ import { useEffect, useMemo, useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Check, Eye, RotateCcw, Trophy, Timer } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { recordDailyResult } from "@/lib/daily-score";
+import { SITE_URL } from "@/lib/site";
+import ShareResultButton from "@/components/ShareResultButton";
 import { getDailyTop10 } from "@/data/top10-lists";
 import { normaliseName } from "@/data/lineups";
 
@@ -48,6 +51,12 @@ const Top10Game = () => {
     };
     localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
   }, [list.id, found, timeLeft, finished]);
+
+  // Record the daily result once (guarded per game per day in the helper).
+  // Only naming all 10 is a win; time-out and give-up are losses.
+  useEffect(() => {
+    if (finished) recordDailyResult("futbol-top10", found.every(Boolean));
+  }, [finished, found]);
 
   useEffect(() => {
     if (finished || revealed) return;
@@ -168,13 +177,18 @@ const Top10Game = () => {
 
       <AnimatePresence>
         {finished && (
-          <motion.p
+          <motion.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-xs text-muted-foreground flex items-center gap-1"
+            className="flex flex-col items-center gap-2"
           >
-            <RotateCcw className="w-3 h-3" /> New list tomorrow! Final: {foundCount}/{list.items.length}
-          </motion.p>
+            <p className="text-xs text-muted-foreground flex items-center gap-1">
+              <RotateCcw className="w-3 h-3" /> New list tomorrow! Final: {foundCount}/{list.items.length}
+            </p>
+            <ShareResultButton
+              text={`Futbol11 Top 10, ${list.title}\n${found.every(Boolean) ? "✅ Full list" : `❌ ${foundCount}/${list.items.length} found`}\nPlay: ${SITE_URL}/game/futbol-top10`}
+            />
+          </motion.div>
         )}
       </AnimatePresence>
     </div>

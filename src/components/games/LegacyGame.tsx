@@ -2,6 +2,9 @@ import { useState, useEffect, useCallback, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Check, X, Trophy, RotateCcw, ScrollText } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { recordDailyResult } from "@/lib/daily-score";
+import { SITE_URL } from "@/lib/site";
+import ShareResultButton from "@/components/ShareResultButton";
 import { getDailyLegend } from "@/data/legacy-legends";
 import { nameMatches } from "@/data/lineups";
 
@@ -46,6 +49,11 @@ const LegacyGame = () => {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
   }, [legend.name, guesses, cluesShown, finished, won]);
 
+  // Record the daily result once (guarded per game per day in the helper)
+  useEffect(() => {
+    if (finished) recordDailyResult("futbol11-legacy", won);
+  }, [finished, won]);
+
   const submit = useCallback(() => {
     const value = guess.trim();
     if (!value || finished) return;
@@ -57,7 +65,7 @@ const LegacyGame = () => {
     if (correct) {
       setFinished(true);
       setWon(true);
-      toast({ title: "🎉 Got it!", description: `${legend.name} — ${next.length} guess${next.length > 1 ? "es" : ""}` });
+      toast({ title: "🎉 Got it!", description: `${legend.name} - ${next.length} guess${next.length > 1 ? "es" : ""}` });
       return;
     }
 
@@ -95,7 +103,7 @@ const LegacyGame = () => {
               <span className="w-5 h-5 rounded-full bg-primary/15 text-primary text-xs flex items-center justify-center font-display flex-shrink-0">
                 {i + 1}
               </span>
-              <span>{open ? clue : `Clue ${i + 1} — guess wrong to reveal`}</span>
+              <span>{open ? clue : `Clue ${i + 1}: guess wrong to reveal`}</span>
             </motion.div>
           );
         })}
@@ -167,6 +175,11 @@ const LegacyGame = () => {
             <p className="text-xs text-muted-foreground flex items-center justify-center gap-1">
               <RotateCcw className="w-3 h-3" /> New legend tomorrow!
             </p>
+            <div className="mt-2 flex justify-center">
+              <ShareResultButton
+                text={`Futbol11 Legacy\n${won ? "✅ Solved" : "❌ Not solved"} in ${guesses.length}/${MAX_GUESSES} guesses\nPlay: ${SITE_URL}/game/futbol11-legacy`}
+              />
+            </div>
           </motion.div>
         )}
       </AnimatePresence>

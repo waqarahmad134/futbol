@@ -8,17 +8,25 @@ interface PageShellProps {
   intro?: string;
   /** Breadcrumb label shown after Home (defaults to title). */
   crumb?: string;
+  /** Optional middle breadcrumb level, e.g. Blog for article pages. */
+  parent?: { label: string; href: string };
   children: ReactNode;
 }
 
 // Shared layout for static content pages (About, Privacy, Terms, Contact).
-const PageShell = ({ title, intro, crumb, children }: PageShellProps) => (
+const PageShell = ({ title, intro, crumb, parent, children }: PageShellProps) => (
   <div className="min-h-screen bg-background font-body">
     <Header />
     <main className="container max-w-3xl py-12">
       <nav aria-label="Breadcrumb" className="mb-6 text-sm text-muted-foreground">
         <Link href="/" className="hover:text-foreground transition-colors">Home</Link>
         <span className="mx-2" aria-hidden="true">/</span>
+        {parent && (
+          <>
+            <Link href={parent.href} className="hover:text-foreground transition-colors">{parent.label}</Link>
+            <span className="mx-2" aria-hidden="true">/</span>
+          </>
+        )}
         <span className="text-foreground">{crumb ?? title}</span>
       </nav>
       <h1 className="font-display text-3xl text-foreground mb-4">{title}</h1>

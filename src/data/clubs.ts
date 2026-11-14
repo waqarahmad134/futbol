@@ -49,7 +49,7 @@ export const CLUBS: ClubEntry[] = [
     shape: "stripes",
     clues: [
       "Italian record champions, founded in Turin in 1897.",
-      "Wears black and white stripes — known as the Bianconeri.",
+      "Wears black and white stripes, known as the Bianconeri.",
       "Plays at the Allianz Stadium.",
       "Has reached nine European Cup / Champions League finals.",
     ],

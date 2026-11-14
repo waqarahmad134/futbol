@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import Script from "next/script";
 import "./globals.css";
 import Providers from "./providers";
-import { SITE_NAME, SITE_TAGLINE, SITE_URL, CONTACT_EMAIL } from "@/lib/site";
+import { SITE_NAME, SITE_TAGLINE, SITE_URL, CONTACT_EMAIL, OG_IMAGE } from "@/lib/site";
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     template: `%s | ${SITE_NAME}`,
   },
   description:
-    "Play 20 free daily football trivia games — guess lineups, solve puzzles, play Wordle, Grid & Connections. Premier League, La Liga & World Cup, new daily.",
+    "Play 23 free daily football trivia games, guess lineups, solve puzzles, play Wordle, Grid & Connections. Premier League, La Liga & World Cup, new daily.",
   applicationName: SITE_NAME,
   authors: [{ name: SITE_NAME }],
   keywords: [
@@ -31,24 +31,17 @@ export const metadata: Metadata = {
     type: "website",
     siteName: SITE_NAME,
     locale: "en_US",
-    url: SITE_URL,
+    url: `${SITE_URL}/`,
     title: `${SITE_NAME} - Daily Football Trivia Games & Puzzles`,
     description:
-      "20 free daily football games. Guess lineups, solve puzzles, play Wordle & more. New challenges every day at midnight.",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "Futbol11 — daily football trivia games and puzzles",
-      },
-    ],
+      "23 free daily football games. Guess lineups, solve puzzles, play Wordle & more. New challenges every day at midnight.",
+    images: [OG_IMAGE],
   },
   twitter: {
     card: "summary_large_image",
     title: `${SITE_NAME} - Daily Football Trivia Games`,
-    description: "20 free daily football games. Guess lineups, solve puzzles, play Wordle & more.",
-    images: ["/og-image.png"],
+    description: "23 free daily football games. Guess lineups, solve puzzles, play Wordle & more.",
+    images: ["/og-image.webp"],
   },
   icons: {
     icon: [
@@ -74,7 +67,7 @@ const siteJsonLd = [
     url: `${SITE_URL}/`,
     inLanguage: "en",
     description:
-      "Daily football trivia games and puzzles. 20 unique games covering World Cup, Premier League, La Liga, Champions League and more.",
+      "Daily football trivia games and puzzles. 23 unique games covering World Cup, Premier League, La Liga, Champions League and more.",
     potentialAction: {
       "@type": "SearchAction",
       target: `${SITE_URL}/?q={search_term_string}`,
@@ -96,16 +89,25 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <head>
+        {/* RSS feed with all games and pages. */}
+        <link rel="alternate" type="application/rss+xml" title="Futbol11 Feed" href="/feed.xml" />
+        {/* Google Fonts (moved here from a CSS @import so it does not block rendering). */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Russo+One&family=Inter:wght@400;500;600;700&display=swap"
+        />
         {/* Google Consent Mode v2: deny ad/analytics storage until the user accepts (see CookieConsent). */}
         <Script id="consent-default" strategy="beforeInteractive">
           {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied',wait_for_update:500});`}
         </Script>
-        {/* Google AdSense: replace ca-pub-XXXXXXXXXXXXXXXX with your real publisher ID before submitting for review. */}
+        {/* Google AdSense */}
         <Script
           id="adsense"
           async
           strategy="afterInteractive"
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX"
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9266386915530434"
           crossOrigin="anonymous"
         />
         <script

@@ -2,6 +2,9 @@ import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { getDailyQuestions, TriviaQuestion } from "@/data/trivia-questions";
 import { useToast } from "@/hooks/use-toast";
+import { recordDailyResult } from "@/lib/daily-score";
+import { SITE_URL } from "@/lib/site";
+import ShareResultButton from "@/components/ShareResultButton";
 import { Trophy, RotateCcw, CheckCircle, XCircle, HelpCircle, Timer, BarChart3 } from "lucide-react";
 import { Progress } from "@/components/ui/progress";
 
@@ -69,6 +72,12 @@ const TriviaQuizGame = () => {
       gameOver: over,
     }));
   }, []);
+
+  // Record the daily result once (guarded per game per day in the helper).
+  // A win is 70%+ correct, matching the game's own celebration bar.
+  useEffect(() => {
+    if (gameOver) recordDailyResult("futbol11-pyramid", score / TOTAL_QUESTIONS >= 0.7);
+  }, [gameOver, score]);
 
   const handleSelect = (optionIndex: number) => {
     if (revealed || gameOver) return;
@@ -155,6 +164,11 @@ const TriviaQuizGame = () => {
           <p className="text-muted-foreground text-xs flex items-center justify-center gap-1 mt-4">
             <RotateCcw className="w-3 h-3" /> New questions tomorrow!
           </p>
+          <div className="mt-2 flex justify-center">
+            <ShareResultButton
+              text={`Futbol11 Pyramid\n${score}/${TOTAL_QUESTIONS} (${percentage}% correct)\nPlay: ${SITE_URL}/game/futbol11-pyramid`}
+            />
+          </div>
         </motion.div>
       </div>
     );

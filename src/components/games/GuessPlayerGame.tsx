@@ -2,6 +2,9 @@ import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { getDailyGuessPlayer, getClues, GuessPlayer } from "@/data/guess-players";
 import { useToast } from "@/hooks/use-toast";
+import { recordDailyResult } from "@/lib/daily-score";
+import { SITE_URL } from "@/lib/site";
+import ShareResultButton from "@/components/ShareResultButton";
 import { Eye, HelpCircle, Check, X, Trophy, RotateCcw } from "lucide-react";
 
 const MAX_GUESSES = 6;
@@ -45,6 +48,11 @@ const GuessPlayerGame = () => {
       }));
     }
   }, [guesses, revealedClues, gameOver, won]);
+
+  // Record the daily result once (guarded per game per day in the helper)
+  useEffect(() => {
+    if (gameOver) recordDailyResult("guess-the-footballer", won);
+  }, [gameOver, won]);
 
   const submitGuess = useCallback(() => {
     const trimmed = guess.trim();
@@ -149,7 +157,7 @@ const GuessPlayerGame = () => {
                   : "border-border/30 bg-muted/10 text-muted-foreground"
               }`}
             >
-              {i < revealedClues ? clue : `Clue ${i + 1} — guess wrong to reveal`}
+              {i < revealedClues ? clue : `Clue ${i + 1}: guess wrong to reveal`}
             </motion.div>
           ))}
         </div>
@@ -235,6 +243,9 @@ const GuessPlayerGame = () => {
             <p className="text-muted-foreground text-xs flex items-center justify-center gap-1">
               <RotateCcw className="w-3 h-3" /> New player tomorrow!
             </p>
+            <ShareResultButton
+              text={`Futbol11 Guess the Footballer\n${won ? "✅ Solved" : "❌ Not solved"} in ${guesses.length}/${MAX_GUESSES} guesses\nPlay: ${SITE_URL}/game/guess-the-footballer`}
+            />
           </motion.div>
         </AnimatePresence>
       )}

@@ -17,7 +17,7 @@ export interface Lineup {
 const goltextoLineups: Lineup[] = [
   {
     id: "barca-2009-ucl",
-    title: "Barcelona — 2009 UCL Final",
+    title: "Barcelona - 2009 UCL Final",
     subtitle: "Barcelona 2-0 Manchester United",
     formation: "4-3-3",
     context: "Pep Guardiola's first Champions League trophy with Barça, played in Rome.",
@@ -37,7 +37,7 @@ const goltextoLineups: Lineup[] = [
   },
   {
     id: "milan-2007-ucl",
-    title: "AC Milan — 2007 UCL Final",
+    title: "AC Milan - 2007 UCL Final",
     subtitle: "AC Milan 2-1 Liverpool",
     formation: "4-3-1-2",
     context: "Carlo Ancelotti's revenge for Istanbul, with Inzaghi grabbing both goals.",
@@ -60,7 +60,7 @@ const goltextoLineups: Lineup[] = [
 const countriesLineups: Lineup[] = [
   {
     id: "argentina-2022-final",
-    title: "Argentina — 2022 World Cup Final",
+    title: "Argentina - 2022 World Cup Final",
     subtitle: "Argentina 3-3 France (4-2 pens)",
     formation: "4-4-2",
     context: "Lionel Scaloni's side lifted the trophy in Qatar, Messi's crowning moment.",
@@ -80,7 +80,7 @@ const countriesLineups: Lineup[] = [
   },
   {
     id: "germany-2014-final",
-    title: "Germany — 2014 World Cup Final",
+    title: "Germany - 2014 World Cup Final",
     subtitle: "Germany 1-0 Argentina (a.e.t.)",
     formation: "4-3-3",
     context: "Joachim Löw's side ended a 24-year wait at the Maracanã.",
@@ -146,7 +146,7 @@ const legendsLineups: Lineup[] = [
 const americaLineups: Lineup[] = [
   {
     id: "brazil-2002-final",
-    title: "Brazil — 2002 World Cup Final",
+    title: "Brazil - 2002 World Cup Final",
     subtitle: "Brazil 2-0 Germany",
     formation: "3-5-2",
     context: "Luiz Felipe Scolari's pentacampeões clinched a fifth star in Yokohama.",
@@ -166,7 +166,7 @@ const americaLineups: Lineup[] = [
   },
   {
     id: "uruguay-1950-final",
-    title: "Uruguay — 1950 Maracanazo",
+    title: "Uruguay - 1950 Maracanazo",
     subtitle: "Uruguay 2-1 Brazil",
     formation: "WM",
     context: "The Maracanazo: Uruguay shocked Brazil at the Maracanã to win the 1950 World Cup.",
@@ -189,7 +189,7 @@ const americaLineups: Lineup[] = [
 const euro2024Lineups: Lineup[] = [
   {
     id: "spain-2024-final",
-    title: "Spain — Euro 2024 Final",
+    title: "Spain - Euro 2024 Final",
     subtitle: "Spain 2-1 England",
     formation: "4-3-3",
     context: "Luis de la Fuente's side won every match of the tournament en route to glory.",
@@ -209,7 +209,7 @@ const euro2024Lineups: Lineup[] = [
   },
   {
     id: "england-2024-final",
-    title: "England — Euro 2024 Final",
+    title: "England - Euro 2024 Final",
     subtitle: "England 1-2 Spain",
     formation: "3-4-2-1",
     context: "Gareth Southgate's last match in charge ended in a Berlin defeat.",
@@ -232,7 +232,7 @@ const euro2024Lineups: Lineup[] = [
 const copaAmericaLineups: Lineup[] = [
   {
     id: "argentina-2024-final",
-    title: "Argentina — Copa América 2024 Final",
+    title: "Argentina - Copa América 2024 Final",
     subtitle: "Argentina 1-0 Colombia",
     formation: "4-4-2",
     context: "La Albiceleste defended their continental crown in Miami.",
@@ -252,7 +252,7 @@ const copaAmericaLineups: Lineup[] = [
   },
   {
     id: "chile-2015-final",
-    title: "Chile — Copa América 2015 Final",
+    title: "Chile - Copa América 2015 Final",
     subtitle: "Chile 0-0 Argentina (4-1 pens)",
     formation: "3-4-1-2",
     context: "Jorge Sampaoli's golden generation lifted Chile's first ever Copa América.",
@@ -275,7 +275,7 @@ const copaAmericaLineups: Lineup[] = [
 const worldCupLineups: Lineup[] = [
   {
     id: "brazil-1970-final",
-    title: "Brazil — 1970 World Cup Final",
+    title: "Brazil - 1970 World Cup Final",
     subtitle: "Brazil 4-1 Italy",
     formation: "4-2-4",
     context: "Often considered the greatest team of all time. Mario Zagallo's masterpiece.",
@@ -295,7 +295,7 @@ const worldCupLineups: Lineup[] = [
   },
   {
     id: "france-1998-final",
-    title: "France — 1998 World Cup Final",
+    title: "France - 1998 World Cup Final",
     subtitle: "France 3-0 Brazil",
     formation: "4-3-2-1",
     context: "Aimé Jacquet's side won France's first ever World Cup at the Stade de France.",

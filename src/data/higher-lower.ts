@@ -1,4 +1,4 @@
-// Higher or Lower — compare two footballers by career goals.
+// Higher or Lower: compare two footballers by career goals.
 // Players carry approximate senior career goal totals (club + international).
 // Values only need to preserve a sensible relative order, so they are kept as
 // a fixed snapshot and are intentionally distinct to avoid ambiguous ties.
@@ -44,7 +44,7 @@ export const HL_PLAYERS: HLPlayer[] = [
 
 export type Guess = "higher" | "lower";
 
-// Day index since the shared epoch — matches the daily rotation used elsewhere.
+// Day index since the shared epoch, matches the daily rotation used elsewhere.
 export function getDayIndex(date: Date = new Date()): number {
   const epoch = new Date(2024, 0, 1).getTime();
   const today = new Date(date.getFullYear(), date.getMonth(), date.getDate()).getTime();

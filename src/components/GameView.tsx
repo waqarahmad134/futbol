@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { ArrowLeft, Clock, BarChart3, Tag } from "lucide-react";
 import { games } from "@/data/games";
@@ -19,6 +20,9 @@ import LinkGame from "@/components/games/LinkGame";
 import BingoGame from "@/components/games/BingoGame";
 import Top10Game from "@/components/games/Top10Game";
 import HigherLowerGame from "@/components/games/HigherLowerGame";
+import OctadleGame from "@/components/games/OctadleGame";
+import FormudleGame from "@/components/games/FormudleGame";
+import WrestlePlayGame from "@/components/games/WrestlePlayGame";
 import RelatedGames from "@/components/RelatedGames";
 import { useSectionNav } from "@/hooks/use-section-nav";
 
@@ -64,6 +68,12 @@ const renderGame = (slug: string) => {
       return <Top10Game />;
     case "futbol11-higher-lower":
       return <HigherLowerGame />;
+    case "octadle":
+      return <OctadleGame />;
+    case "formudle":
+      return <FormudleGame />;
+    case "wrestleplay":
+      return <WrestlePlayGame />;
     default:
       return (
         <div className="text-center py-16">
@@ -78,6 +88,20 @@ const renderGame = (slug: string) => {
 const GameView = ({ slug }: { slug: string }) => {
   const game = games.find((g) => g.slug === slug);
   const goToSection = useSectionNav();
+  // Today's date, set after mount so server and client render match.
+  // Every game on Futbol11 is a daily puzzle, so the header shows which
+  // day's puzzle is live (matches "today" searches like "goltexto hoy").
+  const [today, setToday] = useState("");
+  useEffect(() => {
+    setToday(
+      new Date().toLocaleDateString("en-US", {
+        weekday: "long",
+        month: "long",
+        day: "numeric",
+        year: "numeric",
+      })
+    );
+  }, []);
 
   if (!game) {
     return (
@@ -117,6 +141,9 @@ const GameView = ({ slug }: { slug: string }) => {
           <span className="text-6xl block mb-4" aria-hidden="true">{game.emoji}</span>
           <h1 className="font-display text-3xl text-foreground mb-2">{game.title}</h1>
           <p className="text-muted-foreground max-w-xl mx-auto">{game.description}</p>
+          {today && (
+            <p className="text-sm text-muted-foreground mt-2">Today&apos;s puzzle: {today}</p>
+          )}
           <div className="flex items-center justify-center gap-3 mt-4">
             <Badge variant="outline" className="border-border text-muted-foreground gap-1">
               <BarChart3 className="w-3 h-3" /> {game.difficulty}

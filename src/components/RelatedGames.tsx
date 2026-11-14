@@ -9,7 +9,7 @@ interface RelatedGamesProps {
 
 // Internal-linking block shown on each game page. Surfaces same-category games
 // first (most relevant), then fills with others so every game page links out to
-// several siblings — strengthening crawlability and topical relevance.
+// several siblings, strengthening crawlability and topical relevance.
 const RelatedGames = ({ currentSlug, category, limit = 6 }: RelatedGamesProps) => {
   const others = games.filter((g) => g.slug !== currentSlug);
   const sameCategory = others.filter((g) => g.category === category);

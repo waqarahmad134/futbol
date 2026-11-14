@@ -1,0 +1,774 @@
+# Futbol11
+
+> Futbol11 is a free daily football (soccer) games website with 23 trivia, puzzle and word challenges that reset every day at midnight. No account or download is required, every game is played in the browser, and progress is stored locally. Games cover the Premier League, La Liga, Serie A, Bundesliga, Champions League, World Cup, Copa America and football history from the 1930s to today.
+
+- [Futbol11](https://futbol11.live/): home page with all 23 daily games
+
+## Games
+
+### Futbol Goltexto Today
+
+- [Futbol Goltexto Today](https://futbol11.live/game/futbol11-goltexto/): Play today's Futbol Goltexto puzzle: guess the full starting 11 from text clues. A new historic lineup every day.
+
+Today's Futbol Goltexto puzzle challenges your memory of iconic football lineups. You are given a formation and must fill in the names of the starting 11 from a famous match, using text clues to guide you. From World Cup finals to Champions League classics, every day brings a new tactical puzzle. This game tests your knowledge of team formations, player positions, and football history spanning decades of the beautiful game. Come back tomorrow for a new lineup.
+
+How to play:
+
+- You'll see a formation layout (e.g. 4-3-3)
+- Fill in the player names for each position
+- Use hints if you're stuck, each hint reveals one letter
+- Complete the lineup before time runs out
+
+
+### Futbol11 Legacy
+
+- [Futbol11 Legacy](https://futbol11.live/game/futbol11-legacy/): Test your knowledge of legendary footballers and their career paths across top European clubs.
+
+Legacy takes you on a journey through football history. Each challenge presents clues about a legendary player's career, the clubs they played for, the trophies they won, and the records they broke. From Pelé to Messi, from Maradona to Ronaldo, Legacy covers the greatest players to ever grace the pitch. Perfect for fans who live and breathe football history.
+
+How to play:
+
+- Read the career clues presented one by one
+- Guess the legendary footballer
+- Fewer clues used = higher score
+- Daily challenges feature players from different eras
+
+
+### Futbol11 Impostor
+
+- [Futbol11 Impostor](https://futbol11.live/game/futbol11-impostor/): Find the impostor! One player doesn't belong in the group, can you spot them?
+
+Impostor is a football deduction game where you must identify which player doesn't belong in a group. Four players share a common trait: same nationality, same club history, same achievement, but one is the odd one out. Sharp football knowledge and lateral thinking are key. The game gets progressively harder with more obscure connections and lesser-known facts.
+
+How to play:
+
+- You'll see a group of football players
+- Find the one who doesn't share the common trait
+- The connection could be nationality, club, award, or stat
+- Solve as many rounds as possible
+
+
+### Football Grid Game
+
+- [Football Grid Game](https://futbol11.live/game/futbol-grid/): Play the football grid game: fill all 9 squares by naming a player for each club and country. A new grid every day.
+
+The football grid game is a daily puzzle that tests how well you know players, clubs, and countries. You get a 3 by 3 grid where each row is a club and each column is a country, and your task is to name a player who fits both facts at once. Think of a player who played for Barcelona and comes from Brazil, or someone who played for Manchester United and comes from France. You have 9 guesses for 9 squares, and a rarity score rewards obscure correct answers. A new football grid game appears every day at midnight, and everyone plays the same grid.
+
+How to play:
+
+- Each cell has a row criterion and column criterion
+- Name a player who satisfies both criteria
+- You have 9 guesses to fill all 9 cells
+- Rarity score rewards obscure correct answers
+
+
+### Football Quiz Game
+
+- [Football Quiz Game](https://futbol11.live/game/futbol11-pyramid/): Play the football quiz game: answer daily trivia questions from easy to expert and climb the pyramid. New questions every day.
+
+The football quiz game is a tiered trivia challenge that starts easy and gets harder with every step. The base of the pyramid features straightforward football questions, while the peak demands expert knowledge. Each correct answer builds your pyramid higher. Can you reach the summit? The game covers everything from current Premier League stats to historical World Cup facts, and a new football quiz game appears every day, so it works for casual fans and football scholars alike.
+
+How to play:
+
+- Start from the base with easier questions
+- Each tier gets progressively harder
+- Answer correctly to climb higher
+- Reach the peak to complete the pyramid
+
+
+### Football Connections Game
+
+- [Football Connections Game](https://futbol11.live/game/futbol11-connections/): Play the football connections game: sort 16 football items into 4 groups of 4. A new puzzle every day.
+
+The football connections game presents you with 16 football items: players, clubs, stadiums, or terms. Your mission is to sort them into four groups of four, each sharing a hidden connection. Connections can be subtle: players who scored hat-tricks in World Cup finals, stadiums with retractable roofs, or clubs whose names contain colors. You have 4 mistakes before the game ends. A new football connections game appears every day, and it rewards both broad football knowledge and creative thinking.
+
+How to play:
+
+- You see 16 football-related items
+- Group them into 4 categories of 4
+- Each group shares a hidden connection
+- You have 4 mistakes before game over
+
+
+### Futbol11 Clubs
+
+- [Futbol11 Clubs](https://futbol11.live/game/futbol11-clubs/): Identify football clubs from visual clues, badge fragments, and jersey colors.
+
+Clubs tests your visual football knowledge. You might see a zoomed-in section of a club badge, a jersey color combination, or a stadium silhouette. From the iconic stripes of Juventus to the red of Liverpool, from the crest of Real Madrid to the cannon of Arsenal. How well do you really know the visual identity of football's greatest clubs? The game features clubs from leagues worldwide, not just the top 5 European leagues.
+
+How to play:
+
+- Visual clues about a football club appear
+- Guess the club from the visual information
+- Clues progressively reveal more details
+- Score points for faster correct guesses
+
+
+### Futbol11 Link
+
+- [Futbol11 Link](https://futbol11.live/game/futbol11-link/): Connect footballers through shared clubs, forming a chain of linked careers.
+
+Link is a football chain puzzle where you must connect two players through shared club histories. Player A played with Player B at Club X, and Player B played with Player C at Club Y, keep building the chain until you reach the target player. It's six degrees of separation, football style. This game rewards knowledge of transfer histories, squad compositions, and the interconnected web of professional football careers across multiple leagues and decades.
+
+How to play:
+
+- You're given a start player and end player
+- Connect them through shared club teammates
+- Each link must be a real teammate connection
+- Complete the chain in as few links as possible
+
+
+### Football Bingo Game
+
+- [Football Bingo Game](https://futbol11.live/game/futbol11-bingo/): Play football bingo: match players to the criteria on your bingo card and complete a line. A new card every day.
+
+The football bingo game combines classic bingo with football trivia. Your bingo card holds football criteria such as scored 20 or more league goals in a season, played in Serie A and La Liga, or won the Ballon d'Or. As players are revealed, you mark off the criteria they match. Complete a line, a column, or the full card to win. A new football bingo game appears every day, so every card is a fresh test of your knowledge of player stats and career achievements.
+
+How to play:
+
+- You receive a bingo card with football criteria
+- Players are revealed one by one
+- Mark criteria that match the revealed player
+- Complete a line or full card to win
+
+
+### Futbol11 Top10
+
+- [Futbol11 Top10](https://futbol11.live/game/futbol-top10/): Can you name all players in the top 10 of famous football rankings and records?
+
+Top10 challenges you to name the players in football's most famous lists and rankings. From the all-time top scorers in Champions League history to the most capped international players, from the highest transfer fees ever paid to the most Ballon d'Or nominations. Can you recall all 10? The game covers a wide range of statistical categories across club and international football, updated with the latest records and achievements.
+
+How to play:
+
+- A football category/ranking is presented
+- Name as many of the top 10 as you can
+- Order doesn't matter
+- Time limit adds pressure to recall
+
+
+### Futbol11 Wordle
+
+- [Futbol11 Wordle](https://futbol11.live/game/futbol11-wordle/): The classic word game meets football. Guess the footballer's name in 6 tries!
+
+Futbol11 Wordle brings the viral word-guessing phenomenon to the football world. Instead of guessing any word, you're guessing a footballer's surname. Green letters are correct and in the right position, yellow letters are in the name but wrong position, and gray letters aren't in the name at all. With thousands of professional footballers past and present, every day brings a new challenge. A perfect quick daily brain teaser for football fans.
+
+How to play:
+
+- Guess a footballer's surname
+- Green = correct letter, correct position
+- Yellow = correct letter, wrong position
+- Gray = letter not in the name
+- You have 6 attempts
+
+
+### Futbol11 Bingo Retro
+
+- [Futbol11 Bingo Retro](https://futbol11.live/game/futbol11-bingo-legends/): Retro bingo featuring legendary footballers from the 70s, 80s, and 90s.
+
+Bingo Retro is a nostalgic trip through football's golden eras. This special edition of Futbol11 Bingo focuses exclusively on legendary players from the 1970s through the 1990s. Remember Platini's free kicks? Beckenbauer's sweeper role? Romário's clinical finishing? This game celebrates the icons who shaped modern football, making it perfect for older fans and history enthusiasts who appreciate the legends of the game.
+
+How to play:
+
+- Same rules as regular Bingo
+- All players are from the 70s, 80s, and 90s
+- Criteria focus on retro achievements
+- Test your knowledge of football legends
+
+
+### Futbol11
+
+- [Futbol11](https://futbol11.live/game/futbol11/): The original! Guess the international lineup of a national football team.
+
+The flagship game that started it all. Futbol11 presents you with a national team's formation from a specific match, a World Cup qualifier, a continental championship, or a friendly. Your job is to name all 11 starters. From powerhouses like Brazil and Germany to underdogs who made deep tournament runs, this game celebrates international football in all its glory. Updated daily with matches spanning decades of international competition.
+
+How to play:
+
+- A national team formation is shown
+- Identify all 11 starting players
+- Use the match date and opponent as context clues
+- Hints available if you're stuck
+
+
+### Guess the Footballer
+
+- [Guess the Footballer](https://futbol11.live/game/guess-the-footballer/): Text clues, a flag, and a blurred initials card, can you identify the footballer in 6 guesses?
+
+Guess the Footballer is a daily identification challenge built on text clues. Each round hides a professional footballer behind a blurred card showing only their initials and a nationality flag. Every wrong guess reveals a new clue about the player, their position, clubs, trophies, or career highlights, and the card gets a little clearer. Guess correctly within 6 tries to win. The game features players from all major leagues and includes current stars, rising talents, and retired legends.
+
+How to play:
+
+- Read the first text clue and check the flag
+- Type the footballer's full name to guess
+- Each wrong guess reveals a new clue and clears the card a little
+- Guess correctly within 6 tries to win
+
+
+### Futbol11 Legends
+
+- [Futbol11 Legends](https://futbol11.live/game/futbol11-legends/): Name the legendary XI! Identify all-time great lineups from football history.
+
+Legends is the ultimate test of football history knowledge. Each challenge presents an all-time XI from a specific club, league, or era. Can you name the greatest ever Liverpool XI? How about the best South American players of the 21st century? Or the ultimate Champions League XI? This game celebrates the absolute best players in football history and challenges you to recall the legends who defined generations of the sport.
+
+How to play:
+
+- An all-time XI category is presented
+- Name the players in the legendary lineup
+- Positions and formation are shown
+- Complete the full XI to win
+
+
+### Futbol11 America
+
+- [Futbol11 America](https://futbol11.live/game/futbol11-america/): South and North American football trivia, Copa América, MLS, Liga MX and more.
+
+Futbol11 America celebrates the beautiful game across the Americas. From the passion of Argentine football to the growing quality of MLS, from the historic rivalries of Brazilian football to the fervor of Mexican Liga MX, this game covers it all. Daily challenges feature Copa América lineups, CONCACAF matches, Copa Libertadores classics, and iconic moments from American football history. A must-play for fans of football beyond Europe.
+
+How to play:
+
+- Challenges focus on American football
+- Guess lineups from Copa América, Libertadores, etc.
+- Covers North, Central, and South America
+- Same mechanics as the main Futbol11 game
+
+
+### Futbol11 Euro 2024
+
+- [Futbol11 Euro 2024](https://futbol11.live/game/futbol11-euro2024/): Relive Euro 2024! Guess the starting lineups from every match of the tournament.
+
+Relive the excitement of UEFA Euro 2024 held in Germany. This special edition covers every match of the tournament, from the group stages to the grand final. Remember the tactical setups, the surprise starters, and the formations that shaped the tournament. Whether it was the dominant performances of the favorites or the tactical masterclasses of the underdogs, this game lets you test your memory of European football's biggest event.
+
+How to play:
+
+- Select a Euro 2024 match
+- Guess the starting XI for either team
+- Historical accuracy is required
+- Covers all tournament matches
+
+
+### F11 Copa America
+
+- [F11 Copa America](https://futbol11.live/game/futbol11-copaamerica/): Copa América edition, guess lineups from the Americas' premier tournament.
+
+The Copa América edition brings the oldest international football tournament to your screen. From the early editions won by Uruguay to Argentina's recent triumphs, from Brazil's dominance to Chile's golden generation, this game covers Copa América history in depth. Each daily challenge features a lineup from a Copa América match, testing your knowledge of South American football at its finest.
+
+How to play:
+
+- Copa América matches are featured daily
+- Guess the full starting XI
+- Covers multiple editions of the tournament
+- Learn about South American football history
+
+
+### Futbol11 World Cup
+
+- [Futbol11 World Cup](https://futbol11.live/game/futbol11-worldcup/): World Cup lineups from 1930 to 2022, the ultimate international football challenge.
+
+The World Cup edition is the crown jewel of Futbol11. Covering every FIFA World Cup from Uruguay 1930 to Qatar 2022, this game challenges you to recall the starting XIs from the biggest matches in football history. Remember who started the 2006 final? The 1970 Brazil squad? The 1998 host nation lineup? With nearly a century of World Cup history, this is the ultimate test for any football aficionado who considers themselves a true student of the game.
+
+How to play:
+
+- Select a World Cup match from any year
+- Name the starting XI
+- Covers every World Cup from 1930-2022
+- The ultimate football history challenge
+
+
+### Futbol11 Higher or Lower
+
+- [Futbol11 Higher or Lower](https://futbol11.live/game/futbol11-higher-lower/): Higher or lower? Guess which footballer scored more career goals and build your streak.
+
+Higher or Lower is a fast, addictive football guessing game. You're shown two footballers side by side, one with their career goal tally revealed, the other hidden. Your job is simple: decide whether the mystery player scored more or fewer career goals. Get it right and the chain continues, your streak climbs, and the next player slides in. Get it wrong and the run ends. From Cristiano Ronaldo and Lionel Messi to historic marksmen like Pelé, Puskás and Gerd Müller, this game tests how well you really know football's greatest goalscorers across every era.
+
+How to play:
+
+- Compare the two footballers shown
+- Decide if the hidden player scored Higher or Lower career goals
+- Each correct guess extends your streak
+- One wrong guess ends the run, chase your best streak
+
+
+### Octadle
+
+- [Octadle](https://futbol11.live/game/octadle/): Eight football words at once. Solve all 8 words in 13 guesses with Wordle-style color clues.
+
+Octadle is the ultimate word challenge for football fans. Instead of one word, you solve eight five-letter football words at the same time. Every guess you type is scored against all eight boards, so each try gives you eight sets of clues at once. Green means the letter is correct and in the right spot, yellow means the letter is in the word but in the wrong spot, and gray means the letter is not in that word. With 13 guesses to crack all eight words, you need smart opening words and sharp pattern spotting. A new set of eight words arrives every day.
+
+How to play:
+
+- Type a 5-letter word, it is scored on all 8 boards at once
+- Green = correct letter, correct position
+- Yellow = correct letter, wrong position
+- Gray = letter not in that word
+- Solve all 8 words within 13 guesses
+
+
+### Formudle
+
+- [Formudle](https://futbol11.live/game/formudle/): Guess the Formula 1 driver. Every guess compares nationality, team, debut, titles and first win.
+
+Formudle is the daily Formula 1 driver guessing game. A mystery driver is hidden, and you have 8 guesses to name them. Every guess you make is compared with the answer: green cells mean an exact match on nationality or team, and arrows on debut year, championship titles and first win year tell you whether the answer is higher or lower. The pool covers the current grid plus all-time legends, from Max Verstappen and Lewis Hamilton to Ayrton Senna and Michael Schumacher. A new driver arrives every day.
+
+How to play:
+
+- Type a Formula 1 driver name from the suggestions
+- Green cells mean an exact match on nation or team
+- Arrows show if the answer is higher or lower on debut, titles and first win
+- Use the clues to narrow it down
+- Guess the driver within 8 tries
+
+
+### WrestlePlay
+
+- [WrestlePlay](https://futbol11.live/game/wrestleplay/): Guess the wrestler. Every guess compares nationality, promotion, debut, height and world titles.
+
+WrestlePlay is the daily wrestler guessing game. A mystery wrestler is hidden, and you have 8 guesses to name them. Every guess you make is compared with the answer: green cells mean an exact match on nationality or promotion, and arrows on debut year, billed height and world title reigns tell you whether the answer is higher or lower. The pool covers WWE and AEW stars plus all-time legends, from John Cena and Roman Reigns to The Undertaker and Ric Flair. A new wrestler arrives every day.
+
+How to play:
+
+- Type a wrestler name from the suggestions
+- Green cells mean an exact match on nation or promotion
+- Arrows show if the answer is higher or lower on debut, height and world titles
+- Use the clues to narrow it down
+- Guess the wrestler within 8 tries
+
+
+## Blog
+
+- [Futbol11 Blog](https://futbol11.live/blog/): all game guides
+
+### How to Play Futbol11 Wordle
+
+- [How to Play Futbol11 Wordle](https://futbol11.live/blog/how-to-play-futbol11-wordle/): Futbol11 Wordle gives you 6 guesses to name a mystery footballer from text clues and a flag. Here is how it works and how to win.
+
+Futbol11 Wordle is the daily football guessing game on Futbol11. You get 6 guesses to name a mystery footballer, and each wrong guess reveals a new text clue about the player. A flag and a blurred initials card give you a starting point, then your football knowledge does the rest.
+A new Futbol11 Wordle puzzle appears every day at midnight, and everyone plays the same player. Your progress is saved in your browser, so you can close the page and come back later. This guide explains the rules, the clue colours, and the tactics that help you win in fewer guesses.
+
+#### What Is Futbol11 Wordle?
+
+It is a football version of the classic word game. Instead of guessing a five-letter word, you guess the name of a professional footballer. The mystery player can be a current star, a rising talent, or a retired legend from any major league.
+Each day brings one new player. The game shows a blurred card with the player's initials and a nationality flag. You start with one text clue, and every wrong guess reveals another clue and clears the card a little more.
+The players come from the Premier League, La Liga, Serie A, the Bundesliga, Ligue 1, and international football. Some days the answer is obvious after two clues. Other days it takes all 6 guesses, and that is part of the fun.
+
+- A blurred initials card with the player's nationality flag
+- One text clue to start, with a new clue after each wrong guess
+- 6 guesses, then the game reveals the answer
+- A fresh player every day at midnight
+
+#### Why It Is Worth Playing
+
+It takes two minutes a day and teaches you something new about football every time. A wrong guess is never wasted, because each new clue adds a fact about the player's clubs, position, or trophies.
+The game rewards real football knowledge instead of luck. You win by remembering career paths, shirt numbers, and famous moments. Fans who follow more than one league have an edge, but the clues are fair enough for any fan to solve.
+
+- Free to play, with no account and nothing to download
+- One puzzle a day, the same player for everyone
+- Progress saved in your browser
+- Clues cover clubs, position, trophies, and career highlights
+
+#### How to Play Futbol11 Wordle Step by Step
+
+Open the game page and read the first clue. Check the flag on the card, because it tells you the player's nationality before you type anything.
+Start with a famous player who fits the first clue. If the clue mentions a club, think of that club's best-known players first. If it mentions a trophy, think of the squads that won it.
+Pay attention to the flag. A Brazilian flag points to a different pool of players than a Croatian flag, and that alone can cut your options in half.
+
+- Read the first text clue and look at the flag
+- Type the footballer's full name in the guess box and submit it
+- If the guess is wrong, read the new clue and watch the card clear a little
+- Use each clue to narrow the list: position, clubs, trophies, era
+- Guess correctly within 6 tries to win and log the result on your daily score
+
+#### Tips to Win in Fewer Guesses
+
+The best players treat every clue as a filter. Combine the flag with the position, then with the clubs, and the answer usually narrows to one or two names.
+If you are stuck after four guesses, stop and think about the clues together instead of guessing at random. Two clues that seem unrelated often point to one specific career.
+
+- Guess a star first: popular players are the most likely answers
+- Use the flag to rule out whole countries at once
+- Remember the era: a clue about the 1998 World Cup means a veteran, not a teenager
+- Think in clubs: a player who played for both Barcelona and Bayern is a short list
+- Do not repeat a name you already tried, the game counts every guess
+
+#### Futbol11 Wordle vs Classic Wordle
+
+Classic Wordle asks for a five-letter word. Futbol11 Wordle asks for a footballer, and the clues are facts, not letters. Both games give you 6 guesses and one puzzle a day.
+If you like Wordle, it feels familiar in the first minute and different by the third guess. The skills transfer, but the knowledge is all football.
+
+- Classic Wordle: guess a word from letter colours. This game: guess a player from facts and a flag.
+- Classic Wordle: the answer is a word. Here: the answer is a person with a real career.
+- Classic Wordle: letter patterns help. Futbol11 Wordle: football knowledge helps.
+- Both games are free, daily, and easy to share with friends.
+
+#### Frequently Asked Questions
+
+**How many guesses do I get?**
+
+You get 6 guesses. Each wrong guess reveals a new clue and clears the blurred card a little more. If you do not name the player in 6 tries, the game reveals the answer.
+
+**When does the next puzzle appear?**
+
+A new puzzle appears every day at midnight. Everyone plays the same mystery footballer that day, so you can compare your result with friends.
+
+**Do I need an account to play?**
+
+No. The game is free, with no account and nothing to download. Your guesses and your daily score are stored in your browser.
+
+**What do the clues tell me?**
+
+Clues cover the player's position, clubs, trophies, nationality, and career highlights. The flag shows nationality, and the blurred card shows the player's initials.
+
+#### Conclusion
+
+Futbol11 Wordle is the fastest way to test your football knowledge every day. Open today's puzzle, read the first clue, and see if you can name the player in 6 guesses. Play today's game now and share your result with your friends.
+
+
+### Football Grid Game: How to Play and Win
+
+- [Football Grid Game: How to Play and Win](https://futbol11.live/blog/football-grid-game-how-to-play-and-win/): The football grid game gives you a 3 by 3 grid of clubs and countries and 9 guesses to fill it. Here is how it works and how to win.
+
+The football grid game is a daily puzzle that tests how well you know players, clubs, and countries. You get a 3 by 3 grid, 9 guesses, and one goal: fill every square with a player who fits both its row and its column.
+A new football grid game appears every day at midnight on Futbol11. Everyone plays the same grid, and your score is saved in your browser. This guide explains the rules, the scoring, and the tactics that help you fill all 9 squares.
+
+#### What Is the Football Grid Game?
+
+It is a 3 by 3 grid where each row is a club and each column is a country, or the other way round. Each square needs a player who played for that club and comes from that country.
+For example, a square where the row is Real Madrid and the column is France needs a French player who played for Real Madrid. Karim Benzema fits. So does Zinedine Zidane.
+You have 9 guesses for 9 squares. A wrong guess still uses up a guess, so every answer should be a player you are sure about. Fill all 9 squares to win the day.
+
+- 3 clubs on the rows, 3 countries on the columns
+- 9 squares, 9 guesses, one grid a day
+- A player must match both the row and the column
+- Your filled grid is saved in your browser
+
+#### Why It Is So Addictive
+
+It rewards memory in a way few puzzles do. You are not just naming players, you are recalling whole careers: who played where, and for which national team.
+Every square is a small quiz of its own. Some are easy, like a Brazilian at Barcelona. Others need real thought, like a German at Liverpool. The mix keeps you playing until the grid is full.
+
+- Short sessions: most grids take five to ten minutes
+- A new grid every day, the same one for everyone
+- Free to play, with no account and nothing to download
+- Every square teaches you a fact about a player
+
+#### How to Play the Football Grid Game Step by Step
+
+Open the grid page and look at the rows and columns first. Scan the whole grid before you type anything, and find the squares you know best.
+Start with the squares you are most sure about. An easy square builds confidence and saves guesses for the squares where you need to think.
+If you are unsure about a square, leave it and come back. A fresh look after two other squares often brings the right name to mind.
+
+- Pick a square and click it
+- Type a player who fits both the row club and the column country
+- Submit the name: a correct answer fills the square green
+- A wrong answer uses up one of your 9 guesses
+- Work through the easy squares first, then the hard ones
+- Fill all 9 squares to complete the grid
+
+#### Tips to Win
+
+The best grid players think in career paths, not just famous names. A player who moved between leagues is often the key to a hard square.
+The hardest squares are usually the ones where the club and country rarely meet. Think about smaller nations at big clubs, and about veterans from the 1990s and 2000s.
+
+- Learn the journeymen: players with 4 or more clubs solve more squares
+- Use nationality first: it cuts the list faster than the club does
+- Remember loans: a short loan spell still counts as playing for a club
+- Keep a mental list of Brazilians at European clubs, they fill many squares
+- Never guess a name twice: the game counts every guess
+
+#### Football Grid Game vs Other Football Puzzles
+
+Wordle tests one player a day. The football grid game tests nine. Connections asks you to group players by a shared trait, while the grid asks you to match players to two facts at once.
+If you like Wordle, it is the next step up. It takes the same daily habit and adds memory, range, and a bigger sense of completion.
+
+- Wordle: one mystery player, 6 guesses. The grid: 9 squares, 9 guesses.
+- Connections: group 16 items into 4 sets. The grid: place 9 players on a grid.
+- Lineup games: name all 11 starters. The grid: name 9 players from mixed clubs and countries.
+- All of them are free, daily, and saved in your browser.
+
+#### Frequently Asked Questions
+
+**How many guesses do I get?**
+
+You get 9 guesses for 9 squares. Each submitted name uses one guess, whether it is right or wrong, so only submit players you are confident about.
+
+**What happens if I run out of guesses?**
+
+The grid ends and shows your result. Unfilled squares stay empty, and a new grid appears the next day at midnight.
+
+**Does a loan spell count as playing for a club?**
+
+Yes. If a player appeared for a club, even on loan, that player fits the square. The game accepts any real stint at the club.
+
+**Do I need an account to play?**
+
+No. The game is free, with no account and nothing to download. Your grid and your daily score are stored in your browser.
+
+#### Conclusion
+
+The football grid game is the best daily test of football memory on Futbol11. Open today's grid, scan the rows and columns, and fill all 9 squares before your guesses run out. Play today's grid now and see how many squares you can fill.
+
+
+### Futbol Bingo Game: How to Play and Win
+
+- [Futbol Bingo Game: How to Play and Win](https://futbol11.live/blog/futbol-bingo-game-how-to-play-and-win/): The futbol bingo game gives you a bingo card of football criteria and a new card every day. Here is how it works and how to win.
+
+The futbol bingo game is a daily football puzzle that mixes classic bingo with football trivia. You get a bingo card full of football criteria, and players are revealed one by one. Mark the criteria each player matches, and complete a line to win.
+A new futbol bingo game appears every day at midnight on Futbol11. Everyone plays the same card, and your score is saved in your browser. This guide explains the rules, the card, and the tactics that help you complete a line before your luck runs out.
+
+#### What Is the Futbol Bingo Game?
+
+It is bingo with a football brain. Your card holds 25 squares of football criteria, from goals and trophies to clubs and countries. Each square names something a player has done in their career, and your job is to spot the players who match.
+Players are revealed one at a time. When a revealed player matches a square, you mark it. A marked row, column, or diagonal is a line, and a line wins the game. The more squares you mark, the closer you get, and the tension grows with every reveal.
+The card changes every day, so no two days play the same. Some squares are easy, like a player who won the Champions League. Others need real thought, like a player who played in four different leagues. That mix is what keeps the game fresh.
+The criteria cover the whole football world. You will see squares about World Cup winners, Ballon d'Or winners, top scorers, and players from leagues on every continent. A wide knowledge of the game is worth more than knowing one team well.
+
+- A 5 by 5 card of football criteria
+- Players revealed one by one
+- Mark a square when the player matches it
+- Complete a line to win
+
+#### Why It Is Worth Playing
+
+It turns football facts into a game of suspense. Every reveal could be the player who completes your line, and every near miss makes the next reveal matter more. You are not just answering questions, you are waiting for the right name to appear.
+It rewards wide football knowledge. A fan who knows players from many leagues marks more squares than a fan who only follows one team. The game teaches you something new about football every day, even when you lose.
+It is also a short game. Most cards take five to ten minutes, so it fits into a coffee break or a commute. You get the full thrill of bingo without a long session.
+
+- Short sessions: most cards take five to ten minutes
+- A new card every day, the same one for everyone
+- Free to play, with no account and nothing to download
+- Every reveal teaches you a fact about a player
+
+#### How to Play the Futbol Bingo Game Step by Step
+
+Open the bingo page and read the whole card first. Knowing the criteria before the first reveal helps you spot matches fast, and it shows you which lines are closest to completion.
+Watch each revealed player and check the card. Mark every square the player matches, and keep an eye on the lines that are one square away. Those lines are where the game is won or lost.
+A line can come from any row, column, or diagonal. When you complete one, the game ends and shows your result. If the card ends with no line, a new card appears the next day at midnight.
+
+- Read the full card before the first reveal
+- Mark every square the revealed player matches
+- Watch the lines that are one square away
+- Complete a line to win the day
+
+#### Tips to Win
+
+The best bingo players think in careers, not just famous names. A journeyman who played in four leagues matches more squares than a one-club star, and a veteran from the 1990s often covers squares that younger players cannot.
+Learn the common criteria first. Goals, trophies, and big clubs appear often, so knowing who won what saves time on every reveal. Keep a mental list of Ballon d'Or winners and Champions League winners, because they cover many squares.
+Do not mark in a hurry. A wrong mark wastes a reveal, and a missed match can cost you a line. Read each revealed player carefully, check every square, and only then move on to the next reveal.
+
+- Know the journeymen: players with 4 or more clubs match more squares
+- Remember trophy winners: they cover the silverware squares
+- Think across leagues: a player from a smaller league can still match
+- Do not rush: read each revealed player carefully before you mark
+
+#### Futbol Bingo Game vs Other Football Puzzles
+
+Wordle tests one player a day. The futbol bingo game tests your whole football memory on one card, and luck plays a bigger part. The grid asks you to place 9 players from memory, while bingo asks you to recognise players as they appear.
+If you like the grid, bingo is the next game to try. It takes the same daily habit and adds luck, suspense, and a race to complete a line before the card runs out.
+
+- Wordle: one mystery player, 6 guesses. Bingo: 25 squares, one card a day.
+- Grid: place 9 players on a grid. Bingo: mark players as they are revealed.
+- Connections: group 16 items into 4 sets. Bingo: complete a line on your card.
+- All of them are free, daily, and saved in your browser.
+
+#### Frequently Asked Questions
+
+**How do I win?**
+
+Complete a line on your card. A line is a full row, column, or diagonal of marked squares. When you complete one, the game ends and shows your result.
+
+**What happens if no player matches my squares?**
+
+The game keeps revealing players until the card ends. Some days the card fills fast, other days it stays open longer. A new card appears the next day at midnight.
+
+**Do I need an account to play?**
+
+No. The game is free, with no account and nothing to download. Your card and your daily score are stored in your browser.
+
+**Is the card the same for everyone?**
+
+Yes. Everyone plays the same card each day, so you can compare your result with friends and family.
+
+#### Conclusion
+
+The futbol bingo game is the most suspenseful daily football game on Futbol11. Open today's card, read the criteria, and mark every match until you complete a line. Play today's card now and see how fast you can win.
+
+
+### Football Quiz Game: How to Play and Win
+
+- [Football Quiz Game: How to Play and Win](https://futbol11.live/blog/football-quiz-game-how-to-play-and-win/): The football quiz game gives you daily trivia questions that climb from easy to expert. Here is how it works and how to win.
+
+The football quiz game is a daily trivia challenge that starts with easy questions and climbs to expert ones. You answer question after question, and each correct answer takes you one step higher up the pyramid.
+A new football quiz game appears every day at midnight on Futbol11. Everyone answers the same questions, and your progress is saved in your browser. This guide explains the rules, the tiers, and the tactics that help you reach the top.
+
+#### What Is the Football Quiz Game?
+
+It is a tiered trivia game shaped like a pyramid. The base holds easy questions that most fans can answer, and each tier above it gets harder. The peak holds questions that only serious football scholars get right.
+The questions cover the whole game: clubs and players, World Cups and Champions Leagues, records and transfers, tactics and managers. One day the topic is Premier League goals, the next day it is World Cup history from the 1970s.
+Each correct answer moves you up one tier. A wrong answer ends the climb for that tier, so every question matters. The higher you climb, the more the game tests the edges of your football knowledge.
+The game resets every day at midnight with a fresh set of questions. Everyone climbs the same pyramid, so you can compare how far you got with friends who play the same day.
+
+- Tiered questions: easy at the base, expert at the peak
+- Topics cover clubs, players, World Cups, and records
+- Each correct answer climbs one tier higher
+- A new set of questions every day
+
+#### Why It Is Worth Playing
+
+It is the fastest way to test what you really know about football. A fan who watches every week will fly through the base, and the peak will show exactly where the gaps are.
+It teaches you something every day. Even a wrong answer adds a fact, because the game shows the right answer and the story behind it. Over a month of daily play, your football knowledge grows in a way you can feel.
+It is also a short game. Most climbs take five to ten minutes, so it fits into a break. You get a full quiz without a long session, and you can come back tomorrow for a fresh pyramid.
+
+- Short sessions: most climbs take five to ten minutes
+- A new pyramid every day, the same one for everyone
+- Free to play, with no account and nothing to download
+- Every question teaches you a football fact
+
+#### How to Play the Football Quiz Game Step by Step
+
+Open the quiz page and read the first question carefully. The base questions are straightforward, so answer them fast and save your thinking time for the higher tiers.
+Each correct answer moves you up. Read every question twice before you answer, because the harder tiers often hide a trick in the wording, like a year, a club, or a competition name.
+If you are unsure, think about what you know before you guess. Eliminate the answers that cannot be right, and pick the one that fits the facts you remember. A calm guess beats a rushed one.
+
+- Start at the base and answer the easy questions first
+- Read each question twice before you answer
+- Eliminate the answers that cannot be right
+- Each correct answer climbs one tier higher
+- Reach the peak to complete the pyramid
+
+#### Tips to Win
+
+Learn the numbers first. Top scorers, transfer fees, and appearance records appear in quiz questions more than any other facts, so knowing the big numbers gives you a head start on most tiers.
+Study the World Cups. Every tournament has a winner, a top scorer, and a famous moment, and those facts return in questions again and again. Knowing the winners from 1930 to 2022 covers a whole tier on its own.
+Do not guess on the peak. The top tiers punish wild guesses, so if you truly do not know, take your time and think about the era, the clubs, and the players involved before you commit to an answer.
+
+- Learn the big numbers: top scorers, fees, and records
+- Know every World Cup winner from 1930 to 2022
+- Think in eras: the decade often gives the answer away
+- Read the question twice: the trick is often in one word
+
+#### Football Quiz Game vs Other Football Puzzles
+
+Wordle tests one player a day. The football quiz game tests your whole football knowledge, from easy facts to expert trivia, in one climb. The grid asks you to place 9 players, while the quiz asks you to answer questions about the game itself.
+If you like Top10, the quiz is the next game to try. It takes the same love of football facts and turns it into a daily climb with a clear goal: reach the peak.
+
+- Wordle: one mystery player, 6 guesses. Quiz: a pyramid of questions, easy to expert.
+- Grid: place 9 players on a grid. Quiz: answer trivia to climb higher.
+- Top10: name all 10 in a ranking. Quiz: answer questions across every topic.
+- All of them are free, daily, and saved in your browser.
+
+#### Frequently Asked Questions
+
+**How many questions are there?**
+
+The pyramid has several tiers, and each tier holds questions that get harder as you climb. The exact count changes with the daily set, but every climb starts easy and ends at the peak.
+
+**What happens if I answer wrong?**
+
+A wrong answer ends your climb for that tier. You keep the tiers you already cleared, and a new pyramid appears the next day at midnight.
+
+**Do I need an account to play?**
+
+No. The game is free, with no account and nothing to download. Your climb and your daily score are stored in your browser.
+
+**Are the questions the same for everyone?**
+
+Yes. Everyone answers the same daily set, so you can compare how far you climbed with friends and family.
+
+#### Conclusion
+
+The football quiz game is the best daily test of football knowledge on Futbol11. Open today's pyramid, answer the easy questions fast, and climb as high as you can. Play today's quiz now and see if you can reach the peak.
+
+
+### Futbol Goltexto: Guess Today's Lineup
+
+- [Futbol Goltexto: Guess Today's Lineup](https://futbol11.live/blog/futbol-goltexto-todays-lineup/): Futbol goltexto gives you a new historic lineup every day and text clues to name all 11 starters. Here is how it works and how to win.
+
+Futbol goltexto is the daily lineup guessing game on Futbol11. You get a formation and a set of text clues, and your job is to name all 11 starters from a famous match.
+A new futbol goltexto puzzle appears every day at midnight. Everyone plays the same lineup, and your progress is saved in your browser. This guide explains the rules, the clues, and the tactics that help you complete the 11.
+
+#### What Is Futbol Goltexto?
+
+It is a lineup puzzle built on text clues. The game shows you a formation, like 4-3-3 or 4-4-2, and each position holds a mystery player from a historic match. Your job is to name all 11 starters.
+The clues describe each player without naming them. A clue might mention a club, a position, a trophy, or a famous moment. Each clue narrows the list until only one player fits.
+The lineups come from famous matches across football history: World Cup finals, Champions League finals, and classic league games. Some days the match is obvious from the formation alone. Other days you need every clue to fill the last two shirts.
+The game resets every day at midnight with a new match. Everyone plays the same lineup, so you can compare your result with friends who played the same day.
+
+- A formation with 11 mystery starters
+- Text clues for every position
+- Lineups from World Cup finals, Champions League finals, and classic matches
+- A new lineup every day at midnight
+
+#### Why It Is Worth Playing
+
+It tests a different kind of football memory. Naming a player from a clue is harder than recognising a face, and it forces you to think about careers, formations, and famous nights.
+It teaches you football history as you play. Every lineup is a story: a final, a comeback, or a team that defined an era. By the time you fill the 11, you know the match better than before.
+It is also a calm, thoughtful game. There is no countdown forcing quick answers, so you can take your time, think about each position, and use a hint only when you are truly stuck.
+
+- A thoughtful puzzle: no countdown, no rush
+- A new historic lineup every day, the same one for everyone
+- Free to play, with no account and nothing to download
+- Every lineup teaches you a piece of football history
+
+#### How to Play Futbol Goltexto Step by Step
+
+Open the goltexto page and look at the formation first. The shape tells you how many defenders, midfielders, and attackers the team played, and that alone narrows the names.
+Read the first clue for a position and type the player you think it is. If you are right, the shirt fills in. If you are wrong, read the clue again and think about who else fits the description.
+Use hints when you are stuck. Each hint reveals one letter of the name, and a revealed letter often unlocks the whole position. Save your hints for the last two or three shirts, where they help most.
+
+- Look at the formation first: it sets the shape of the team
+- Read each clue and type the player who fits it
+- Use a hint to reveal one letter when you are stuck
+- Fill all 11 shirts to complete the lineup
+
+#### Tips to Win
+
+Start with the most famous positions. Goalkeepers and star strikers are the easiest to name, and filling them first gives you the shape of the team and the era of the match.
+Think about the match, not just the player. If the clues mention a final, picture that final: who started, who was injured, and who the manager trusted on the big night.
+Learn the classic lineups. The great teams repeat in this game: Brazil 1970, Barcelona 2011, AC Milan 1989. Knowing those 11 by heart wins you whole games.
+
+- Fill the famous shirts first: keeper and star striker
+- Picture the match: the final, the manager, the big night
+- Learn the classic 11s: Brazil 1970, Barcelona 2011, Milan 1989
+- Save hints for the last two shirts
+
+#### Futbol Goltexto vs Other Football Puzzles
+
+Wordle tests one player a day. Futbol goltexto tests all 11 starters from one famous match, so it needs a deeper memory of teams and eras. The grid asks you to place 9 players from mixed clubs, while goltexto asks you to rebuild one real team.
+If you like the flagship Futbol11 game, goltexto is its closest cousin. It takes the same lineup guessing and adds text clues, so you can play even when you cannot picture the exact match.
+
+- Wordle: one mystery player, 6 guesses. Goltexto: 11 starters, one famous match.
+- Grid: place 9 players on a grid. Goltexto: rebuild one real team from clues.
+- Flagship Futbol11: guess a national lineup. Goltexto: guess a club or final lineup.
+- All of them are free, daily, and saved in your browser.
+
+#### Frequently Asked Questions
+
+**What is today's futbol goltexto puzzle?**
+
+It is the lineup puzzle for today. A new one appears every day at midnight, and everyone plays the same match. Open the goltexto page to see today's formation and clues.
+
+**How many hints do I get?**
+
+You can use hints when you are stuck. Each hint reveals one letter of a player's name. Hints are limited, so save them for the hardest positions.
+
+**Do I need an account to play?**
+
+No. The game is free, with no account and nothing to download. Your lineup and your daily score are stored in your browser.
+
+**What kind of matches appear?**
+
+Famous matches from football history: World Cup finals, Champions League finals, and classic league games. The formation and the clues tell you which match it is.
+
+#### Conclusion
+
+Futbol goltexto is the deepest daily lineup puzzle on Futbol11. Open today's puzzle, read the formation, and name all 11 starters from the clues. Play today's lineup now and see if you can complete the 11.
+
+
+## About
+
+- [About Futbol11](https://futbol11.live/about/): Learn about Futbol11, the home of 23 free daily football trivia games, puzzles and word challenges covering every league, competition and era.
+- [Privacy Policy](https://futbol11.live/privacy-policy/): How Futbol11 handles data, cookies and third-party advertising, including the use of Google AdSense cookies, and how you can opt out of personalized ads.
+- [Terms of Service](https://futbol11.live/terms/): The terms and conditions for using Futbol11's free daily football games, including intellectual property, disclaimers and limitations of liability.
+- [Contact Us](https://futbol11.live/contact/): Get in touch with the Futbol11 team. Send feedback, report an issue, or suggest a new daily football game.
+
+## Optional
+
+- [Sitemap](https://futbol11.live/sitemap.xml): all pages on the site
+- [RSS Feed](https://futbol11.live/feed.xml): all games and pages with descriptions

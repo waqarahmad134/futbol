@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Header from "@/components/Header";
 import DailyScore from "@/components/DailyScore";
 import GameGrid from "@/components/GameGrid";
+import Leaderboard from "@/components/Leaderboard";
 import OtherSites from "@/components/OtherSites";
 import HowToPlay from "@/components/HowToPlay";
 import SEOContent from "@/components/SEOContent";
@@ -10,16 +11,26 @@ import Footer from "@/components/Footer";
 import HashScroll from "@/components/HashScroll";
 import { games } from "@/data/games";
 import { faqs } from "@/data/faqs";
-import { SITE_TAGLINE, SITE_URL } from "@/lib/site";
+import { SITE_TAGLINE, SITE_URL, SITE_PUBLISHED, SITE_MODIFIED } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: { absolute: `Futbol11 - ${SITE_TAGLINE}` },
   description:
-    "Play 20 free daily football trivia games. Guess lineups, solve football puzzles, play Wordle, Grid, Connections & more. New challenges every day.",
+    "Play 23 free daily football trivia games. Guess lineups, solve football puzzles, play Wordle, Grid, Connections & more. New challenges every day.",
   alternates: { canonical: "/" },
 };
 
 const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    name: "Futbol11 - Daily Football Trivia Games & Puzzles",
+    url: `${SITE_URL}/`,
+    datePublished: SITE_PUBLISHED,
+    dateModified: SITE_MODIFIED,
+    inLanguage: "en",
+    publisher: { "@type": "Organization", name: "Futbol11", url: SITE_URL },
+  },
   {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -38,7 +49,7 @@ const jsonLd = [
       "@type": "ListItem",
       position: i + 1,
       name: game.title,
-      url: `${SITE_URL}/game/${game.slug}`,
+      url: `${SITE_URL}/game/${game.slug}/`,
     })),
   },
 ];
@@ -52,17 +63,18 @@ export default function HomePage() {
       <main>
         <section className="container pt-10 pb-2 text-center">
           <h1 className="font-display text-3xl sm:text-4xl text-foreground">
-            Futbol11 — Daily Football Trivia Games &amp; Puzzles
+            Futbol11 - Daily Football Trivia Games &amp; Puzzles
           </h1>
           <p className="mt-3 max-w-2xl mx-auto text-muted-foreground">
-            Futbol11 is a free daily football games site with 20 trivia, puzzle and word challenges —
-            from lineup guessing and Wordle to the Football Grid — with new puzzles every day at midnight.
+            Futbol11 is a free daily football games site with 23 trivia, puzzle and word challenges,
+            from lineup guessing and Wordle to the Football Grid, with new puzzles every day at midnight.
           </p>
         </section>
         <section className="py-6 flex justify-center">
           <DailyScore />
         </section>
         <GameGrid />
+        <Leaderboard />
         <OtherSites />
         <HowToPlay />
         <SEOContent />

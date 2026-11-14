@@ -2,6 +2,9 @@ import { useState, useEffect, useCallback, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Check, RotateCcw, Trophy, Lightbulb, Eye } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { recordDailyResult } from "@/lib/daily-score";
+import { SITE_URL } from "@/lib/site";
+import ShareResultButton from "@/components/ShareResultButton";
 import { getDailyLineup, lineupSets, nameMatches } from "@/data/lineups";
 
 type LineupSetKey = keyof typeof lineupSets;
@@ -20,6 +23,17 @@ interface SavedState {
 }
 
 const MAX_HINTS = 3;
+
+// Game page slug per lineup set, used for the daily-score record and share text.
+const SLUG_BY_SET: Record<LineupSetKey, string> = {
+  goltexto: "futbol11-goltexto",
+  countries: "futbol11",
+  legends: "futbol11-legends",
+  america: "futbol11-america",
+  euro2024: "futbol11-euro2024",
+  copaamerica: "futbol11-copaamerica",
+  worldcup: "futbol11-worldcup",
+};
 
 const LineupGuessGame = ({ setKey, storageKey }: LineupGuessGameProps) => {
   const { toast } = useToast();
@@ -60,6 +74,12 @@ const LineupGuessGame = ({ setKey, storageKey }: LineupGuessGameProps) => {
       toast({ title: "🎉 Lineup complete!", description: `${lineup.title} solved in ${guessCount} guesses.` });
     }
   }, [allFound, finished, guessCount, lineup.title, toast]);
+
+  // Record the daily result once (guarded per game per day in the helper).
+  // Finished via give-up counts as a loss; only all 11 found is a win.
+  useEffect(() => {
+    if (finished) recordDailyResult(`lineup-${setKey}`, allFound);
+  }, [finished, allFound, setKey]);
 
   const submit = useCallback(() => {
     const value = guess.trim();
@@ -208,6 +228,11 @@ const LineupGuessGame = ({ setKey, storageKey }: LineupGuessGameProps) => {
             <p className="text-xs text-muted-foreground flex items-center justify-center gap-1">
               <RotateCcw className="w-3 h-3" /> New lineup tomorrow!
             </p>
+            <div className="mt-2 flex justify-center">
+              <ShareResultButton
+                text={`Futbol11 Lineup, ${lineup.title}\n${allFound ? "✅ All 11 named" : `❌ ${found.filter(Boolean).length}/11 named`} in ${guessCount} guesses\nPlay: ${SITE_URL}/game/${SLUG_BY_SET[setKey]}`}
+              />
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
