@@ -1,0 +1,604 @@
+// French dictionary for futbol11.live. No em-dash anywhere in this file.
+import type { LocaleStrings } from "../dictionary";
+
+export const fr: LocaleStrings = {
+  header: {
+    games: "Jeux",
+    howToPlay: "Comment Jouer",
+    about: "À Propos",
+    faq: "FAQ",
+    blog: "Blog",
+    openMenu: "Ouvrir le menu",
+    closeMenu: "Fermer le menu",
+  },
+  footer: {
+    tagline:
+      "La plateforme ultime de quiz et de casse-tête quotidiens de football. 23 jeux uniques couvrant toutes les ligues, compétitions et époques du plus beau sport du monde. Nouveaux défis chaque jour à minuit.",
+    popularGames: "Jeux Populaires",
+    quickLinks: "Liens Rapides",
+    allGames: "Tous les Jeux",
+    howToPlay: "Comment Jouer",
+    about: "À Propos de Futbol11",
+    faq: "FAQ",
+    aboutLink: "À Propos",
+    privacy: "Politique de Confidentialité",
+    terms: "Conditions d'Utilisation",
+    contact: "Contact",
+    blog: "Blog",
+    rss: "Flux RSS",
+    rights: "Futbol11. Jeux quotidiens de quiz de football pour les fans du monde entier.",
+    leagues: "Premier League • La Liga • Serie A • Bundesliga • Ligue des Champions • Coupe du Monde",
+  },
+  common: {
+    home: "Accueil",
+    play: "JOUER",
+    new: "NOUVEAU",
+    about: "À Propos",
+    contact: "Contact",
+    privacy: "Confidentialité",
+    terms: "Conditions",
+    blog: "Blog",
+    games: "Jeux",
+    difficultyEasy: "Facile",
+    difficultyMedium: "Moyen",
+    difficultyHard: "Difficile",
+    categoryTrivia: "Quiz",
+    categoryPuzzle: "Casse-tête",
+    categoryWord: "Mots",
+    categoryStrategy: "Stratégie",
+  },
+  home: {
+    title: "Futbol11 - Jeux Quotidiens de Quiz et Casse-Tête de Football",
+    intro:
+      "Futbol11 est un site gratuit de jeux quotidiens de football avec 23 défis de quiz, casse-tête et mots, de la devinette des compositions d'équipe et Wordle à la Grille de Football, avec de nouveaux casse-tête chaque jour à minuit.",
+    gridTitle: "Choisissez un Jeu de Football",
+    gridDesc:
+      "Choisissez parmi 23 défis quotidiens uniques de football. Nouveaux casse-tête chaque jour à minuit, testez vos connaissances sur les clubs, les joueurs, les tactiques et l'histoire du football.",
+  },
+  gameView: {
+    home: "Accueil",
+    games: "Jeux",
+    todaysPuzzle: "Casse-tête du jour : {date}",
+    daily: "Quotidien",
+    about: "À Propos de {name}",
+    howToPlay: "Comment Jouer",
+    tips: "Conseils et Stratégie",
+    tip1Title: "🧠 Commencez Large",
+    tip1Text:
+      "Commencez par des joueurs connus et des réponses évidentes. Gardez les suppositions risquées pour plus tard, quand vous aurez plus de contexte.",
+    tip2Title: "📅 Jouez Chaque Jour",
+    tip2Text:
+      "La régularité est essentielle. Jouer chaque jour élargit votre base de connaissances en football et vous aide à reconnaître les schémas entre les jeux.",
+    tip3Title: "🌍 Pensez Mondial",
+    tip3Text:
+      "Ne vous concentrez pas seulement sur les 5 grandes ligues. Le football sud-américain, africain et asiatique figure souvent dans nos défis.",
+    tip4Title: "📖 Apprenez de vos Erreurs",
+    tip4Text:
+      "Chaque mauvaise réponse vous apprend quelque chose de nouveau. Revoyez les bonnes réponses après chaque partie pour élargir vos connaissances.",
+    gameNotFound: "Jeu Introuvable",
+    backToAllGames: "Retour à tous les jeux",
+    comingSoon: "Bientôt Disponible",
+    comingSoonDesc: "Ce défi est en cours de création.",
+  },
+  seo: {
+    heading: "La Plateforme Ultime de Quiz et Casse-Tête de Football",
+    whyTitle: "Pourquoi Jouer à Futbol11 ?",
+    whyP1:
+      "Futbol11 est le foyer des jeux quotidiens gratuits de football. Chaque jour à minuit, 23 jeux de quiz et de casse-tête de football sont actualisés avec de nouveaux défis, vous jouez donc au même casse-tête que les fans du monde entier. Que vous soyez un supporter de longue date qui se souvient de chaque composition de Coupe du Monde depuis 1966, ou un fan plus récent désireux d'apprendre l'histoire du football, nos jeux quotidiens de football offrent quelque chose pour tout le monde.",
+    whyP2:
+      "Nos jeux couvrent l'ensemble des connaissances du football, des effectifs actuels de Premier League, La Liga et Serie A aux compositions historiques internationales, du quiz sur les transferts aux casse-tête tactiques. Chaque jeu est soigneusement conçu pour être à la fois divertissant et éducatif, et chaque casse-tête ne prend que quelques minutes.",
+    whyP3:
+      "Contrairement aux applications génériques de quiz sportif, Futbol11 est conçu par des fans de football, pour des fans de football. Nous nous concentrons uniquement sur le plus beau sport du monde, ce qui signifie des questions plus profondes, des défis plus nuancés et des casse-tête qui récompensent les vraies connaissances du football. Notre format quotidien vous fait revenir, et votre série grandit chaque jour où vous jouez.",
+    erasTitle: "Les Connaissances du Football à Travers les Époques",
+    erasP1:
+      "Nos jeux couvrent toute l'histoire du football professionnel. L'édition Coupe du Monde couvre les matchs de l'Uruguay 1930 au Qatar 2022. Les jeux Légendes présentent des joueurs de toutes les époques, du dribble gracieux de Sir Stanley Matthews au tiki-taka magistral de Xavi Hernández.",
+    erasP2:
+      "Nous couvrons toutes les grandes ligues et compétitions : la Premier League anglaise, La Liga espagnole, la Serie A italienne, la Bundesliga allemande, la Ligue 1 française, l'UEFA Champions League, la Copa Libertadores et tous les grands tournois internationaux. Nos bases de données comprennent plus de 10 000 joueurs, 500 clubs et des milliers de compositions historiques.",
+    erasP3:
+      "La rotation quotidienne garantit la variété, un jour vous affrontez la composition du Brésil de 1970 et le lendemain un match de Champions League de 2023. Cette étendue de contenu signifie qu'il y a toujours quelque chose de nouveau à apprendre, faisant de Futbol11 non seulement un jeu, mais une éducation en histoire du football.",
+    howTitle: "Comment Jouer aux Jeux Quotidiens de Football",
+    howStep1Title: "Choisissez un jeu",
+    howStep1Desc:
+      "Choisissez l'un des 23 jeux de la page d'accueil. Commencez par Wordle ou Plus ou Moins si vous êtes nouveau, ou passez directement à la Grille de Football.",
+    howStep2Title: "Jouez au casse-tête du jour",
+    howStep2Desc:
+      "Chaque jeu a un casse-tête par jour. Lisez les indices, faites vos suppositions et utilisez les aides quand vous êtes bloqué. Aucun compte n'est nécessaire.",
+    howStep3Title: "Vérifiez votre score",
+    howStep3Desc:
+      "Votre score quotidien suit les victoires et les défaites dans tous les jeux. Votre série compte chaque jour consécutif où vous jouez.",
+    howStep4Title: "Revenez demain",
+    howStep4Desc:
+      "De nouveaux casse-tête arrivent à minuit. Comparez votre résultat avec vos amis, grimpez au classement et gardez votre série en vie.",
+    everyFanTitle: "Des Jeux de Football pour Chaque Type de Fan",
+    everyFanP1:
+      "Les fans de jeux de mots peuvent jouer au Wordle de Futbol11, où vous devinez un footballeur mystère en 6 essais, ou à Octadle, où vous résolvez huit mots de football de cinq lettres à la fois. Les fans de casse-tête peuvent remplir la Grille de Football, trier 16 éléments dans Connections ou repérer l'intrus dans Impostor.",
+    everyFanP2:
+      "Les fans de quiz ont le plus large choix. Devinez les compositions historiques dans le jeu phare Futbol11, formez les meilleurs XI de tous les temps dans Légendes, ou testez votre mémoire de l'Euro 2024, de la Copa América et de chaque Coupe du Monde de 1930 à 2022. Plus ou Moins transforme les totaux de buts en carrière en un jeu rapide de série, et Devinez le Footballeur cache un joueur derrière des indices textuels et un drapeau.",
+    everyFanP3:
+      "Nous couvrons aussi d'autres sports dans le même format quotidien. Formudle vous demande de deviner un pilote de Formule 1 à partir de la nationalité, de l'équipe, des débuts, des titres et de la première victoire. WrestlePlay fait de même pour les catcheurs, en comparant la promotion, les débuts, la taille et les titres mondiaux.",
+    leaguesTitle: "Ligues, Tournois et Époques Couverts",
+    leaguesP1:
+      "Toutes les grandes ligues sont en jeu : la Premier League, La Liga, la Serie A, la Bundesliga, la Ligue 1, la MLS et la Liga MX. Les soirées européennes sont couvertes par la Champions League et l'Europa League, et le football sud-américain par la Copa Libertadores et la Copa América.",
+    leaguesP2:
+      "Le football international traverse tout le site. Les jeux de la Coupe du Monde couvrent chaque tournoi de l'Uruguay 1930 au Qatar 2022, et l'édition Euro 2024 couvre chaque match du tournoi en Allemagne. L'édition Amérique suit la Copa América, les matchs de la CONCACAF et les classiques de la Libertadores.",
+    leaguesP3:
+      "Cette variété compte dans le jeu. Une question peut venir de n'importe quelle époque, ligue ou compétition, donc le fan qui suit plus d'une ligue a un avantage. Le blog ajoute des guides pas à pas pour les jeux les plus populaires, en commençant par Wordle et la Grille de Football, pour que les nouveaux joueurs apprennent les règles rapidement et gagnent plus tôt.",
+    categoriesTitle: "Catégories de Jeux Expliquées",
+    cat1Title: "Jeux de Quiz",
+    cat1Desc:
+      "Testez vos connaissances des faits du football. Des statistiques des joueurs aux histoires des clubs, ces jeux récompensent l'esprit encyclopédique du football.",
+    cat2Title: "Jeux de Casse-Tête",
+    cat2Desc:
+      "La logique rencontre le football. Grille, Connections et Impostor exigent un raisonnement déductif ainsi qu'une expertise du football.",
+    cat3Title: "Jeux de Mots",
+    cat3Desc:
+      "Un gameplay de type Wordle avec une touche football. Devinez les noms des joueurs lettre par lettre avec un retour par couleurs.",
+    cat4Title: "Jeux de Stratégie",
+    cat4Desc:
+      "Des jeux de liens et de construction de chaînes qui vous défient de penser plusieurs coups à l'avance en utilisant vos connaissances des carrières du football.",
+    stadiumTitle: "🏟️ Stade du Savoir",
+    stadiumText:
+      "Saviez-vous que plus de 200 pays sont membres de la FIFA, faisant du football le sport le plus pratiqué au monde ? Nos jeux reflètent cette diversité, avec des joueurs et des équipes de tous les continents. Des stades bondés d'Amérique du Sud à la sophistication tactique du football européen, Futbol11 célèbre la portée mondiale du plus beau sport du monde.",
+    trackTitle: "📊 Suivez Votre Progrès",
+    trackText:
+      "Votre score quotidien suit les réponses correctes et incorrectes dans tous les jeux. Votre série compte chaque jour consécutif où vous jouez, et le classement classe les meilleurs joueurs par victoires et meilleure série, en utilisant des étiquettes de joueur anonymes, jamais de noms ni d'e-mails. La réinitialisation quotidienne garde les choses équitables, tout le monde reçoit les mêmes défis en même temps.",
+    learnTitle: "🎓 Apprenez en Jouant",
+    learnText:
+      "Chaque mauvaise réponse est une occasion d'apprendre. Quand vous manquez un joueur dans une composition, vous découvrez quelqu'un de nouveau. Quand vous ne pouvez pas compléter une connexion, vous apprenez un fait inattendu. Futbol11 a aidé des milliers de fans à approfondir leur compréhension de l'histoire du football, des tactiques et de la riche tapisserie de l'évolution du sport.",
+    updated: "Contenu mis à jour pour la dernière fois : 9 novembre 2026. De nouveaux jeux et guides sont ajoutés régulièrement.",
+  },
+  faq: {
+    title: "Questions Fréquentes",
+    intro: "Tout ce que vous devez savoir sur les jeux de quiz de football de Futbol11.",
+    q1: "Qu'est-ce que Futbol11 ?",
+    a1: "Futbol11 est votre foyer pour les jeux quotidiens de football. Testez vos connaissances sur les clubs, les joueurs et les moments emblématiques du football grâce à des jeux comme Grille, Bingo, Wordle et Connections, avec de nouveaux défis chaque jour. Avec 23 jeux uniques couvrant tout, de l'histoire de la Coupe du Monde à l'action actuelle des ligues, il y a toujours une nouvelle façon de tester votre QI football.",
+    q2: "Quand les jeux quotidiens sont-ils réinitialisés ?",
+    a2: "Les jeux sont réinitialisés chaque jour à minuit UTC, vous permettant de jouer à un nouvel ensemble de défis toutes les 24 heures. Votre score quotidien est réinitialisé en même temps, chaque jour est donc une nouvelle occasion d'atteindre un record parfait.",
+    q3: "Y a-t-il une difficulté plus élevée ?",
+    a3: "Oui ! Dans certains jeux, vous pouvez choisir entre différents niveaux de difficulté. Jouez sans minuteur pour une expérience détendue, ou relevez le défi avec une limite de 90 ou 60 secondes. Certains jeux présentent aussi une difficulté progressive, devenant plus difficiles à mesure que vous avancez dans les manches.",
+    q4: "De nouveaux jeux seront-ils ajoutés ?",
+    a4: "Absolument ! Nous ajoutons régulièrement de nouveaux modes de jeu en fonction des commentaires de la communauté et des événements de football émergents. Les ajouts passés comprennent des éditions spécifiques aux tournois pour l'Euro 2024 et la Copa América, ainsi qu'Octadle, Formudle et WrestlePlay en novembre 2026. Consultez la page d'accueil et le blog pour être le premier informé des nouvelles sorties.",
+    q5: "Ai-je besoin d'un compte pour jouer ?",
+    a5: "Aucun compte n'est nécessaire pour jouer à nos jeux. Visitez simplement le site et commencez à jouer immédiatement. Votre score quotidien est suivi localement dans votre navigateur. Cela facilite une partie rapide pendant votre trajet, votre pause déjeuner ou avant de dormir.",
+    q6: "Quelles ligues et compétitions sont couvertes ?",
+    a6: "Futbol11 couvre toutes les grandes ligues, y compris la Premier League, La Liga, la Serie A, la Bundesliga et la Ligue 1. Nous présentons aussi la Champions League, l'Europa League, la Copa Libertadores, la Coupe du Monde, le Championnat d'Europe, la Copa América et bien d'autres tournois. Notre base de données s'étend des années 1930 à aujourd'hui.",
+    q7: "Puis-je jouer sur mobile ?",
+    a7: "Oui ! Tous les jeux Futbol11 sont entièrement optimisés pour les appareils mobiles. Que vous soyez sur smartphone ou tablette, l'expérience est fluide et réactive. Aucun téléchargement d'application requis, visitez simplement le site dans le navigateur de votre mobile et commencez à jouer.",
+    q8: "Comment le score quotidien est-il calculé ?",
+    a8: "Votre score quotidien suit vos réponses correctes (coche verte) et incorrectes (X rouge) dans tous les jeux joués ce jour-là. Le score est réinitialisé à minuit UTC. Essayez de maximiser vos réponses correctes tout en minimisant les erreurs pour le meilleur record quotidien.",
+    q9: "Les jeux sont-ils éducatifs ?",
+    a9: "Certainement ! De nombreux joueurs nous ont dit qu'ils avaient appris davantage sur l'histoire du football grâce à Futbol11 que par toute autre source. Chaque jeu révèle des faits intéressants sur les joueurs, les clubs et les tournois. Même les suppositions incorrectes vous apprennent quelque chose de nouveau, rendant chaque session à la fois amusante et instructive.",
+    q10: "Comment puis-je suggérer un nouveau jeu ou une nouvelle fonctionnalité ?",
+    a10: "Nous adorons entendre notre communauté ! Envoyez-nous votre suggestion via la page Contact. Beaucoup de nos meilleures idées de jeux sont venues des commentaires des joueurs. Qu'il s'agisse d'un nouveau mode de jeu, d'une compétition spécifique à couvrir ou d'une amélioration de la qualité de vie, nous sommes tout ouïe.",
+  },
+  howTo: {
+    title: "Comment Jouer à Futbol11",
+    intro:
+      "Commencer est facile. Aucun compte requis, choisissez simplement un jeu et jouez. Chaque jeu est réinitialisé quotidiennement avec de nouveaux défis.",
+    step: "ÉTAPE",
+    step1Title: "Choisissez un Jeu",
+    step1Desc:
+      "Choisissez parmi 23 jeux uniques de football, quiz, casse-tête, jeux de mots et défis de stratégie.",
+    step2Title: "Jouez Chaque Jour",
+    step2Desc:
+      "De nouveaux défis arrivent chaque jour à minuit. Construisez votre série et suivez votre score quotidien dans tous les jeux.",
+    step3Title: "Testez Vos Connaissances",
+    step3Desc:
+      "De la Premier League à la Coupe du Monde, de 1930 à aujourd'hui. Chaque époque, ligue et compétition est couverte.",
+    step4Title: "Partagez et Rivalisez",
+    step4Desc: "Comparez vos scores avec vos amis et la communauté mondiale. Qui connaît vraiment le mieux le football ?",
+  },
+  otherSites: {
+    title: "Autres Jeux de Sport",
+    octadle: "Jeu de casse-tête multi-mots",
+    formudle: "Casse-tête quotidien de Formule 1",
+    wrestleplay: "Jeux de quiz de catch",
+    basketball5: "Jeux quotidiens de basket-ball",
+    new: "NOUVEAU",
+  },
+  related: {
+    title: "Plus de Jeux de Football",
+  },
+  cookie: {
+    ariaLabel: "Consentement aux cookies",
+    text: "Nous utilisons des cookies pour conserver votre progression quotidienne et diffuser des publicités. Des tiers, dont Google, peuvent utiliser des cookies pour personnaliser les publicités.",
+    learnMore: "En savoir plus",
+    reject: "Refuser",
+    accept: "Accepter",
+  },
+  dailyScore: {
+    title: "Score Quotidien",
+    streak: "série de {count} jours",
+  },
+  leaderboard: {
+    title: "Meilleurs Joueurs",
+    intro: "Le plus de victoires dans tous les jeux Futbol11. Anonyme, sans compte, jouez simplement.",
+    loading: "Chargement du classement...",
+    unavailable: "Classement indisponible hors ligne. Vos résultats sont toujours enregistrés sur cet appareil.",
+    empty: "Aucune victoire au tableau pour l'instant. Terminez un jeu pour prendre la première place.",
+    player: "Joueur {name}",
+    wins: "{count} victoires",
+    bestStreak: "Meilleure série {count}",
+  },
+  share: {
+    defaultLabel: "Partager le résultat",
+    copied: "Copié !",
+    copiedTitle: "Résultat copié",
+    copiedDesc: "Collez-le n'importe où pour partager votre score.",
+    failedTitle: "Échec de la copie",
+    failedDesc: "Votre navigateur a bloqué l'accès au presse-papiers.",
+  },
+  games: {
+    "futbol11-goltexto.title": "Futbol Goltexto du Jour",
+    "futbol11-goltexto.description":
+      "Jouez au casse-tête Goltexto du jour : devinez la composition complète à partir d'indices textuels. Une nouvelle composition historique chaque jour.",
+    "futbol11-goltexto.long":
+      "Le casse-tête Goltexto du jour met votre mémoire des compositions emblématiques du football à l'épreuve. Vous recevez une formation et devez remplir les noms des 11 titulaires d'un match célèbre, en utilisant des indices textuels comme guide. Des finales de Coupe du Monde aux classiques de la Champions League, chaque jour apporte un nouveau casse-tête tactique. Ce jeu teste vos connaissances des formations d'équipe, des postes des joueurs et de l'histoire du football sur des décennies du plus beau sport du monde. Revenez demain pour une nouvelle composition.",
+    "futbol11-goltexto.how.0": "Vous verrez un schéma tactique (p. ex. 4-3-3)",
+    "futbol11-goltexto.how.1": "Remplissez les noms des joueurs pour chaque poste",
+    "futbol11-goltexto.how.2": "Utilisez les indices si vous êtes bloqué, chaque indice révèle une lettre",
+    "futbol11-goltexto.how.3": "Complétez la composition avant la fin du temps imparti",
+    "futbol11-legacy.title": "Futbol11 Legacy",
+    "futbol11-legacy.description":
+      "Testez vos connaissances des footballeurs légendaires et de leurs parcours dans les meilleurs clubs européens.",
+    "futbol11-legacy.long":
+      "Legacy vous emmène en voyage à travers l'histoire du football. Chaque défi présente des indices sur la carrière d'un joueur légendaire, les clubs pour lesquels il a joué, les trophées qu'il a remportés et les records qu'il a battus. De Pelé à Messi, de Maradona à Ronaldo, Legacy couvre les plus grands joueurs à avoir foulé un terrain. Parfait pour les fans qui vivent et respirent l'histoire du football.",
+    "futbol11-legacy.how.0": "Lisez les indices de carrière présentés un par un",
+    "futbol11-legacy.how.1": "Devinez le footballeur légendaire",
+    "futbol11-legacy.how.2": "Moins d'indices utilisés, plus le score est élevé",
+    "futbol11-legacy.how.3": "Les défis quotidiens présentent des joueurs de différentes époques",
+    "futbol11-impostor.title": "Futbol11 Impostor",
+    "futbol11-impostor.description":
+      "Trouvez l'imposteur ! Un joueur n'appartient pas au groupe, pouvez-vous repérer lequel ?",
+    "futbol11-impostor.long":
+      "Impostor est un jeu de déduction de football où vous devez identifier quel joueur n'appartient pas à un groupe. Quatre joueurs partagent un trait commun : même nationalité, même historique de clubs, même réussite, mais l'un est l'intrus. Des connaissances pointues du football et une pensée latérale sont essentielles. Le jeu devient progressivement plus difficile, avec des connexions plus obscures et des faits moins connus.",
+    "futbol11-impostor.how.0": "Vous verrez un groupe de joueurs de football",
+    "futbol11-impostor.how.1": "Trouvez celui qui ne partage pas le trait commun",
+    "futbol11-impostor.how.2": "La connexion peut être la nationalité, le club, le prix ou la statistique",
+    "futbol11-impostor.how.3": "Résolvez autant de manches que possible",
+    "futbol-grid.title": "Jeu de Grille de Football",
+    "futbol-grid.description":
+      "Jouez au jeu de grille de football : remplissez les 9 cases en nommant un joueur pour chaque club et pays. Une nouvelle grille chaque jour.",
+    "futbol-grid.long":
+      "Le jeu de grille de football est un casse-tête quotidien qui teste votre connaissance des joueurs, des clubs et des pays. Vous recevez une grille 3 par 3 où chaque ligne est un club et chaque colonne est un pays, et votre tâche est de nommer un joueur qui correspond aux deux faits à la fois. Pensez à un joueur qui a joué à Barcelone et vient du Brésil, ou à quelqu'un qui a joué à Manchester United et vient de France. Vous avez 9 suppositions pour 9 cases, et un score de rareté récompense les bonnes réponses obscures. Un nouveau jeu de grille de football apparaît chaque jour à minuit, et tout le monde joue la même grille.",
+    "futbol-grid.how.0": "Chaque case a un critère de ligne et un critère de colonne",
+    "futbol-grid.how.1": "Nommez un joueur qui satisfait les deux critères",
+    "futbol-grid.how.2": "Vous avez 9 suppositions pour remplir les 9 cases",
+    "futbol-grid.how.3": "Le score de rareté récompense les bonnes réponses obscures",
+    "futbol11-pyramid.title": "Jeu de Quiz de Football",
+    "futbol11-pyramid.description":
+      "Jouez au jeu de quiz de football : répondez aux questions quotidiennes de quiz, de facile à expert, et grimpez la pyramide. Nouvelles questions chaque jour.",
+    "futbol11-pyramid.long":
+      "Le jeu de quiz de football est un défi de quiz par niveaux qui commence facile et devient plus difficile à chaque étape. La base de la pyramide présente des questions de football simples, tandis que le sommet exige des connaissances d'expert. Chaque bonne réponse élève votre pyramide plus haut. Pouvez-vous atteindre le sommet ? Le jeu couvre tout, des statistiques actuelles de la Premier League aux faits historiques de la Coupe du Monde, et un nouveau jeu de quiz de football apparaît chaque jour, il fonctionne donc aussi bien pour les fans occasionnels que pour les érudits du football.",
+    "futbol11-pyramid.how.0": "Commencez par la base avec des questions plus faciles",
+    "futbol11-pyramid.how.1": "Chaque niveau devient progressivement plus difficile",
+    "futbol11-pyramid.how.2": "Répondez correctement pour grimper plus haut",
+    "futbol11-pyramid.how.3": "Atteignez le sommet pour compléter la pyramide",
+    "futbol11-connections.title": "Jeu de Connections de Football",
+    "futbol11-connections.description":
+      "Jouez au jeu de connections de football : triez 16 éléments de football en 4 groupes de 4. Un nouveau casse-tête chaque jour.",
+    "futbol11-connections.long":
+      "Le jeu de connections de football vous présente 16 éléments de football : joueurs, clubs, stades ou termes. Votre mission est de les trier en quatre groupes de quatre, chacun partageant une connexion cachée. Les connexions peuvent être subtiles : des joueurs qui ont marqué des triplés en finale de Coupe du Monde, des stades à toit rétractable ou des clubs dont les noms contiennent des couleurs. Vous avez 4 erreurs avant la fin du jeu. Un nouveau jeu de connections de football apparaît chaque jour, et il récompense à la fois de vastes connaissances du football et une pensée créative.",
+    "futbol11-connections.how.0": "Vous voyez 16 éléments liés au football",
+    "futbol11-connections.how.1": "Regroupez-les en 4 catégories de 4",
+    "futbol11-connections.how.2": "Chaque groupe partage une connexion cachée",
+    "futbol11-connections.how.3": "Vous avez 4 erreurs avant la fin du jeu",
+    "futbol11-clubs.title": "Futbol11 Clubs",
+    "futbol11-clubs.description":
+      "Identifiez les clubs de football à partir d'indices visuels, de fragments d'écussons et de couleurs de maillots.",
+    "futbol11-clubs.long":
+      "Clubs teste vos connaissances visuelles du football. Vous pouvez voir une section agrandie de l'écusson d'un club, une combinaison de couleurs de maillot ou la silhouette d'un stade. Des rayures emblématiques de la Juventus au rouge de Liverpool, de l'écusson du Real Madrid au canon d'Arsenal. Connaissez-vous vraiment bien l'identité visuelle des plus grands clubs du football ? Le jeu présente des clubs de ligues du monde entier, pas seulement des 5 grandes ligues européennes.",
+    "futbol11-clubs.how.0": "Des indices visuels sur un club de football apparaissent",
+    "futbol11-clubs.how.1": "Devinez le club à partir des informations visuelles",
+    "futbol11-clubs.how.2": "Les indices révèlent progressivement plus de détails",
+    "futbol11-clubs.how.3": "Gagnez des points pour des suppositions correctes plus rapides",
+    "futbol11-link.title": "Futbol11 Link",
+    "futbol11-link.description":
+      "Reliez les footballeurs par des clubs partagés, formant une chaîne de carrières liées.",
+    "futbol11-link.long":
+      "Link est un casse-tête de chaîne de football où vous devez relier deux joueurs par des historiques de clubs partagés. Le Joueur A a joué avec le Joueur B au Club X, et le Joueur B a joué avec le Joueur C au Club Y, continuez à construire la chaîne jusqu'à atteindre le joueur cible. Ce sont six degrés de séparation, version football. Ce jeu récompense la connaissance des historiques de transferts, des compositions d'équipes et du réseau interconnecté des carrières professionnelles de football à travers plusieurs ligues et décennies.",
+    "futbol11-link.how.0": "Vous recevez un joueur de départ et un joueur d'arrivée",
+    "futbol11-link.how.1": "Reliez-les par des coéquipiers de clubs partagés",
+    "futbol11-link.how.2": "Chaque lien doit être une vraie connexion de coéquipiers",
+    "futbol11-link.how.3": "Complétez la chaîne avec le moins de liens possible",
+    "futbol11-bingo.title": "Jeu de Bingo de Football",
+    "futbol11-bingo.description":
+      "Jouez au bingo de football : associez les joueurs aux critères de votre carte de bingo et complétez une ligne. Une nouvelle carte chaque jour.",
+    "futbol11-bingo.long":
+      "Le jeu de bingo de football combine le bingo classique avec le quiz de football. Votre carte de bingo contient des critères de football tels que a marqué 20 buts ou plus en championnat en une saison, a joué en Serie A et en La Liga, ou a remporté le Ballon d'Or. Au fur et à mesure que les joueurs sont révélés, vous cochez les critères qu'ils remplissent. Complétez une ligne, une colonne ou la carte entière pour gagner. Un nouveau jeu de bingo de football apparaît chaque jour, chaque carte est donc un nouveau test de vos connaissances des statistiques et des réussites des joueurs.",
+    "futbol11-bingo.how.0": "Vous recevez une carte de bingo avec des critères de football",
+    "futbol11-bingo.how.1": "Les joueurs sont révélés un par un",
+    "futbol11-bingo.how.2": "Cochez les critères qui correspondent au joueur révélé",
+    "futbol11-bingo.how.3": "Complétez une ligne ou la carte entière pour gagner",
+    "futbol-top10.title": "Futbol11 Top10",
+    "futbol-top10.description":
+      "Pouvez-vous nommer tous les joueurs du top 10 des classements et records célèbres du football ?",
+    "futbol-top10.long":
+      "Top10 vous met au défi de nommer les joueurs des listes et classements les plus célèbres du football. Des meilleurs buteurs de tous les temps dans l'histoire de la Champions League aux joueurs les plus capés en sélection, des indemnités de transfert les plus élevées jamais payées aux nominations au Ballon d'Or. Pouvez-vous vous souvenir des 10 ? Le jeu couvre un large éventail de catégories statistiques du football de club et international, mis à jour avec les derniers records et réussites.",
+    "futbol-top10.how.0": "Une catégorie/un classement de football est présenté",
+    "futbol-top10.how.1": "Nommez autant de joueurs du top 10 que vous pouvez",
+    "futbol-top10.how.2": "L'ordre n'a pas d'importance",
+    "futbol-top10.how.3": "La limite de temps ajoute de la pression pour se souvenir",
+    "futbol11-wordle.title": "Futbol11 Wordle",
+    "futbol11-wordle.description":
+      "Le jeu de mots classique rencontre le football. Devinez le nom du footballeur en 6 essais !",
+    "futbol11-wordle.long":
+      "Le Wordle de Futbol11 apporte le phénomène viral de devinette de mots au monde du football. Au lieu de deviner n'importe quel mot, vous devinez le nom de famille d'un footballeur. Les lettres vertes sont correctes et à la bonne place, les lettres jaunes sont dans le nom mais à la mauvaise place, et les lettres grises ne sont pas dans le nom. Avec des milliers de footballeurs professionnels passés et présents, chaque jour apporte un nouveau défi. Un casse-tête quotidien rapide et parfait pour les fans de football.",
+    "futbol11-wordle.how.0": "Devinez le nom de famille d'un footballeur",
+    "futbol11-wordle.how.1": "Vert = lettre correcte, bonne position",
+    "futbol11-wordle.how.2": "Jaune = lettre correcte, mauvaise position",
+    "futbol11-wordle.how.3": "Gris = lettre absente du nom",
+    "futbol11-wordle.how.4": "Vous avez 6 essais",
+    "futbol11-bingo-legends.title": "Futbol11 Bingo Rétro",
+    "futbol11-bingo-legends.description":
+      "Bingo rétro avec des footballeurs légendaires des années 70, 80 et 90.",
+    "futbol11-bingo-legends.long":
+      "Le Bingo Rétro est un voyage nostalgique à travers les époques dorées du football. Cette édition spéciale du Bingo de Futbol11 se concentre exclusivement sur des joueurs légendaires des années 1970 à 1990. Vous souvenez-vous des coups francs de Platini ? Du rôle de libéro de Beckenbauer ? De la finition clinique de Romário ? Ce jeu célèbre les icônes qui ont façonné le football moderne, parfait pour les fans plus âgés et les passionnés d'histoire qui apprécient les légendes du jeu.",
+    "futbol11-bingo-legends.how.0": "Mêmes règles que le Bingo normal",
+    "futbol11-bingo-legends.how.1": "Tous les joueurs datent des années 70, 80 et 90",
+    "futbol11-bingo-legends.how.2": "Les critères se concentrent sur les réussites rétro",
+    "futbol11-bingo-legends.how.3": "Testez vos connaissances des légendes du football",
+    "futbol11.title": "Futbol11",
+    "futbol11.description":
+      "L'original ! Devinez la composition internationale d'une équipe nationale de football.",
+    "futbol11.long":
+      "Le jeu phare qui a tout commencé. Futbol11 vous présente la formation d'une équipe nationale lors d'un match précis, un match de qualification pour la Coupe du Monde, un championnat continental ou un match amical. Votre travail est de nommer les 11 titulaires. Des puissances comme le Brésil et l'Allemagne aux outsiders qui ont fait de profonds parcours en tournoi, ce jeu célèbre le football international dans toute sa gloire. Mis à jour quotidiennement avec des matchs couvrant des décennies de compétition internationale.",
+    "futbol11.how.0": "La formation d'une équipe nationale est affichée",
+    "futbol11.how.1": "Identifiez les 11 joueurs titulaires",
+    "futbol11.how.2": "Utilisez la date du match et l'adversaire comme indices de contexte",
+    "futbol11.how.3": "Des indices sont disponibles si vous êtes bloqué",
+    "guess-the-footballer.title": "Devinez le Footballeur",
+    "guess-the-footballer.description":
+      "Des indices textuels, un drapeau et une carte d'initiales floutée, pouvez-vous identifier le footballeur en 6 suppositions ?",
+    "guess-the-footballer.long":
+      "Devinez le Footballeur est un défi quotidien d'identification basé sur des indices textuels. Chaque manche cache un footballeur professionnel derrière une carte floutée montrant uniquement ses initiales et un drapeau de nationalité. Chaque mauvaise supposition révèle un nouvel indice sur le joueur, son poste, ses clubs, ses trophées ou les moments forts de sa carrière, et la carte devient un peu plus claire. Devinez correctement en 6 essais pour gagner. Le jeu présente des joueurs de toutes les grandes ligues et comprend des stars actuelles, des talents montants et des légendes retraitées.",
+    "guess-the-footballer.how.0": "Lisez le premier indice textuel et vérifiez le drapeau",
+    "guess-the-footballer.how.1": "Tapez le nom complet du footballeur pour deviner",
+    "guess-the-footballer.how.2": "Chaque mauvaise supposition révèle un nouvel indice et éclaircit un peu la carte",
+    "guess-the-footballer.how.3": "Devinez correctement en 6 essais pour gagner",
+    "futbol11-legends.title": "Futbol11 Légendes",
+    "futbol11-legends.description":
+      "Nommez le XI légendaire ! Identifiez les compositions de tous les temps des grands du football.",
+    "futbol11-legends.long":
+      "Légendes est le test ultime des connaissances de l'histoire du football. Chaque défi présente un XI de tous les temps d'un club, d'une ligue ou d'une époque précise. Pouvez-vous nommer le plus grand XI de tous les temps de Liverpool ? Que diriez-vous des meilleurs joueurs sud-américains du XXIe siècle ? Ou le XI ultime de la Champions League ? Ce jeu célèbre les meilleurs joueurs de l'histoire du football et vous met au défi de vous souvenir des légendes qui ont défini des générations du sport.",
+    "futbol11-legends.how.0": "Une catégorie de XI de tous les temps est présentée",
+    "futbol11-legends.how.1": "Nommez les joueurs de la composition légendaire",
+    "futbol11-legends.how.2": "Les postes et la formation sont affichés",
+    "futbol11-legends.how.3": "Complétez le XI entier pour gagner",
+    "futbol11-america.title": "Futbol11 Amérique",
+    "futbol11-america.description":
+      "Quiz de football sud et nord-américain, Copa América, MLS, Liga MX et plus.",
+    "futbol11-america.long":
+      "Futbol11 Amérique célèbre le plus beau sport du monde à travers les Amériques. De la passion du football argentin à la qualité croissante de la MLS, des rivalités historiques du football brésilien à la ferveur de la Liga MX mexicaine, ce jeu couvre tout. Les défis quotidiens présentent des compositions de la Copa América, des matchs de la CONCACAF, des classiques de la Copa Libertadores et des moments emblématiques de l'histoire du football américain. Incontournable pour les fans de football au-delà de l'Europe.",
+    "futbol11-america.how.0": "Les défis se concentrent sur le football américain",
+    "futbol11-america.how.1": "Devinez les compositions de la Copa América, de la Libertadores, etc.",
+    "futbol11-america.how.2": "Couvre l'Amérique du Nord, centrale et du Sud",
+    "futbol11-america.how.3": "Même mécanique que le jeu principal Futbol11",
+    "futbol11-euro2024.title": "Futbol11 Euro 2024",
+    "futbol11-euro2024.description":
+      "Revivez l'Euro 2024 ! Devinez les compositions de chaque match du tournoi.",
+    "futbol11-euro2024.long":
+      "Revivez l'excitation de l'UEFA Euro 2024 organisée en Allemagne. Cette édition spéciale couvre chaque match du tournoi, des phases de groupes à la grande finale. Souvenez-vous des configurations tactiques, des titulaires surprises et des formations qui ont façonné le tournoi. Qu'il s'agisse des performances dominantes des favoris ou des leçons tactiques des outsiders, ce jeu vous permet de tester votre mémoire du plus grand événement du football européen.",
+    "futbol11-euro2024.how.0": "Sélectionnez un match de l'Euro 2024",
+    "futbol11-euro2024.how.1": "Devinez le XI titulaire de l'une ou l'autre équipe",
+    "futbol11-euro2024.how.2": "La précision historique est requise",
+    "futbol11-euro2024.how.3": "Couvre tous les matchs du tournoi",
+    "futbol11-copaamerica.title": "F11 Copa América",
+    "futbol11-copaamerica.description":
+      "Édition de la Copa América, devinez les compositions du premier tournoi des Amériques.",
+    "futbol11-copaamerica.long":
+      "L'édition de la Copa América amène le plus ancien tournoi international de football sur votre écran. Des premières éditions remportées par l'Uruguay aux triomphes récents de l'Argentine, de la domination du Brésil à la génération dorée du Chili, ce jeu couvre l'histoire de la Copa América en profondeur. Chaque défi quotidien présente une composition d'un match de la Copa América, testant vos connaissances du football sud-américain sous sa meilleure forme.",
+    "futbol11-copaamerica.how.0": "Les matchs de la Copa América sont présentés quotidiennement",
+    "futbol11-copaamerica.how.1": "Devinez le XI titulaire complet",
+    "futbol11-copaamerica.how.2": "Couvre plusieurs éditions du tournoi",
+    "futbol11-copaamerica.how.3": "Apprenez l'histoire du football sud-américain",
+    "futbol11-worldcup.title": "Futbol11 Coupe du Monde",
+    "futbol11-worldcup.description":
+      "Compositions de la Coupe du Monde de 1930 à 2022, le défi ultime du football international.",
+    "futbol11-worldcup.long":
+      "L'édition de la Coupe du Monde est le joyau de la couronne de Futbol11. Couvrant chaque Coupe du Monde de la FIFA de l'Uruguay 1930 au Qatar 2022, ce jeu vous met au défi de vous souvenir des XI titulaires des plus grands matchs de l'histoire du football. Vous souvenez-vous de qui a commencé la finale de 2006 ? De l'effectif du Brésil de 1970 ? De la composition du pays hôte de 1998 ? Avec près d'un siècle d'histoire de la Coupe du Monde, c'est le test ultime pour tout aficionado de football qui se considère comme un vrai étudiant du jeu.",
+    "futbol11-worldcup.how.0": "Sélectionnez un match de Coupe du Monde de n'importe quelle année",
+    "futbol11-worldcup.how.1": "Nommez le XI titulaire",
+    "futbol11-worldcup.how.2": "Couvre chaque Coupe du Monde de 1930 à 2022",
+    "futbol11-worldcup.how.3": "Le défi ultime de l'histoire du football",
+    "futbol11-higher-lower.title": "Futbol11 Plus ou Moins",
+    "futbol11-higher-lower.description":
+      "Plus ou moins ? Devinez quel footballeur a marqué le plus de buts en carrière et construisez votre série.",
+    "futbol11-higher-lower.long":
+      "Plus ou Moins est un jeu de devinette de football rapide et addictif. Vous voyez deux footballeurs côte à côte, l'un avec son total de buts en carrière révélé, l'autre caché. Votre travail est simple : décider si le joueur mystère a marqué plus ou moins de buts en carrière. Si vous avez raison, la chaîne continue, votre série grimpe et le joueur suivant entre en jeu. Si vous vous trompez, la série se termine. De Cristiano Ronaldo et Lionel Messi aux buteurs historiques comme Pelé, Puskás et Gerd Müller, ce jeu teste à quel point vous connaissez vraiment les plus grands buteurs du football de toutes les époques.",
+    "futbol11-higher-lower.how.0": "Comparez les deux footballeurs affichés",
+    "futbol11-higher-lower.how.1": "Décidez si le joueur caché a marqué plus ou moins de buts en carrière",
+    "futbol11-higher-lower.how.2": "Chaque bonne supposition prolonge votre série",
+    "futbol11-higher-lower.how.3": "Une mauvaise supposition met fin à la série, poursuivez votre meilleure série",
+    "octadle.title": "Octadle",
+    "octadle.description":
+      "Huit mots de football à la fois. Résolvez les 8 mots en 13 suppositions avec des indices de couleur de type Wordle.",
+    "octadle.long":
+      "Octadle est le défi de mots ultime pour les fans de football. Au lieu d'un mot, vous résolvez huit mots de football de cinq lettres en même temps. Chaque supposition que vous tapez est évaluée sur les huit tableaux, chaque essai vous donne donc huit ensembles d'indices à la fois. Vert signifie que la lettre est correcte et à la bonne place, jaune signifie que la lettre est dans le mot mais à la mauvaise place, et gris signifie que la lettre n'est pas dans ce mot. Avec 13 suppositions pour déchiffrer les huit mots, vous avez besoin de mots d'ouverture intelligents et d'un bon sens de l'observation. Un nouvel ensemble de huit mots arrive chaque jour.",
+    "octadle.how.0": "Tapez un mot de 5 lettres, il est évalué sur les 8 tableaux à la fois",
+    "octadle.how.1": "Vert = lettre correcte, bonne position",
+    "octadle.how.2": "Jaune = lettre correcte, mauvaise position",
+    "octadle.how.3": "Gris = lettre absente de ce mot",
+    "octadle.how.4": "Résolvez les 8 mots en 13 suppositions",
+    "formudle.title": "Formudle",
+    "formudle.description":
+      "Devinez le pilote de Formule 1. Chaque supposition compare la nationalité, l'équipe, les débuts, les titres et la première victoire.",
+    "formudle.long":
+      "Formudle est le jeu quotidien de devinette de pilotes de Formule 1. Un pilote mystère est caché, et vous avez 8 suppositions pour le nommer. Chaque supposition est comparée à la réponse : les cellules vertes signifient une correspondance exacte sur la nationalité ou l'équipe, et les flèches sur l'année des débuts, les titres de champion et l'année de la première victoire indiquent si la réponse est supérieure ou inférieure. Le groupe couvre la grille actuelle et les légendes de tous les temps, de Max Verstappen et Lewis Hamilton à Ayrton Senna et Michael Schumacher. Un nouveau pilote arrive chaque jour.",
+    "formudle.how.0": "Tapez le nom d'un pilote de Formule 1 à partir des suggestions",
+    "formudle.how.1": "Les cellules vertes signifient une correspondance exacte sur la nation ou l'équipe",
+    "formudle.how.2": "Les flèches montrent si la réponse est supérieure ou inférieure sur les débuts, les titres et la première victoire",
+    "formudle.how.3": "Utilisez les indices pour restreindre les options",
+    "formudle.how.4": "Devinez le pilote en 8 essais",
+    "wrestleplay.title": "WrestlePlay",
+    "wrestleplay.description":
+      "Devinez le catcheur. Chaque supposition compare la nationalité, la promotion, les débuts, la taille et les titres mondiaux.",
+    "wrestleplay.long":
+      "WrestlePlay est le jeu quotidien de devinette de catcheurs. Un catcheur mystère est caché, et vous avez 8 suppositions pour le nommer. Chaque supposition est comparée à la réponse : les cellules vertes signifient une correspondance exacte sur la nationalité ou la promotion, et les flèches sur l'année des débuts, la taille annoncée et les règnes de titres mondiaux indiquent si la réponse est supérieure ou inférieure. Le groupe couvre les stars de la WWE et de l'AEW ainsi que les légendes de tous les temps, de John Cena et Roman Reigns à The Undertaker et Ric Flair. Un nouveau catcheur arrive chaque jour.",
+    "wrestleplay.how.0": "Tapez le nom d'un catcheur à partir des suggestions",
+    "wrestleplay.how.1": "Les cellules vertes signifient une correspondance exacte sur la nation ou la promotion",
+    "wrestleplay.how.2": "Les flèches montrent si la réponse est supérieure ou inférieure sur les débuts, la taille et les titres mondiaux",
+    "wrestleplay.how.3": "Utilisez les indices pour restreindre les options",
+    "wrestleplay.how.4": "Devinez le catcheur en 8 essais",
+  },
+  meta: {
+    gameTitle: "{title} - Jouez Gratuitement Chaque Jour | Futbol11",
+    gameNotFoundTitle: "Jeu Introuvable",
+    articleNotFoundTitle: "Article Introuvable",
+  },
+  about: {
+    metaTitle: "À Propos de Futbol11 - Jeux Quotidiens de Football et Casse-Tête",
+    metaDesc:
+      "Découvrez Futbol11, le foyer de 23 jeux quotidiens gratuits de quiz de football, casse-tête et défis de mots couvrant toutes les ligues, compétitions et époques.",
+    title: "À Propos de Futbol11",
+    intro: "Futbol11 est une plateforme gratuite de jeux quotidiens de football créée par des fans de football, pour des fans de football.",
+    h1: "Qu'est-ce que Futbol11 ?",
+    p1: "Futbol11 est une collection de 23 jeux quotidiens uniques de football couvrant le quiz, les casse-tête, les jeux de mots et les défis de stratégie. De la devinette des compositions historiques à la résolution du Wordle de football, en passant par la Grille de Football ou la recherche de l'imposteur dans un groupe de joueurs, un nouveau défi vous attend chaque jour à minuit. Nos jeux couvrent toute l'histoire du sport, de la Coupe du Monde 1930 à l'action la plus récente de la Premier League, de La Liga et de la Champions League.",
+    h2: "À quoi pouvez-vous jouer",
+    p2: "La collection compte 18 jeux de quiz, 3 jeux de casse-tête, 2 jeux de mots et 1 jeu de stratégie. Les fans de quiz peuvent deviner les compositions de chaque Coupe du Monde depuis 1930, nommer les meilleurs XI de tous les temps ou tester leur mémoire de l'Euro 2024 et de la Copa América. Les fans de casse-tête ont la Grille de Football, Connections et Impostor. Les fans de jeux de mots ont le Wordle de Futbol11 et Octadle, notre défi de huit mots à la fois.",
+    p3: "Trois jeux sont nouveaux. Octadle, Formudle et WrestlePlay ont rejoint le site en novembre 2026. Formudle est un jeu quotidien de devinette de pilotes de Formule 1, et WrestlePlay est la même idée pour les catcheurs. Les trois se jouent comme les jeux de football : un nouveau casse-tête chaque jour, gratuit, sans besoin de compte.",
+    h3: "Notre mission",
+    p4: "Nous croyons que les connaissances du football doivent être amusantes à tester et gratifiantes à développer. Chaque jeu de Futbol11 est conçu pour être à la fois divertissant et éducatif : même une mauvaise supposition vous apprend quelque chose de nouveau sur un joueur, un club, un tournoi ou un moment de l'histoire du football. Aucun compte à créer et rien à télécharger, ouvrez simplement le site et jouez.",
+    h4: "Comment ça marche",
+    p5: "Chaque jeu est actualisé quotidiennement pour que tout le monde dans le monde relève le même défi en même temps. Votre score quotidien et votre progression sont enregistrés localement dans votre navigateur, vous pouvez donc reprendre là où vous vous étiez arrêté sans jamais transmettre d'informations personnelles. Les jeux terminés comptent aussi pour votre série et le classement, en utilisant uniquement un identifiant d'appareil aléatoire, jamais votre nom ni votre e-mail. Lisez notre {privacy} pour les détails complets.",
+    p6: "Nouveau dans un jeu ? Le {blog} propose des guides pas à pas qui expliquent les règles et partagent des conseils, en commençant par le Wordle de Futbol11 et la Grille de Football. D'autres guides sont ajoutés régulièrement.",
+    h5: "Commencez à jouer",
+    p7: "Plongez dans des jeux populaires comme {grid}, {wordle}, {connections} ou {higherLower}, ou parcourez la liste complète sur la {home}.",
+    p8: "Des questions, des commentaires ou des idées de jeux ? Nous serions ravis de vous entendre, rendez-vous sur notre {contact}.",
+    homePage: "page d'accueil",
+    contactPage: "page Contact",
+    updated: "Page mise à jour pour la dernière fois : 9 novembre 2026.",
+  },
+  contact: {
+    metaTitle: "Contact - Futbol11",
+    metaDesc:
+      "Contactez l'équipe de Futbol11. Envoyez vos commentaires, signalez un problème ou suggérez un nouveau jeu quotidien de football.",
+    title: "Contact",
+    intro:
+      "Nous serions ravis de vous entendre, qu'il s'agisse de commentaires, d'un rapport de bug, d'une correction d'une de nos réponses de quiz ou d'une idée pour un tout nouveau jeu.",
+    hEmail: "E-mail",
+    pEmail:
+      "La meilleure façon de nous joindre est par e-mail. Nous lisons tous les messages et cherchons à répondre en quelques jours ouvrés. L'e-mail est notre seul canal de contact, utilisez donc l'adresse ci-dessous pour toutes les demandes, y compris les commentaires, les corrections et les idées de jeux.",
+    hBefore: "Avant d'écrire",
+    pBefore:
+      "De nombreuses questions ont déjà une réponse sur le site. La {faq} couvre les réinitialisations quotidiennes, le jeu sur mobile, les niveaux de difficulté et le score quotidien. Le {blog} explique comment jouer à Wordle et à la Grille de Football pas à pas. Si votre réponse n'y est pas, écrivez-nous et nous vous aiderons.",
+    faqLink: "section FAQ de la page d'accueil",
+    hInclude: "Que faut-il inclure",
+    li1: "Si vous signalez un bug, dites-nous quel jeu, ce qui s'est passé, et quel appareil et navigateur vous avez utilisés.",
+    li2: "Si vous suggérez une correction, indiquez le jeu et la date à laquelle vous avez joué, ainsi que la réponse que vous pensez fausse et pourquoi.",
+    li3: "Si vous proposez un nouveau jeu, décrivez comment il se jouerait en une ou deux phrases, et quel sport ou quelle compétition il couvre.",
+    li4: "Si votre série ou votre score quotidien semble incorrect, dites-nous à quels jeux vous avez joué et à quelles dates.",
+    hWrong: "Signaler une mauvaise réponse",
+    pWrong:
+      "Nos réponses de quiz proviennent des archives du football, mais des erreurs peuvent se glisser. Si vous en repérez une, envoyez le nom du jeu, la date et la bonne réponse avec une source si vous en avez une. Nous vérifions chaque signalement et corrigeons les erreurs confirmées, pour que les joueurs du lendemain reçoivent la bonne réponse.",
+    hElse: "Vous cherchez autre chose ?",
+    pElse: "En savoir plus {about}, consultez notre {privacy} et nos {terms}, ou retournez aux {games}.",
+    aboutLink: "à propos de Futbol11",
+    gamesLink: "jeux",
+    updated: "Page mise à jour pour la dernière fois : 9 novembre 2026.",
+  },
+  privacy: {
+    metaTitle: "Politique de Confidentialité - Futbol11",
+    metaDesc:
+      "Comment Futbol11 traite les données, les cookies et la publicité tierce, y compris l'utilisation des cookies Google AdSense, et comment vous pouvez refuser les publicités personnalisées.",
+    title: "Politique de Confidentialité",
+    intro: "Dernière mise à jour : 9 novembre 2026",
+    pIntro:
+      "Cette Politique de Confidentialité explique comment Futbol11 (\"nous\") collecte, utilise et protège les informations lorsque vous visitez {site} (le \"Site\"). En utilisant le Site, vous acceptez les pratiques décrites ici.",
+    hCollect: "Informations que nous collectons",
+    pCollect1:
+      "Futbol11 ne vous demande pas de créer un compte, et nous ne demandons pas d'informations personnelles telles que votre nom, votre adresse e-mail ou vos coordonnées de paiement pour jouer à nos jeux. Votre progression dans le jeu, votre score quotidien et vos préférences sont enregistrés localement dans votre navigateur en utilisant le stockage local. Les résultats des jeux peuvent aussi être envoyés à notre serveur comme décrit dans la section \"Résultats des jeux, séries et classement\" ci-dessous, en utilisant uniquement un identifiant d'appareil aléatoire et jamais votre nom ni votre e-mail.",
+    pCollect2:
+      "Comme la plupart des sites web, notre hébergeur et nos services tiers peuvent recevoir automatiquement des informations techniques standard telles que votre adresse IP, le type de navigateur, le type d'appareil et les pages que vous visitez. Ces informations sont utilisées de manière agrégée pour assurer la sécurité du Site et comprendre comment il est utilisé.",
+    hResults: "Résultats des jeux, séries et classement",
+    pResults1:
+      "Lorsque vous terminez un jeu, votre navigateur peut envoyer le résultat à notre serveur : le nom du jeu, si vous avez gagné et votre score. Il est envoyé avec un identifiant d'appareil aléatoire créé par votre navigateur, et non avec votre nom, votre adresse e-mail ou un compte. Nous utilisons ces résultats uniquement pour gérer votre série, qui compte les jours consécutifs où vous avez joué, et le classement, qui classe les meilleurs joueurs par victoires et meilleure série.",
+    pResults2:
+      "Le classement affiche des étiquettes anonymes tirées de l'identifiant d'appareil, comme \"Joueur 7F3A1C9E\", jamais votre nom. Si le serveur ne peut pas être atteint, les résultats attendent dans votre navigateur et sont envoyés plus tard. Effacer le stockage du navigateur supprime votre progression locale et réinitialise l'identifiant d'appareil, ce qui démarre une nouvelle série et une nouvelle entrée au classement.",
+    hCookies: "Cookies et stockage local",
+    pCookies:
+      "Les cookies sont de petits fichiers texte placés sur votre appareil. Nous utilisons le stockage local pour mémoriser votre progression dans le jeu. Des partenaires tiers, y compris des fournisseurs de publicité et d'analyse, peuvent aussi définir des cookies comme décrit ci-dessous. Vous pouvez contrôler ou supprimer les cookies via les paramètres de votre navigateur ; les désactiver ne vous empêchera pas de jouer, mais certaines préférences pourraient ne pas être mémorisées entre les visites.",
+    hAds: "Publicité et Google AdSense",
+    pAds:
+      "Nous utilisons des sociétés de publicité tierces, dont Google AdSense, pour diffuser des publicités lorsque vous visitez le Site. Ces partenaires aident à garder Futbol11 gratuit.",
+    li1: "Des fournisseurs tiers, dont Google, utilisent des cookies pour diffuser des publicités en fonction de vos visites précédentes sur ce site et d'autres sites web.",
+    li2: "L'utilisation par Google des cookies publicitaires permet à Google et à ses partenaires de vous diffuser des publicités en fonction de votre visite sur notre Site et/ou d'autres sites sur Internet.",
+    li3: "Vous pouvez refuser la publicité personnalisée en visitant {adsSettings}.",
+    adsSettings: "Paramètres des annonces Google",
+    li4: "Vous pouvez aussi refuser l'utilisation des cookies d'un fournisseur tiers pour la publicité personnalisée en visitant {aboutAds}.",
+    aboutAds: "www.aboutads.info",
+    li5: "Pour plus d'informations sur la façon dont Google utilise les données lorsque vous utilisez les sites ou applications de nos partenaires, consultez {googlePrivacy}.",
+    googlePrivacy: "Règles de confidentialité et conditions d'utilisation de Google",
+    hAnalytics: "Analyse",
+    pAnalytics:
+      "Nous pouvons utiliser des outils d'analyse respectueux de la vie privée pour comprendre l'utilisation agrégée et anonymisée du Site (par exemple, quels jeux sont les plus populaires). Ces outils ne vous identifient pas personnellement.",
+    hChildren: "Confidentialité des enfants",
+    pChildren:
+      "Futbol11 est destiné à un public général et ne s'adresse pas aux enfants de moins de 13 ans. Nous ne collectons pas sciemment d'informations personnelles auprès d'enfants. Si vous pensez qu'un enfant a fourni des informations personnelles, veuillez nous contacter afin que nous puissions les supprimer.",
+    hChoices: "Vos choix",
+    pChoices:
+      "Lors de votre première visite, une bannière de cookies vous permet d'accepter ou de refuser les cookies non essentiels (publicité et analyse). Jusqu'à votre acceptation, ils sont désactivés par défaut via le Mode Consentement de Google. Vous pouvez changer votre décision à tout moment en effaçant le stockage du navigateur de ce Site, ce qui fait réapparaître la bannière. Vous pouvez aussi gérer les cookies via les paramètres de votre navigateur, refuser les publicités personnalisées à l'aide des liens ci-dessus et effacer vos données de jeu enregistrées localement de la même manière.",
+    hThird: "Liens tiers",
+    pThird:
+      "Le Site peut contenir des liens vers d'autres sites web. Nous ne sommes pas responsables des pratiques de confidentialité de ces sites et vous encourageons à lire leurs politiques de confidentialité.",
+    hChanges: "Modifications de cette politique",
+    pChanges:
+      "Nous pouvons mettre à jour cette Politique de Confidentialité de temps en temps. Toute modification sera publiée sur cette page avec une date de \"Dernière mise à jour\" actualisée.",
+    hContact: "Contactez-nous",
+    pContact:
+      "Si vous avez des questions sur cette Politique de Confidentialité, veuillez nous contacter à {email} ou via notre {contact}.",
+    contactPage: "page Contact",
+  },
+  terms: {
+    metaTitle: "Conditions d'Utilisation - Futbol11",
+    metaDesc:
+      "Les conditions d'utilisation des jeux quotidiens gratuits de football de Futbol11, y compris la propriété intellectuelle, les clauses de non-responsabilité et les limitations de responsabilité.",
+    title: "Conditions d'Utilisation",
+    crumb: "Conditions",
+    intro: "Dernière mise à jour : 9 novembre 2026",
+    pIntro:
+      "Bienvenue sur Futbol11. En accédant à ce site web (le \"Site\") ou en l'utilisant, vous acceptez d'être lié par ces Conditions d'Utilisation. Si vous n'êtes pas d'accord avec une partie de ces conditions, veuillez ne pas utiliser le Site.",
+    hUse: "Utilisation du Site",
+    pUse:
+      "Futbol11 vous accorde une licence personnelle, non exclusive et non transférable pour accéder à nos jeux et y jouer pour votre propre divertissement non commercial. Vous acceptez de ne pas utiliser le Site de manière abusive, d'interférer avec son fonctionnement normal, de tenter d'obtenir un accès non autorisé à une partie de celui-ci, ou d'utiliser des systèmes automatisés pour extraire des données ou surcharger nos services.",
+    hFair: "Fair-play",
+    pFair:
+      "Jouez honnêtement. N'utilisez pas de bots, de scripts ou d'autres systèmes automatisés pour jouer, soumettre de faux résultats ou manipuler la série et le classement. Nous pouvons supprimer les résultats qui semblent automatisés ou malhonnêtes, et nous pouvons bloquer l'accès en cas d'abus répété.",
+    hResults: "Résultats des jeux et classements",
+    pResults:
+      "Lorsque vous terminez un jeu, votre résultat peut être enregistré avec un identifiant d'appareil aléatoire afin que votre série et votre position au classement puissent être suivies. Aucun nom, adresse e-mail ou compte n'est impliqué, et le classement n'affiche que des étiquettes de joueur anonymes. Consultez notre {privacy} pour savoir comment ces données sont traitées.",
+    hIp: "Propriété intellectuelle",
+    pIp:
+      "Le Site, ses jeux, son design, ses textes, ses graphiques et ses logos sont la propriété de Futbol11 ou de ses concédants et sont protégés par les lois sur la propriété intellectuelle. Les noms de clubs, de compétitions et de joueurs sont mentionnés à des fins informatives et éditoriales ; toutes les marques associées restent la propriété de leurs propriétaires respectifs, et Futbol11 n'est ni affilié à eux ni soutenu par eux.",
+    hDisclaimer: "Clause de non-responsabilité",
+    pDisclaimer:
+      "Le Site et tout son contenu sont fournis \"tels quels\" et \"selon leur disponibilité\", sans garantie d'aucune sorte, expresse ou implicite. Bien que nous nous efforcions d'assurer l'exactitude de nos faits et quiz de football, nous ne garantissons pas que tout le contenu soit complet, actuel ou exempt d'erreurs. Si vous repérez une mauvaise réponse, veuillez nous en informer via la {contact} afin que nous puissions la vérifier et la corriger.",
+    hLiability: "Limitation de responsabilité",
+    pLiability:
+      "Dans toute la mesure permise par la loi, Futbol11 ne sera pas responsable des dommages indirects, accessoires ou consécutifs découlant de votre utilisation ou de votre incapacité à utiliser le Site.",
+    hThird: "Liens tiers et publicité",
+    pThird:
+      "Le Site peut afficher des publicités et contenir des liens vers des sites web tiers. Nous ne sommes pas responsables du contenu, des produits ou des pratiques d'un tiers. Vos interactions avec des annonceurs ou des sites liés sont uniquement entre vous et ce tiers. Consultez notre {privacy} pour savoir comment les cookies publicitaires sont utilisés.",
+    hChanges: "Modifications de ces conditions",
+    pChanges:
+      "Nous pouvons réviser ces Conditions d'Utilisation à tout moment. La poursuite de l'utilisation du Site après la publication des modifications vaut acceptation des conditions mises à jour.",
+    hContact: "Contactez-nous",
+    pContact: "Des questions sur ces conditions ? Écrivez-nous à {email} ou visitez notre {contact}.",
+    contactPage: "page Contact",
+  },
+  blog: {
+    metaTitle: "Blog Futbol11 - Guides et Conseils sur les Jeux de Football",
+    metaDesc:
+      "Guides et conseils pour les jeux Futbol11 : comment jouer à Wordle, gagner à la Grille de Football, et plus. Casse-tête quotidiens gratuits de football expliqués.",
+    title: "Blog Futbol11",
+    intro:
+      "Guides et conseils pour nos jeux quotidiens de football. Apprenez les règles, adoptez des tactiques gagnantes et tirez plus de chaque casse-tête.",
+    readGuide: "Lire le guide",
+    faqHeading: "Questions Fréquentes",
+    conclusionHeading: "Conclusion",
+    backToGuides: "Retour à tous les guides",
+    published: "Publié le {date}",
+    blogCrumb: "Blog",
+    home: "Accueil",
+  },
+};
