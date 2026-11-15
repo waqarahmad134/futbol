@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { getDailyDriver, findDriver, F1_DRIVERS, F1Driver } from "@/data/formudle-drivers";
 import { useToast } from "@/hooks/use-toast";
+import { useLocalizedStrings, fmt } from "@/i18n/DictionaryContext";
 import { recordDailyResult } from "@/lib/daily-score";
 import { SITE_URL } from "@/lib/site";
 import ShareResultButton from "@/components/ShareResultButton";
@@ -11,7 +12,7 @@ const MAX_GUESSES = 8;
 
 // A numeric cell: exact value is green, otherwise gray with an arrow
 // showing whether the answer is higher (later / more) or lower.
-const NumericCell = ({ guessed, target, label }: { guessed: number | null; target: number | null; label: string }) => {
+const NumericCell = ({ guessed, target, label, noWinYet }: { guessed: number | null; target: number | null; label: string; noWinYet: string }) => {
   const exact = guessed === target;
   const arrow =
     guessed === null || target === null ? null : target > guessed ? <ArrowUp className="w-3 h-3" /> : target < guessed ? <ArrowDown className="w-3 h-3" /> : null;
@@ -23,7 +24,7 @@ const NumericCell = ({ guessed, target, label }: { guessed: number | null; targe
     >
       <div className="text-[10px] uppercase tracking-wide text-muted-foreground">{label}</div>
       <div className="flex items-center justify-center gap-1 font-display text-sm">
-        {guessed === null ? "No win yet" : guessed}
+        {guessed === null ? noWinYet : guessed}
         {arrow}
       </div>
     </div>
@@ -43,6 +44,37 @@ const TextCell = ({ value, match, label }: { value: string; match: boolean; labe
 
 const FormudleGame = () => {
   const { toast } = useToast();
+  const t = useLocalizedStrings("game.formudle", {
+    intro:
+      "Guess the Formula 1 driver. Green means an exact match. Arrows show whether the answer is higher or lower on debut year, titles and first win.",
+    noWinYet: "No win yet",
+    nation: "Nation",
+    team: "Team",
+    debut: "Debut",
+    titles: "Titles",
+    firstWin: "First win",
+    notInListTitle: "Not in the list",
+    notInListDesc: "Pick a driver from the suggestions",
+    alreadyTitle: "Already guessed",
+    alreadyDesc: "Try a different driver",
+    correctTitle: "🎉 Correct!",
+    correctDesc: "You identified {name}!",
+    gameOverTitle: "Game Over",
+    gameOverDesc: "It was {name}",
+    wrongTitle: "❌ Not that driver",
+    wrongDesc: "Check the green cells and arrows for clues",
+    placeholder: "Type a driver name...",
+    guess: "GUESS",
+    winTitle: "You got it!",
+    guessedIn: "Guessed in {n}/{max} tries - {team}, {titles} {titleWord}",
+    titleSingular: "title",
+    titlePlural: "titles",
+    newTomorrow: "New driver tomorrow!",
+    shareSolved: "✅ Solved",
+    shareNotSolved: "❌ Not solved",
+    shareIn: "in {n}/{max} guesses",
+    remaining: "{n} guesses remaining - {total} drivers in the pool",
+  });
   const [driver] = useState<F1Driver>(() => getDailyDriver());
   const [guess, setGuess] = useState("");
   const [guesses, setGuesses] = useState<F1Driver[]>([]);
@@ -89,11 +121,11 @@ const FormudleGame = () => {
   const submitGuess = useCallback(() => {
     const picked = findDriver(guess);
     if (!picked) {
-      toast({ title: "Not in the list", description: "Pick a driver from the suggestions", variant: "destructive" });
+      toast({ title: t.notInListTitle, description: t.notInListDesc, variant: "destructive" });
       return;
     }
     if (guesses.some((g) => g.name === picked.name)) {
-      toast({ title: "Already guessed", description: "Try a different driver", variant: "destructive" });
+      toast({ title: t.alreadyTitle, description: t.alreadyDesc, variant: "destructive" });
       return;
     }
 
@@ -104,14 +136,14 @@ const FormudleGame = () => {
     if (picked.name === driver.name) {
       setGameOver(true);
       setWon(true);
-      toast({ title: "🎉 Correct!", description: `You identified ${driver.name}!` });
+      toast({ title: t.correctTitle, description: fmt(t.correctDesc, { name: driver.name }) });
     } else if (newGuesses.length >= MAX_GUESSES) {
       setGameOver(true);
-      toast({ title: "Game Over", description: `It was ${driver.name}` });
+      toast({ title: t.gameOverTitle, description: fmt(t.gameOverDesc, { name: driver.name }) });
     } else {
-      toast({ title: "❌ Not that driver", description: "Check the green cells and arrows for clues", variant: "destructive" });
+      toast({ title: t.wrongTitle, description: t.wrongDesc, variant: "destructive" });
     }
-  }, [guess, guesses, driver, toast]);
+  }, [guess, guesses, driver, toast, t]);
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "Enter" && !gameOver) submitGuess();
@@ -120,8 +152,7 @@ const FormudleGame = () => {
   return (
     <div className="flex flex-col items-center gap-6">
       <p className="text-center text-sm text-muted-foreground max-w-md">
-        Guess the Formula 1 driver. Green means an exact match. Arrows show whether the answer is
-        higher or lower on debut year, titles and first win.
+        {t.intro}
       </p>
 
       {/* Previous guesses */}
@@ -142,11 +173,11 @@ const FormudleGame = () => {
                   <span className="ml-auto text-xs text-muted-foreground">#{i + 1}</span>
                 </div>
                 <div className="flex gap-1.5">
-                  <TextCell value={g.nationality} match={g.nationality === driver.nationality} label="Nation" />
-                  <TextCell value={g.team} match={g.team === driver.team} label="Team" />
-                  <NumericCell guessed={g.debut} target={driver.debut} label="Debut" />
-                  <NumericCell guessed={g.titles} target={driver.titles} label="Titles" />
-                  <NumericCell guessed={g.firstWin} target={driver.firstWin} label="First win" />
+                  <TextCell value={g.nationality} match={g.nationality === driver.nationality} label={t.nation} />
+                  <TextCell value={g.team} match={g.team === driver.team} label={t.team} />
+                  <NumericCell guessed={g.debut} target={driver.debut} label={t.debut} noWinYet={t.noWinYet} />
+                  <NumericCell guessed={g.titles} target={driver.titles} label={t.titles} noWinYet={t.noWinYet} />
+                  <NumericCell guessed={g.firstWin} target={driver.firstWin} label={t.firstWin} noWinYet={t.noWinYet} />
                 </div>
               </motion.div>
             );
@@ -162,7 +193,7 @@ const FormudleGame = () => {
             value={guess}
             onChange={(e) => setGuess(e.target.value)}
             onKeyDown={handleKeyDown}
-            placeholder="Type a driver name..."
+            placeholder={t.placeholder}
             list="formudle-drivers"
             className="flex-1 rounded-lg border border-border bg-card px-4 py-3 text-foreground placeholder:text-muted-foreground text-sm font-body focus:outline-none focus:ring-2 focus:ring-primary/50"
             autoFocus
@@ -177,7 +208,7 @@ const FormudleGame = () => {
             disabled={!guess.trim()}
             className="px-5 py-3 rounded-lg bg-primary text-primary-foreground font-display text-sm hover:bg-primary/90 transition-colors disabled:opacity-50"
           >
-            GUESS
+            {t.guess}
           </button>
         </div>
       ) : (
@@ -191,26 +222,25 @@ const FormudleGame = () => {
               <>
                 <div className="flex items-center justify-center gap-2 text-success">
                   <Trophy className="w-5 h-5" />
-                  <span className="font-display text-lg">You got it!</span>
+                  <span className="font-display text-lg">{t.winTitle}</span>
                 </div>
                 <p className="text-foreground font-display text-xl">{driver.name}</p>
                 <p className="text-muted-foreground text-sm">
-                  Guessed in {guesses.length}/{MAX_GUESSES} tries - {driver.team}, {driver.titles}{" "}
-                  {driver.titles === 1 ? "title" : "titles"}
+                  {fmt(t.guessedIn, { n: guesses.length, max: MAX_GUESSES, team: driver.team, titles: driver.titles, titleWord: driver.titles === 1 ? t.titleSingular : t.titlePlural })}
                 </p>
               </>
             ) : (
               <>
-                <p className="text-destructive font-display text-lg">Game Over</p>
+                <p className="text-destructive font-display text-lg">{t.gameOverTitle}</p>
                 <p className="text-foreground font-display text-xl">{driver.name}</p>
                 <p className="text-muted-foreground text-sm">{driver.funFact}</p>
               </>
             )}
             <p className="text-muted-foreground text-xs flex items-center justify-center gap-1">
-              <RotateCcw className="w-3 h-3" /> New driver tomorrow!
+              <RotateCcw className="w-3 h-3" /> {t.newTomorrow}
             </p>
             <ShareResultButton
-              text={`Formudle\n${won ? "✅ Solved" : "❌ Not solved"} in ${guesses.length}/${MAX_GUESSES} guesses\nPlay: ${SITE_URL}/game/formudle`}
+              text={`Formudle\n${won ? t.shareSolved : t.shareNotSolved} ${fmt(t.shareIn, { n: guesses.length, max: MAX_GUESSES })}\nPlay: ${SITE_URL}/game/formudle`}
             />
           </motion.div>
         </AnimatePresence>
@@ -219,7 +249,7 @@ const FormudleGame = () => {
       {/* Remaining guesses */}
       {!gameOver && (
         <p className="text-xs text-muted-foreground">
-          {MAX_GUESSES - guesses.length} guesses remaining - {F1_DRIVERS.length} drivers in the pool
+          {fmt(t.remaining, { n: MAX_GUESSES - guesses.length, total: F1_DRIVERS.length })}
         </p>
       )}
     </div>

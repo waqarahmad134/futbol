@@ -7,6 +7,7 @@ import { SITE_URL } from "@/lib/site";
 import ShareResultButton from "@/components/ShareResultButton";
 import { getDailyRounds, ROUNDS_PER_DAY, ImpostorRound } from "@/data/impostor-rounds";
 import { Progress } from "@/components/ui/progress";
+import { useLocalizedStrings, fmt } from "@/i18n/DictionaryContext";
 
 const STORAGE_KEY = "f11-impostor-state";
 
@@ -20,6 +21,20 @@ interface SavedState {
 
 const ImpostorGame = () => {
   const { toast } = useToast();
+  const t = useLocalizedStrings("game.impostor", {
+    spottedTitle: "✅ Spotted!",
+    wrongTitle: "❌ Wrong",
+    gradeDetective: "🕵️ Detective",
+    gradeSharpEye: "👀 Sharp eye",
+    gradeDecent: "🤔 Decent",
+    gradeStudyUp: "📚 Study up",
+    newTomorrow: "New rounds tomorrow!",
+    shareSpotted: "{n}/{max} impostors spotted",
+    roundLabel: "Round {n}/{max}",
+    scoreLabel: "Score: {n}",
+    traitPrompt: "Three share this trait, one is the impostor",
+    impostorLabel: "Impostor: {name}",
+  });
   const rounds = useMemo<ImpostorRound[]>(() => getDailyRounds(), []);
   const [index, setIndex] = useState(0);
   const [score, setScore] = useState(0);
@@ -73,7 +88,7 @@ const ImpostorGame = () => {
     setScore(newScore);
 
     toast({
-      title: correct ? "✅ Spotted!" : "❌ Wrong",
+      title: correct ? t.spottedTitle : t.wrongTitle,
       description: round.explanation,
       variant: correct ? "default" : "destructive",
     });
@@ -93,7 +108,7 @@ const ImpostorGame = () => {
 
   if (finished) {
     const pct = Math.round((score / ROUNDS_PER_DAY) * 100);
-    const grade = pct >= 80 ? "🕵️ Detective" : pct >= 60 ? "👀 Sharp eye" : pct >= 40 ? "🤔 Decent" : "📚 Study up";
+    const grade = pct >= 80 ? t.gradeDetective : pct >= 60 ? t.gradeSharpEye : pct >= 40 ? t.gradeDecent : t.gradeStudyUp;
     return (
       <motion.div
         initial={{ opacity: 0 }}
@@ -126,17 +141,17 @@ const ImpostorGame = () => {
                   )}
                   <span className="text-foreground">{r.trait}</span>
                 </div>
-                <span className="text-muted-foreground">Impostor: {r.players[r.impostorIndex]}</span>
+                <span className="text-muted-foreground">{fmt(t.impostorLabel, { name: r.players[r.impostorIndex] })}</span>
               </div>
             );
           })}
         </div>
         <p className="text-xs text-muted-foreground flex items-center gap-1">
-          <RotateCcw className="w-3 h-3" /> New rounds tomorrow!
+          <RotateCcw className="w-3 h-3" /> {t.newTomorrow}
         </p>
         <div className="mt-2 flex justify-center">
           <ShareResultButton
-            text={`Futbol11 Impostor\n${score}/${ROUNDS_PER_DAY} impostors spotted\nPlay: ${SITE_URL}/game/futbol11-impostor`}
+            text={`Futbol11 Impostor\n${fmt(t.shareSpotted, { n: score, max: ROUNDS_PER_DAY })}\nPlay: ${SITE_URL}/game/futbol11-impostor`}
           />
         </div>
       </motion.div>
@@ -147,8 +162,8 @@ const ImpostorGame = () => {
     <div className="flex flex-col items-center gap-5">
       <div className="w-full max-w-md space-y-2">
         <div className="flex items-center justify-between text-xs text-muted-foreground">
-          <span className="flex items-center gap-1"><UserSearch className="w-3 h-3" /> Round {index + 1}/{ROUNDS_PER_DAY}</span>
-          <span className="flex items-center gap-1"><Trophy className="w-3 h-3 text-primary" /> Score: {score}</span>
+          <span className="flex items-center gap-1"><UserSearch className="w-3 h-3" /> {fmt(t.roundLabel, { n: index + 1, max: ROUNDS_PER_DAY })}</span>
+          <span className="flex items-center gap-1"><Trophy className="w-3 h-3 text-primary" /> {fmt(t.scoreLabel, { n: score })}</span>
         </div>
         <Progress value={(index / ROUNDS_PER_DAY) * 100} className="h-2" />
       </div>
@@ -162,7 +177,7 @@ const ImpostorGame = () => {
           className="w-full max-w-md"
         >
           <div className="rounded-xl border border-border bg-muted/20 p-4 mb-4 text-center">
-            <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">Three share this trait, one is the impostor</p>
+            <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">{t.traitPrompt}</p>
             <p className="font-display text-foreground">{round.trait}</p>
           </div>
 

@@ -6,6 +6,7 @@ import { recordDailyResult } from "@/lib/daily-score";
 import { SITE_URL } from "@/lib/site";
 import ShareResultButton from "@/components/ShareResultButton";
 import { BINGO_SETS, getDailyPlayers, BingoPlayer } from "@/data/bingo-data";
+import { useLocalizedStrings, fmt } from "@/i18n/DictionaryContext";
 
 type SetKey = keyof typeof BINGO_SETS;
 
@@ -43,6 +44,23 @@ const SLUG_BY_SET: Record<SetKey, string> = {
 
 const BingoGame = ({ setKey, storageKey }: BingoGameProps) => {
   const { toast } = useToast();
+  const t = useLocalizedStrings("game.bingo", {
+    markedTitle: "✅ Marked",
+    markedDesc: "{player} matches: {label}",
+    noMatchTitle: "❌ Doesn't match",
+    noMatchDesc: "{player} doesn't fit \"{label}\"",
+    bingoTitle: "BINGO!",
+    wonInOne: "Won in {n} reveal",
+    wonInOther: "Won in {n} reveals",
+    noBingo: "No bingo this time",
+    revealCounter: "Reveal {n}/{m}",
+    nextPlayer: "Next player",
+    newTomorrow: "New bingo card tomorrow!",
+    shareWon: "✅ BINGO!",
+    shareLost: "❌ No bingo",
+    shareInOne: "in {n} reveal",
+    shareInOther: "in {n} reveals",
+  });
   const set = BINGO_SETS[setKey];
   const players = useMemo<BingoPlayer[]>(() => getDailyPlayers(set, 8), [set]);
 
@@ -104,7 +122,7 @@ const BingoGame = ({ setKey, storageKey }: BingoGameProps) => {
       newMarked[i] = true;
       setMarked(newMarked);
       setPicksThisPlayer((s) => new Set(s).add(i));
-      toast({ title: "✅ Marked", description: `${player.name} matches: ${set.card[i].label}` });
+      toast({ title: t.markedTitle, description: fmt(t.markedDesc, { player: player.name, label: set.card[i].label }) });
       if (checkWin(newMarked)) {
         setFinished(true);
         setWin(true);
@@ -114,8 +132,8 @@ const BingoGame = ({ setKey, storageKey }: BingoGameProps) => {
     } else {
       setPicksThisPlayer((s) => new Set(s).add(i));
       toast({
-        title: "❌ Doesn't match",
-        description: `${player.name} doesn't fit "${set.card[i].label}"`,
+        title: t.noMatchTitle,
+        description: fmt(t.noMatchDesc, { player: player.name, label: set.card[i].label }),
         variant: "destructive",
       });
     }
@@ -166,18 +184,18 @@ const BingoGame = ({ setKey, storageKey }: BingoGameProps) => {
           win ? (
             <div className="flex flex-col items-center gap-2 text-success">
               <Trophy className="w-6 h-6" />
-              <span className="font-display text-lg">BINGO!</span>
+              <span className="font-display text-lg">{t.bingoTitle}</span>
               <p className="text-xs text-muted-foreground">
-                Won in {revealedIdx + 1} reveal{revealedIdx === 0 ? "" : "s"}
+                {fmt(revealedIdx === 0 ? t.wonInOne : t.wonInOther, { n: revealedIdx + 1 })}
               </p>
             </div>
           ) : (
-            <p className="text-destructive font-display">No bingo this time</p>
+            <p className="text-destructive font-display">{t.noBingo}</p>
           )
         ) : (
           <>
             <p className="text-xs text-muted-foreground uppercase tracking-wider mb-1">
-              Reveal {revealedIdx + 1}/{players.length}
+              {fmt(t.revealCounter, { n: revealedIdx + 1, m: players.length })}
             </p>
             <p className="font-display text-foreground text-lg">{player?.name}</p>
             <p className="text-xs text-muted-foreground">
@@ -192,7 +210,7 @@ const BingoGame = ({ setKey, storageKey }: BingoGameProps) => {
           onClick={nextPlayer}
           className="inline-flex items-center gap-2 rounded-lg bg-primary text-primary-foreground px-4 py-2 text-sm font-display hover:bg-primary/90"
         >
-          Next player <ArrowRight className="w-4 h-4" />
+          {t.nextPlayer} <ArrowRight className="w-4 h-4" />
         </button>
       )}
 
@@ -200,10 +218,10 @@ const BingoGame = ({ setKey, storageKey }: BingoGameProps) => {
         {finished && (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="flex flex-col items-center gap-2">
             <p className="text-xs text-muted-foreground flex items-center gap-1">
-              <RotateCcw className="w-3 h-3" /> New bingo card tomorrow!
+              <RotateCcw className="w-3 h-3" /> {t.newTomorrow}
             </p>
             <ShareResultButton
-              text={`Futbol11 Bingo\n${win ? "✅ BINGO!" : "❌ No bingo"} in ${revealedIdx + 1} reveal${revealedIdx === 0 ? "" : "s"}\nPlay: ${SITE_URL}/game/${SLUG_BY_SET[setKey]}`}
+              text={`Futbol11 Bingo\n${win ? t.shareWon : t.shareLost} ${fmt(revealedIdx === 0 ? t.shareInOne : t.shareInOther, { n: revealedIdx + 1 })}\nPlay: ${SITE_URL}/game/${SLUG_BY_SET[setKey]}`}
             />
           </motion.div>
         )}

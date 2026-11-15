@@ -10,6 +10,7 @@ import {
   shuffleItemsForPuzzle,
   ConnectionsGroup,
 } from "@/data/connections-puzzles";
+import { useLocalizedStrings, fmt } from "@/i18n/DictionaryContext";
 
 const STORAGE_KEY = "f11-connections-state";
 const MAX_MISTAKES = 4;
@@ -31,6 +32,24 @@ const difficultyClasses: Record<number, string> = {
 
 const ConnectionsGame = () => {
   const { toast } = useToast();
+  const t = useLocalizedStrings("game.connections", {
+    introOne: "Group the 16 football items into 4 categories of 4. You have {n} mistake left.",
+    introOther: "Group the 16 football items into 4 categories of 4. You have {n} mistakes left.",
+    groupFoundTitle: "🎉 Group found!",
+    oneAwayTitle: "❌ One away",
+    oneAwayDesc: "Three of those share a connection",
+    notGroupTitle: "❌ Not a group",
+    notGroupDesc: "Try a different combination",
+    mistakesLabel: "Mistakes:",
+    shuffle: "Shuffle",
+    deselectAll: "Deselect all",
+    submit: "Submit ({n}/4)",
+    allSolved: "All 4 groups solved!",
+    outOfMistakes: "Out of mistakes",
+    newTomorrow: "New connections tomorrow!",
+    shareMistakes: "Mistakes: {n}/{max}",
+    tapHint: "Tap 4 items, then Submit",
+  });
   const puzzle = useMemo(() => getDailyConnections(), []);
   const [remaining, setRemaining] = useState<string[]>(() => shuffleItemsForPuzzle(puzzle));
   const [selected, setSelected] = useState<string[]>([]);
@@ -90,7 +109,7 @@ const ConnectionsGame = () => {
       setSolved(newSolved);
       setRemaining(newRemaining);
       setSelected([]);
-      toast({ title: "🎉 Group found!", description: matchingGroup.category });
+      toast({ title: t.groupFoundTitle, description: matchingGroup.category });
       if (newSolved.length === 4) {
         setFinished(true);
       }
@@ -102,8 +121,8 @@ const ConnectionsGame = () => {
     const newMistakes = mistakes + 1;
     setMistakes(newMistakes);
     toast({
-      title: oneAway ? "❌ One away" : "❌ Not a group",
-      description: oneAway ? "Three of those share a connection" : "Try a different combination",
+      title: oneAway ? t.oneAwayTitle : t.notGroupTitle,
+      description: oneAway ? t.oneAwayDesc : t.notGroupDesc,
       variant: "destructive",
     });
     setSelected([]);
@@ -127,7 +146,7 @@ const ConnectionsGame = () => {
   return (
     <div className="flex flex-col items-center gap-5">
       <p className="text-center text-sm text-muted-foreground max-w-md">
-        Group the 16 football items into 4 categories of 4. You have {MAX_MISTAKES - mistakes} mistake{MAX_MISTAKES - mistakes === 1 ? "" : "s"} left.
+        {fmt(MAX_MISTAKES - mistakes === 1 ? t.introOne : t.introOther, { n: MAX_MISTAKES - mistakes })}
       </p>
 
       {/* Solved groups */}
@@ -184,7 +203,7 @@ const ConnectionsGame = () => {
       {!finished && (
         <div className="flex flex-col items-center gap-3">
           <div className="flex items-center gap-2 text-xs">
-            <span className="text-muted-foreground">Mistakes:</span>
+            <span className="text-muted-foreground">{t.mistakesLabel}</span>
             <div className="flex gap-1">
               {mistakeDots.map((m, i) => (
                 <span
@@ -199,21 +218,21 @@ const ConnectionsGame = () => {
               onClick={shuffle}
               className="inline-flex items-center gap-1.5 rounded-lg border border-border bg-muted/30 px-3 py-1.5 text-xs hover:bg-muted/50"
             >
-              <Shuffle className="w-3.5 h-3.5" /> Shuffle
+              <Shuffle className="w-3.5 h-3.5" /> {t.shuffle}
             </button>
             <button
               onClick={() => setSelected([])}
               disabled={!selected.length}
               className="inline-flex items-center gap-1.5 rounded-lg border border-border bg-muted/30 px-3 py-1.5 text-xs hover:bg-muted/50 disabled:opacity-50"
             >
-              Deselect all
+              {t.deselectAll}
             </button>
             <button
               onClick={submit}
               disabled={selected.length !== 4}
               className="inline-flex items-center gap-1.5 rounded-lg bg-primary text-primary-foreground px-4 py-1.5 text-xs font-display hover:bg-primary/90 disabled:opacity-40"
             >
-              Submit ({selected.length}/4)
+              {fmt(t.submit, { n: selected.length })}
             </button>
           </div>
         </div>
@@ -224,17 +243,17 @@ const ConnectionsGame = () => {
           {solved.length === 4 ? (
             <div className="flex items-center justify-center gap-2 text-success">
               <Trophy className="w-5 h-5" />
-              <span className="font-display">All 4 groups solved!</span>
+              <span className="font-display">{t.allSolved}</span>
             </div>
           ) : (
-            <p className="text-destructive font-display">Out of mistakes</p>
+            <p className="text-destructive font-display">{t.outOfMistakes}</p>
           )}
           <p className="text-xs text-muted-foreground flex items-center justify-center gap-1">
-            <RotateCcw className="w-3 h-3" /> New connections tomorrow!
+            <RotateCcw className="w-3 h-3" /> {t.newTomorrow}
           </p>
           <div className="mt-2 flex justify-center">
             <ShareResultButton
-              text={`Futbol11 Connections\n${puzzle.groups.map((g) => (solved.some((s) => s.category === g.category) ? ({ 1: "🟩", 2: "🟨", 3: "🟦", 4: "🟪" } as Record<number, string>)[g.difficulty].repeat(4) : "⬜⬜⬜⬜")).join("\n")}\nMistakes: ${mistakes}/${MAX_MISTAKES}\nPlay: ${SITE_URL}/game/futbol11-connections`}
+              text={`Futbol11 Connections\n${puzzle.groups.map((g) => (solved.some((s) => s.category === g.category) ? ({ 1: "🟩", 2: "🟨", 3: "🟦", 4: "🟪" } as Record<number, string>)[g.difficulty].repeat(4) : "⬜⬜⬜⬜")).join("\n")}\n${fmt(t.shareMistakes, { n: mistakes, max: MAX_MISTAKES })}\nPlay: ${SITE_URL}/game/futbol11-connections`}
             />
           </div>
         </motion.div>
@@ -242,7 +261,7 @@ const ConnectionsGame = () => {
 
       {!finished && solved.length === 0 && (
         <p className="text-xs text-muted-foreground flex items-center gap-1">
-          <Check className="w-3 h-3" /> Tap 4 items, then Submit
+          <Check className="w-3 h-3" /> {t.tapHint}
         </p>
       )}
     </div>

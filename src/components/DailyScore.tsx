@@ -3,8 +3,15 @@
 import { CheckCircle, XCircle, Flame } from "lucide-react";
 import { useState, useEffect } from "react";
 import { getServerStreak } from "@/lib/backend";
+import { useLocalizedStrings, useLocale } from "@/i18n/DictionaryContext";
+import { fmt } from "@/i18n/dictionary";
 
 const DailyScore = () => {
+  const locale = useLocale();
+  const t = useLocalizedStrings("dailyScore", {
+    title: "Daily Score",
+    streak: "{count} day streak",
+  });
   const [score, setScore] = useState({ correct: 0, wrong: 0 });
   const [streak, setStreak] = useState<number | null>(null);
 
@@ -26,7 +33,7 @@ const DailyScore = () => {
 
   return (
     <div className="flex flex-col items-center gap-2 rounded-xl border border-border bg-card p-5">
-      <span className="text-sm font-body text-muted-foreground tracking-wide uppercase">Daily Score</span>
+      <span className="text-sm font-body text-muted-foreground tracking-wide uppercase">{t.title}</span>
       <div className="flex items-center gap-3 text-2xl font-display">
         <CheckCircle className="w-6 h-6 text-success" />
         <span className="text-foreground">{score.correct}</span>
@@ -37,7 +44,7 @@ const DailyScore = () => {
       {streak !== null && (
         <span className="flex items-center gap-1 text-sm font-body text-muted-foreground">
           <Flame className="w-4 h-4 text-foreground" />
-          {streak} day streak
+          {fmt(t.streak, { count: String(streak) })}
         </span>
       )}
     </div>

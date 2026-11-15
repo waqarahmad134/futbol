@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { getDailyQuestions, TriviaQuestion } from "@/data/trivia-questions";
 import { useToast } from "@/hooks/use-toast";
+import { useLocalizedStrings, fmt } from "@/i18n/DictionaryContext";
 import { recordDailyResult } from "@/lib/daily-score";
 import { SITE_URL } from "@/lib/site";
 import ShareResultButton from "@/components/ShareResultButton";
@@ -39,6 +40,20 @@ const categoryEmoji: Record<string, string> = {
 };
 
 const TriviaQuizGame = () => {
+  const t = useLocalizedStrings("game.trivia", {
+    correct: "✅ Correct!",
+    wrong: "❌ Wrong!",
+    gradeLegend: "🏆 Legend!",
+    gradeGreat: "⭐ Great!",
+    gradeDecent: "👍 Decent",
+    gradeLearning: "📚 Keep Learning",
+    percentCorrect: "{n}% correct",
+    reviewAnswers: "Review Your Answers",
+    newQuestionsTomorrow: "New questions tomorrow!",
+    questionOf: "Question {n}/{total}",
+    score: "Score: {n}",
+    sharePlay: "Play:",
+  });
   const { toast } = useToast();
   const [questions] = useState<TriviaQuestion[]>(() => getDailyQuestions());
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -94,9 +109,9 @@ const TriviaQuizGame = () => {
     setAnswers(newAnswers);
 
     if (isCorrect) {
-      toast({ title: "✅ Correct!", description: q.explanation });
+      toast({ title: t.correct, description: q.explanation });
     } else {
-      toast({ title: "❌ Wrong!", description: q.explanation, variant: "destructive" });
+      toast({ title: t.wrong, description: q.explanation, variant: "destructive" });
     }
 
     // Auto-advance after delay
@@ -131,7 +146,7 @@ const TriviaQuizGame = () => {
 
   if (gameOver) {
     const percentage = Math.round((score / TOTAL_QUESTIONS) * 100);
-    const grade = percentage >= 90 ? "🏆 Legend!" : percentage >= 70 ? "⭐ Great!" : percentage >= 50 ? "👍 Decent" : "📚 Keep Learning";
+    const grade = percentage >= 90 ? t.gradeLegend : percentage >= 70 ? t.gradeGreat : percentage >= 50 ? t.gradeDecent : t.gradeLearning;
 
     return (
       <div className="flex flex-col items-center gap-6">
@@ -139,7 +154,7 @@ const TriviaQuizGame = () => {
           <span className="text-6xl block">{percentage >= 70 ? "🎉" : "💪"}</span>
           <h3 className="font-display text-2xl text-foreground">{grade}</h3>
           <p className="text-foreground font-display text-4xl">{score}/{TOTAL_QUESTIONS}</p>
-          <p className="text-muted-foreground text-sm">{percentage}% correct</p>
+          <p className="text-muted-foreground text-sm">{fmt(t.percentCorrect, { n: percentage })}</p>
 
           <div className="w-full max-w-sm mx-auto">
             <Progress value={percentage} className="h-3" />
@@ -147,7 +162,7 @@ const TriviaQuizGame = () => {
 
           {/* Answer review */}
           <div className="w-full max-w-md space-y-2 mt-6">
-            <h4 className="font-display text-sm text-muted-foreground">Review Your Answers</h4>
+            <h4 className="font-display text-sm text-muted-foreground">{t.reviewAnswers}</h4>
             {questions.map((q, i) => {
               const userAnswer = answers[i];
               const isCorrect = userAnswer === q.correctIndex;
@@ -162,11 +177,11 @@ const TriviaQuizGame = () => {
           </div>
 
           <p className="text-muted-foreground text-xs flex items-center justify-center gap-1 mt-4">
-            <RotateCcw className="w-3 h-3" /> New questions tomorrow!
+            <RotateCcw className="w-3 h-3" /> {t.newQuestionsTomorrow}
           </p>
           <div className="mt-2 flex justify-center">
             <ShareResultButton
-              text={`Futbol11 Pyramid\n${score}/${TOTAL_QUESTIONS} (${percentage}% correct)\nPlay: ${SITE_URL}/game/futbol11-pyramid`}
+              text={`Futbol11 Pyramid\n${score}/${TOTAL_QUESTIONS} (${fmt(t.percentCorrect, { n: percentage })})\n${t.sharePlay} ${SITE_URL}/game/futbol11-pyramid`}
             />
           </div>
         </motion.div>
@@ -179,8 +194,8 @@ const TriviaQuizGame = () => {
       {/* Progress bar */}
       <div className="w-full max-w-md space-y-2">
         <div className="flex items-center justify-between text-xs text-muted-foreground">
-          <span className="flex items-center gap-1"><BarChart3 className="w-3 h-3" /> Question {currentIndex + 1}/{TOTAL_QUESTIONS}</span>
-          <span className="flex items-center gap-1"><Trophy className="w-3 h-3 text-primary" /> Score: {score}</span>
+          <span className="flex items-center gap-1"><BarChart3 className="w-3 h-3" /> {fmt(t.questionOf, { n: currentIndex + 1, total: TOTAL_QUESTIONS })}</span>
+          <span className="flex items-center gap-1"><Trophy className="w-3 h-3 text-primary" /> {fmt(t.score, { n: score })}</span>
         </div>
         <Progress value={progress} className="h-2" />
       </div>

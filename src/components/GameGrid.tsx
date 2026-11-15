@@ -1,13 +1,21 @@
 import GameCard from "./GameCard";
 import { games } from "@/data/games";
+import type { Locale } from "@/i18n/locales";
+import { localizeStrings as ls } from "@/i18n/dictionary";
 
-const GameGrid = () => {
+// Server component: the locale comes from the page as a prop.
+const GameGrid = ({ locale = "en" }: { locale?: Locale }) => {
+  const t = ls(locale, "home", {
+    gridTitle: "Select a Football Game",
+    gridDesc:
+      "Choose from 23 unique daily football challenges. New puzzles every day at midnight, test your knowledge of clubs, players, tactics, and football history.",
+  });
   return (
     <section id="games" className="py-12">
       <div className="container">
-        <h2 className="font-display text-xl text-center text-foreground mb-2">Select a Football Game</h2>
+        <h2 className="font-display text-xl text-center text-foreground mb-2">{t.gridTitle}</h2>
         <p className="text-center text-muted-foreground font-body text-sm mb-8 max-w-2xl mx-auto">
-          Choose from 23 unique daily football challenges. New puzzles every day at midnight, test your knowledge of clubs, players, tactics, and football history.
+          {t.gridDesc}
         </p>
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
           {games.map((game, i) => (

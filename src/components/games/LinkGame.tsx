@@ -7,6 +7,7 @@ import { SITE_URL } from "@/lib/site";
 import ShareResultButton from "@/components/ShareResultButton";
 import { getDailyLink, LinkPuzzle } from "@/data/link-puzzles";
 import { normaliseName } from "@/data/lineups";
+import { useLocalizedStrings, fmt } from "@/i18n/DictionaryContext";
 
 const STORAGE_KEY = "f11-link-state";
 const MAX_LINKS = 4;
@@ -27,6 +28,31 @@ interface ChainStep {
 
 const LinkGame = () => {
   const { toast } = useToast();
+  const t = useLocalizedStrings("game.link", {
+    unknownTitle: "❌ Unknown player",
+    unknownDesc: "Try a different connection",
+    noOverlapTitle: "❌ No club overlap",
+    noOverlapDesc: "{player} didn't play with {other}",
+    chainCompleteTitle: "🎉 Chain complete!",
+    chainCompleteDesc: "{player} → {end} via {club}",
+    outOfLinksTitle: "Out of links",
+    outOfLinksDesc: "Couldn't reach {end} in {n} steps",
+    linkedTitle: "🔗 Linked via {club}",
+    linkedDesc: "Now connect {player} → {end}",
+    viaClub: "via {club}",
+    placeholder: "Name a teammate of {name}...",
+    linkButton: "LINK",
+    linksUsed: "Links used: {n}/{m}",
+    wrongTries: "Wrong tries: {n}",
+    revealChain: "Reveal example chain",
+    chainSolved: "Chain solved!",
+    exampleChain: "Example chain:",
+    newTomorrow: "New link tomorrow!",
+    shareSolved: "✅ Chain complete",
+    shareFailed: "❌ Out of links",
+    shareInOne: "in {n} link",
+    shareInOther: "in {n} links",
+  });
   const puzzle = useMemo(() => getDailyLink(), []);
   const [draft, setDraft] = useState("");
   const [chain, setChain] = useState<ChainStep[]>([]);
@@ -84,7 +110,7 @@ const LinkGame = () => {
     if (!intermediate) {
       setFailedTries((f) => f + 1);
       setDraft("");
-      toast({ title: "❌ Unknown player", description: "Try a different connection", variant: "destructive" });
+      toast({ title: t.unknownTitle, description: t.unknownDesc, variant: "destructive" });
       return;
     }
 
@@ -92,7 +118,7 @@ const LinkGame = () => {
     if (!sharedClub) {
       setFailedTries((f) => f + 1);
       setDraft("");
-      toast({ title: "❌ No club overlap", description: `${value} didn't play with ${chain.length === 0 ? puzzle.start : chain[chain.length - 1].name}`, variant: "destructive" });
+      toast({ title: t.noOverlapTitle, description: fmt(t.noOverlapDesc, { player: value, other: chain.length === 0 ? puzzle.start : chain[chain.length - 1].name }), variant: "destructive" });
       return;
     }
 
@@ -107,18 +133,18 @@ const LinkGame = () => {
     if (finalShared) {
       setWon(true);
       setFinished(true);
-      toast({ title: "🎉 Chain complete!", description: `${intermediate.name} → ${puzzle.end} via ${finalShared}` });
+      toast({ title: t.chainCompleteTitle, description: fmt(t.chainCompleteDesc, { player: intermediate.name, end: puzzle.end, club: finalShared }) });
       return;
     }
 
     if (newChain.length >= MAX_LINKS) {
       setFinished(true);
-      toast({ title: "Out of links", description: `Couldn't reach ${puzzle.end} in ${MAX_LINKS} steps`, variant: "destructive" });
+      toast({ title: t.outOfLinksTitle, description: fmt(t.outOfLinksDesc, { end: puzzle.end, n: MAX_LINKS }), variant: "destructive" });
       return;
     }
 
-    toast({ title: `🔗 Linked via ${sharedClub}`, description: `Now connect ${intermediate.name} → ${puzzle.end}` });
-  }, [draft, finished, puzzle, chain, previousClubs, toast]);
+    toast({ title: fmt(t.linkedTitle, { club: sharedClub }), description: fmt(t.linkedDesc, { player: intermediate.name, end: puzzle.end }) });
+  }, [draft, finished, puzzle, chain, previousClubs, toast, t]);
 
   const giveUp = () => {
     setRevealed(true);
@@ -145,7 +171,7 @@ const LinkGame = () => {
           >
             <ArrowRight className="w-4 h-4 text-success" />
             <span className="text-foreground font-medium">{step.name}</span>
-            <span className="text-xs text-muted-foreground ml-auto">via {step.bridgedClub}</span>
+            <span className="text-xs text-muted-foreground ml-auto">{fmt(t.viaClub, { club: step.bridgedClub })}</span>
           </motion.div>
         ))}
       </div>
@@ -157,7 +183,7 @@ const LinkGame = () => {
             value={draft}
             onChange={(e) => setDraft(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && submit()}
-            placeholder={`Name a teammate of ${chain.length === 0 ? puzzle.start : chain[chain.length - 1].name}...`}
+            placeholder={fmt(t.placeholder, { name: chain.length === 0 ? puzzle.start : chain[chain.length - 1].name })}
             className="flex-1 rounded-lg border border-border bg-card px-4 py-2.5 text-foreground placeholder:text-muted-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/50"
             autoFocus
           />
@@ -166,15 +192,15 @@ const LinkGame = () => {
             disabled={!draft.trim()}
             className="px-4 py-2 rounded-lg bg-primary text-primary-foreground font-display text-sm hover:bg-primary/90 transition-colors disabled:opacity-50"
           >
-            LINK
+            {t.linkButton}
           </button>
         </div>
       )}
 
       <div className="flex items-center gap-3 text-xs text-muted-foreground">
-        <span>Links used: {chain.length}/{MAX_LINKS}</span>
+        <span>{fmt(t.linksUsed, { n: chain.length, m: MAX_LINKS })}</span>
         <span>•</span>
-        <span>Wrong tries: {failedTries}</span>
+        <span>{fmt(t.wrongTries, { n: failedTries })}</span>
       </div>
 
       {!finished && (
@@ -182,7 +208,7 @@ const LinkGame = () => {
           onClick={giveUp}
           className="inline-flex items-center gap-1.5 rounded-lg border border-border bg-muted/30 px-3 py-1.5 text-xs hover:bg-muted/50"
         >
-          <Eye className="w-3.5 h-3.5" /> Reveal example chain
+          <Eye className="w-3.5 h-3.5" /> {t.revealChain}
         </button>
       )}
 
@@ -196,10 +222,10 @@ const LinkGame = () => {
             {won ? (
               <div className="flex items-center justify-center gap-2 text-success">
                 <Trophy className="w-5 h-5" />
-                <span className="font-display">Chain solved!</span>
+                <span className="font-display">{t.chainSolved}</span>
               </div>
             ) : (
-              <p className="text-foreground font-display">Example chain:</p>
+              <p className="text-foreground font-display">{t.exampleChain}</p>
             )}
             {revealed && (
               <div className="space-y-1">
@@ -213,11 +239,11 @@ const LinkGame = () => {
               </div>
             )}
             <p className="text-xs text-muted-foreground flex items-center justify-center gap-1">
-              <RotateCcw className="w-3 h-3" /> New link tomorrow!
+              <RotateCcw className="w-3 h-3" /> {t.newTomorrow}
             </p>
             <div className="mt-2 flex justify-center">
               <ShareResultButton
-                text={`Futbol11 Link, ${puzzle.start} to ${puzzle.end}\n${won ? "✅ Chain complete" : "❌ Out of links"} in ${chain.length} link${chain.length === 1 ? "" : "s"}\nPlay: ${SITE_URL}/game/futbol11-link`}
+                text={`Futbol11 Link, ${puzzle.start} to ${puzzle.end}\n${won ? t.shareSolved : t.shareFailed} ${fmt(chain.length === 1 ? t.shareInOne : t.shareInOther, { n: chain.length })}\nPlay: ${SITE_URL}/game/futbol11-link`}
               />
             </div>
           </motion.div>

@@ -7,6 +7,7 @@ import { SITE_URL } from "@/lib/site";
 import ShareResultButton from "@/components/ShareResultButton";
 import { getDailyGrid } from "@/data/grid-puzzles";
 import { normaliseName } from "@/data/lineups";
+import { useLocalizedStrings, fmt } from "@/i18n/DictionaryContext";
 
 const STORAGE_KEY = "f11-grid-state";
 const MAX_GUESSES = 9;
@@ -20,6 +21,21 @@ interface SavedState {
 
 const GridGame = () => {
   const { toast } = useToast();
+  const t = useLocalizedStrings("game.grid", {
+    goalTitle: "✅ Goal!",
+    fitsDesc: "{name} fits {row} × {col}",
+    offTargetTitle: "❌ Off target",
+    offTargetDesc: "{name} doesn't satisfy that pairing",
+    gridComplete: "Grid complete!",
+    outOfGuesses: "Out of guesses",
+    newTomorrow: "New grid tomorrow!",
+    shareFilled: "{n}/9 filled",
+    pickPrompt: "Pick a player who satisfies both row and column.",
+    guessesLeft: "Guesses left: {n} • Filled: {filled}/9",
+    placeholder: "Player name...",
+    guess: "GUESS",
+    cancel: "Cancel",
+  });
   const puzzle = useMemo(() => getDailyGrid(), []);
   const [cells, setCells] = useState<(string | null)[][]>(() =>
     Array.from({ length: 3 }, () => Array(3).fill(null))
@@ -77,9 +93,9 @@ const GridGame = () => {
       const next = cells.map((row) => [...row]);
       next[active.r][active.c] = value;
       setCells(next);
-      toast({ title: "✅ Goal!", description: `${value} fits ${puzzle.rows[active.r]} × ${puzzle.cols[active.c]}` });
+      toast({ title: t.goalTitle, description: fmt(t.fitsDesc, { name: value, row: puzzle.rows[active.r], col: puzzle.cols[active.c] }) });
     } else {
-      toast({ title: "❌ Off target", description: `${value} doesn't satisfy that pairing`, variant: "destructive" });
+      toast({ title: t.offTargetTitle, description: fmt(t.offTargetDesc, { name: value }), variant: "destructive" });
     }
 
     setActive(null);
@@ -97,20 +113,20 @@ const GridGame = () => {
           {filledCount === 9 ? (
             <>
               <Trophy className="w-5 h-5 text-success" />
-              <span className="font-display">Grid complete!</span>
+              <span className="font-display">{t.gridComplete}</span>
             </>
           ) : (
-            <span className="font-display text-destructive">Out of guesses</span>
+            <span className="font-display text-destructive">{t.outOfGuesses}</span>
           )}
         </div>
         <p className="text-foreground font-display text-3xl">{filledCount}/9</p>
         <GridDisplay puzzle={puzzle} cells={cells} disabled />
         <p className="text-xs text-muted-foreground flex items-center gap-1">
-          <RotateCcw className="w-3 h-3" /> New grid tomorrow!
+          <RotateCcw className="w-3 h-3" /> {t.newTomorrow}
         </p>
         <div className="mt-2 flex justify-center">
           <ShareResultButton
-            text={`Futbol11 Grid\n${cells.map((row) => row.map((c) => (c ? "🟩" : "⬜")).join("")).join("\n")}\n${filledCount}/9 filled\nPlay: ${SITE_URL}/game/futbol-grid`}
+            text={`Futbol11 Grid\n${cells.map((row) => row.map((c) => (c ? "🟩" : "⬜")).join("")).join("\n")}\n${fmt(t.shareFilled, { n: filledCount })}\nPlay: ${SITE_URL}/game/futbol-grid`}
           />
         </div>
       </motion.div>
@@ -120,8 +136,8 @@ const GridGame = () => {
   return (
     <div className="flex flex-col items-center gap-5">
       <div className="text-center">
-        <h3 className="font-display text-foreground">Pick a player who satisfies both row and column.</h3>
-        <p className="text-xs text-muted-foreground">Guesses left: {remainingGuesses} • Filled: {filledCount}/9</p>
+        <h3 className="font-display text-foreground">{t.pickPrompt}</h3>
+        <p className="text-xs text-muted-foreground">{fmt(t.guessesLeft, { n: remainingGuesses, filled: filledCount })}</p>
       </div>
 
       <GridDisplay puzzle={puzzle} cells={cells} onPick={(r, c) => setActive({ r, c })} active={active} />
@@ -142,7 +158,7 @@ const GridGame = () => {
                 value={draft}
                 onChange={(e) => setDraft(e.target.value)}
                 onKeyDown={(e) => e.key === "Enter" && submit()}
-                placeholder="Player name..."
+                placeholder={t.placeholder}
                 autoFocus
                 className="flex-1 rounded-lg border border-border bg-card px-4 py-2.5 text-foreground placeholder:text-muted-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/50"
               />
@@ -151,7 +167,7 @@ const GridGame = () => {
                 disabled={!draft.trim()}
                 className="px-4 py-2 rounded-lg bg-primary text-primary-foreground font-display text-sm hover:bg-primary/90 transition-colors disabled:opacity-50"
               >
-                GUESS
+                {t.guess}
               </button>
               <button
                 onClick={() => {
@@ -160,7 +176,7 @@ const GridGame = () => {
                 }}
                 className="px-3 py-2 rounded-lg border border-border bg-muted/30 text-foreground text-sm hover:bg-muted/50"
               >
-                Cancel
+                {t.cancel}
               </button>
             </div>
           </motion.div>

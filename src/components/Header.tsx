@@ -4,17 +4,30 @@ import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import { useState } from "react";
 import { useSectionNav } from "@/hooks/use-section-nav";
-
-const NAV_ITEMS = [
-  { id: "games", label: "Games" },
-  { id: "how-to-play", label: "How to Play" },
-  { id: "about", label: "About" },
-  { id: "faq", label: "FAQ" },
-];
+import { useLocalizedStrings, useLocale } from "@/i18n/DictionaryContext";
+import { localizePath } from "@/i18n/locales";
+import LanguageSwitcher from "./LanguageSwitcher";
 
 const Header = () => {
   const goToSection = useSectionNav();
   const [menuOpen, setMenuOpen] = useState(false);
+  const locale = useLocale();
+  const t = useLocalizedStrings("header", {
+    games: "Games",
+    howToPlay: "How to Play",
+    about: "About",
+    faq: "FAQ",
+    blog: "Blog",
+    openMenu: "Open menu",
+    closeMenu: "Close menu",
+  });
+
+  const NAV_ITEMS = [
+    { id: "games", label: t.games },
+    { id: "how-to-play", label: t.howToPlay },
+    { id: "about", label: t.about },
+    { id: "faq", label: t.faq },
+  ];
 
   const goTo = (id: string) => {
     setMenuOpen(false);
@@ -24,7 +37,7 @@ const Header = () => {
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/80">
       <div className="container flex h-16 items-center justify-between">
-        <Link href="/" className="font-display text-2xl tracking-wider">
+        <Link href={localizePath("/", locale)} className="font-display text-2xl tracking-wider">
           <span className="text-foreground">FUTBOL</span>
           <span className="text-primary">11</span>
         </Link>
@@ -42,19 +55,23 @@ const Header = () => {
               {item.label}
             </a>
           ))}
-          <Link href="/blog" className="hover:text-foreground transition-colors">
-            Blog
+          <Link href={localizePath("/blog", locale)} className="hover:text-foreground transition-colors">
+            {t.blog}
           </Link>
+          <LanguageSwitcher />
         </nav>
-        <button
-          type="button"
-          aria-label={menuOpen ? "Close menu" : "Open menu"}
-          aria-expanded={menuOpen}
-          onClick={() => setMenuOpen((open) => !open)}
-          className="md:hidden text-muted-foreground hover:text-foreground transition-colors p-2"
-        >
-          {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-        </button>
+        <div className="flex items-center gap-2 md:hidden">
+          <LanguageSwitcher />
+          <button
+            type="button"
+            aria-label={menuOpen ? t.closeMenu : t.openMenu}
+            aria-expanded={menuOpen}
+            onClick={() => setMenuOpen((open) => !open)}
+            className="text-muted-foreground hover:text-foreground transition-colors p-2"
+          >
+            {menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+          </button>
+        </div>
       </div>
       {menuOpen && (
         <nav className="md:hidden border-t border-border bg-background/95 backdrop-blur">
@@ -75,11 +92,11 @@ const Header = () => {
             ))}
             <li>
               <Link
-                href="/blog"
+                href={localizePath("/blog", locale)}
                 onClick={() => setMenuOpen(false)}
                 className="block py-3 hover:text-foreground transition-colors"
               >
-                Blog
+                {t.blog}
               </Link>
             </li>
           </ul>
