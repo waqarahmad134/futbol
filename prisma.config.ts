@@ -1,11 +1,9 @@
 // Prisma 7 config: connection URL for the CLI (migrate, db push).
 // The runtime client gets the same URL through the PrismaMariaDb
 // adapter in src/lib/prisma.ts.
-// The placeholder keeps `prisma generate` and `prisma validate`
-// working without a database configured; any command that actually
-// needs the database (migrate deploy, db push) fails at connection
-// time until a real DATABASE_URL is set. Never put a real credential
-// here; set DATABASE_URL in .env (see .env.example).
+// The URL comes from DATABASE_URL when set; otherwise it falls back to
+// the hard-coded Hostinger MySQL connection (Waqar's order), so
+// migrate commands work even without an env var configured.
 import "dotenv/config";
 import { defineConfig } from "prisma/config";
 
@@ -15,6 +13,6 @@ export default defineConfig({
     path: "prisma/migrations",
   },
   datasource: {
-    url: process.env.DATABASE_URL || "mysql://127.0.0.1:3306/futbol11",
+    url: process.env.DATABASE_URL || "mysql://u442793684_futbol:AAaa11%40%40AA%232026@srv485.hstgr.io:3306/u442793684_futbol",
   },
 });
