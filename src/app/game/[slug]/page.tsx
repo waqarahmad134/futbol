@@ -10,8 +10,9 @@ export function generateStaticParams() {
   return games.map((g) => ({ slug: g.slug }));
 }
 
-export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
-  const game = games.find((g) => g.slug === params.slug);
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const game = games.find((g) => g.slug === slug);
   if (!game) return { title: "Game Not Found" };
   return {
     title: { absolute: `${game.title} - Play Free Daily | Futbol11` },
@@ -31,8 +32,9 @@ export function generateMetadata({ params }: { params: { slug: string } }): Meta
   };
 }
 
-export default function GamePage({ params }: { params: { slug: string } }) {
-  const game = games.find((g) => g.slug === params.slug);
+export default async function GamePage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const game = games.find((g) => g.slug === slug);
   if (!game) notFound();
 
   const jsonLd = [
