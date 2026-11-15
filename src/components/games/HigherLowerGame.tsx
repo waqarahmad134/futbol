@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronUp, ChevronDown, Flame, Trophy, RotateCcw } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { useLocalizedStrings, fmt } from "@/i18n/DictionaryContext";
 import { recordDailyResult } from "@/lib/daily-score";
 import { SITE_URL } from "@/lib/site";
 import ShareResultButton from "@/components/ShareResultButton";
@@ -9,7 +10,6 @@ import {
   getDailySequence,
   getDayIndex,
   isCorrectGuess,
-  STAT_LABEL,
   Guess,
 } from "@/data/higher-lower";
 
@@ -26,6 +26,27 @@ interface SavedState {
 
 const HigherLowerGame = () => {
   const { toast } = useToast();
+  const t = useLocalizedStrings("game.higherLower", {
+    title: "Higher or Lower",
+    prompt: "Does the next player have more or fewer {stat}?",
+    statLabel: "Career goals",
+    streak: "Streak {n}",
+    best: "Best {n}",
+    endOfLine: "End of the line!",
+    higher: "Higher",
+    lower: "Lower",
+    correct: "✅ Correct!",
+    notQuite: "❌ Not quite",
+    winToastTitle: "🏆 Perfect run!",
+    winToastDesc: "You cleared all {n} players!",
+    loseToastTitle: "❌ Wrong!",
+    loseToastDesc: "{name} had {n} {stat}.",
+    finalStreakLabel: "Final streak:",
+    newTomorrow: "New players tomorrow! Best streak: {n}",
+    sharePerfect: "🏆 Perfect run!",
+    shareEnded: "❌ Run ended",
+    shareStreak: "Streak: {n} (Best: {best})",
+  });
   const seq = useMemo(() => getDailySequence(), []);
   const day = useMemo(() => getDayIndex(), []);
 
@@ -107,19 +128,19 @@ const HigherLowerGame = () => {
             // Cleared the whole deck.
             setWon(true);
             setStatus("over");
-            toast({ title: "🏆 Perfect run!", description: `You cleared all ${seq.length} players!` });
+            toast({ title: t.winToastTitle, description: fmt(t.winToastDesc, { n: seq.length }) });
           }
         } else {
           setStatus("over");
           toast({
-            title: "❌ Wrong!",
-            description: `${next.name} had ${next.goals} ${STAT_LABEL.toLowerCase()}.`,
+            title: t.loseToastTitle,
+            description: fmt(t.loseToastDesc, { name: next.name, n: next.goals, stat: t.statLabel.toLowerCase() }),
             variant: "destructive",
           });
         }
       }, 1200);
     },
-    [status, revealed, hasNext, current, next, streak, index, seq.length, recordBest, toast],
+    [status, revealed, hasNext, current, next, streak, index, seq.length, recordBest, toast, t],
   );
 
   const PlayerCard = ({
@@ -136,7 +157,7 @@ const HigherLowerGame = () => {
     <div className="flex flex-1 flex-col items-center justify-center gap-1 rounded-xl border border-border bg-muted/20 px-3 py-6 text-center">
       <span className="font-display text-base text-foreground leading-tight">{name}</span>
       <span className="text-xs text-muted-foreground">{country}</span>
-      <span className="mt-2 text-[11px] uppercase tracking-wide text-muted-foreground">{STAT_LABEL}</span>
+      <span className="mt-2 text-[11px] uppercase tracking-wide text-muted-foreground">{t.statLabel}</span>
       {showGoals ? (
         <motion.span
           key={goals}
@@ -155,18 +176,18 @@ const HigherLowerGame = () => {
   return (
     <div className="flex flex-col items-center gap-5">
       <div className="text-center">
-        <h2 className="font-display text-foreground">Higher or Lower</h2>
+        <h2 className="font-display text-foreground">{t.title}</h2>
         <p className="text-xs text-muted-foreground">
-          Does the next player have more or fewer {STAT_LABEL.toLowerCase()}?
+          {fmt(t.prompt, { stat: t.statLabel.toLowerCase() })}
         </p>
       </div>
 
       <div className="flex items-center gap-4 text-sm">
         <span className="inline-flex items-center gap-1 text-foreground">
-          <Flame className="w-4 h-4 text-primary" /> Streak {streak}
+          <Flame className="w-4 h-4 text-primary" /> {fmt(t.streak, { n: streak })}
         </span>
         <span className="inline-flex items-center gap-1 text-muted-foreground">
-          <Trophy className="w-4 h-4 text-primary" /> Best {best}
+          <Trophy className="w-4 h-4 text-primary" /> {fmt(t.best, { n: best })}
         </span>
       </div>
 
@@ -184,7 +205,7 @@ const HigherLowerGame = () => {
           />
         ) : (
           <div className="flex flex-1 items-center justify-center rounded-xl border border-border bg-muted/20 px-3 py-6 text-center text-xs text-muted-foreground">
-            End of the line!
+            {t.endOfLine}
           </div>
         )}
       </div>
@@ -196,14 +217,14 @@ const HigherLowerGame = () => {
             disabled={revealed}
             className="flex flex-1 items-center justify-center gap-1.5 rounded-lg bg-success px-4 py-3 font-display text-sm text-primary-foreground transition-all hover:opacity-90 active:scale-95 disabled:opacity-50"
           >
-            <ChevronUp className="w-4 h-4" /> Higher
+            <ChevronUp className="w-4 h-4" /> {t.higher}
           </button>
           <button
             onClick={() => handleGuess("lower")}
             disabled={revealed}
             className="flex flex-1 items-center justify-center gap-1.5 rounded-lg bg-destructive px-4 py-3 font-display text-sm text-destructive-foreground transition-all hover:opacity-90 active:scale-95 disabled:opacity-50"
           >
-            <ChevronDown className="w-4 h-4" /> Lower
+            <ChevronDown className="w-4 h-4" /> {t.lower}
           </button>
         </div>
       )}
@@ -216,7 +237,7 @@ const HigherLowerGame = () => {
             exit={{ opacity: 0 }}
             className={`font-display text-sm ${lastCorrect ? "text-success" : "text-destructive"}`}
           >
-            {lastCorrect ? "✅ Correct!" : "❌ Not quite"}
+            {lastCorrect ? t.correct : t.notQuite}
           </motion.p>
         )}
       </AnimatePresence>
@@ -229,14 +250,14 @@ const HigherLowerGame = () => {
             className="text-center"
           >
             <p className="font-display text-lg text-foreground">
-              Final streak: <span className="text-primary">{streak}</span>
+              {t.finalStreakLabel} <span className="text-primary">{streak}</span>
             </p>
             <p className="mt-1 inline-flex items-center gap-1 text-xs text-muted-foreground">
-              <RotateCcw className="w-3 h-3" /> New players tomorrow! Best streak: {best}
+              <RotateCcw className="w-3 h-3" /> {fmt(t.newTomorrow, { n: best })}
             </p>
             <div className="mt-3 flex justify-center">
               <ShareResultButton
-                text={`Futbol11 Higher or Lower\n${won ? "🏆 Perfect run!" : "❌ Run ended"} Streak: ${streak} (Best: ${best})\nPlay: ${SITE_URL}/game/futbol11-higher-lower`}
+                text={`Futbol11 ${t.title}\n${won ? t.sharePerfect : t.shareEnded} ${fmt(t.shareStreak, { n: streak, best })}\nPlay: ${SITE_URL}/game/futbol11-higher-lower`}
               />
             </div>
           </motion.div>

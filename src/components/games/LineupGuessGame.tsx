@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Check, RotateCcw, Trophy, Lightbulb, Eye } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { useLocalizedStrings, fmt } from "@/i18n/DictionaryContext";
 import { recordDailyResult } from "@/lib/daily-score";
 import { SITE_URL } from "@/lib/site";
 import ShareResultButton from "@/components/ShareResultButton";
@@ -36,6 +37,31 @@ const SLUG_BY_SET: Record<LineupSetKey, string> = {
 };
 
 const LineupGuessGame = ({ setKey, storageKey }: LineupGuessGameProps) => {
+  const t = useLocalizedStrings("game.lineup", {
+    complete: "🎉 Lineup complete!",
+    completeDesc: "{title} solved in {n} guesses.",
+    notInXI: "❌ Not in this XI",
+    noMatch: "\"{value}\" doesn't match an unplaced starter",
+    correct: "✅ Correct!",
+    hintUsed: "💡 Hint used",
+    hintRevealed: "Revealed {name}",
+    revealedTitle: "Lineup revealed",
+    formation: "Formation: {value}",
+    placeholder: "Type a player's name...",
+    guess: "GUESS",
+    found: "Found {n}/11",
+    guesses: "Guesses: {n}",
+    hints: "Hints: {n}/{max}",
+    hint: "Hint",
+    giveUp: "Give up",
+    allNamed: "All 11 named!",
+    betterLuck: "Better luck tomorrow.",
+    newLineupTomorrow: "New lineup tomorrow!",
+    shareAllNamed: "✅ All 11 named",
+    shareNamed: "❌ {n}/11 named",
+    shareGuesses: "in {n} guesses",
+    sharePlay: "Play:",
+  });
   const { toast } = useToast();
   const lineup = useMemo(() => getDailyLineup(setKey), [setKey]);
   const [found, setFound] = useState<boolean[]>(() => Array(11).fill(false));
@@ -71,9 +97,9 @@ const LineupGuessGame = ({ setKey, storageKey }: LineupGuessGameProps) => {
   useEffect(() => {
     if (allFound && !finished) {
       setFinished(true);
-      toast({ title: "🎉 Lineup complete!", description: `${lineup.title} solved in ${guessCount} guesses.` });
+      toast({ title: t.complete, description: fmt(t.completeDesc, { title: lineup.title, n: guessCount }) });
     }
-  }, [allFound, finished, guessCount, lineup.title, toast]);
+  }, [allFound, finished, guessCount, lineup.title, toast, t]);
 
   // Record the daily result once (guarded per game per day in the helper).
   // Finished via give-up counts as a loss; only all 11 found is a win.
@@ -91,14 +117,14 @@ const LineupGuessGame = ({ setKey, storageKey }: LineupGuessGameProps) => {
       (p, i) => !found[i] && nameMatches(value, p.name)
     );
     if (matchIdx === -1) {
-      toast({ title: "❌ Not in this XI", description: `"${value}" doesn't match an unplaced starter`, variant: "destructive" });
+      toast({ title: t.notInXI, description: fmt(t.noMatch, { value }), variant: "destructive" });
       return;
     }
     const next = [...found];
     next[matchIdx] = true;
     setFound(next);
-    toast({ title: "✅ Correct!", description: `${lineup.players[matchIdx].name} (${lineup.players[matchIdx].position})` });
-  }, [guess, finished, lineup, found, toast]);
+    toast({ title: t.correct, description: `${lineup.players[matchIdx].name} (${lineup.players[matchIdx].position})` });
+  }, [guess, finished, lineup, found, toast, t]);
 
   const useHint = () => {
     if (hintsUsed >= MAX_HINTS || finished) return;
@@ -111,14 +137,14 @@ const LineupGuessGame = ({ setKey, storageKey }: LineupGuessGameProps) => {
     next[pick.i] = true;
     setFound(next);
     setHintsUsed((h) => h + 1);
-    toast({ title: "💡 Hint used", description: `Revealed ${pick.p.name}` });
+    toast({ title: t.hintUsed, description: fmt(t.hintRevealed, { name: pick.p.name }) });
   };
 
   const giveUp = () => {
     if (finished) return;
     setRevealed(true);
     setFinished(true);
-    toast({ title: "Lineup revealed", description: `${lineup.title}` });
+    toast({ title: t.revealedTitle, description: `${lineup.title}` });
   };
 
   return (
@@ -126,7 +152,7 @@ const LineupGuessGame = ({ setKey, storageKey }: LineupGuessGameProps) => {
       <div className="text-center">
         <h2 className="font-display text-lg text-foreground">{lineup.title}</h2>
         <p className="text-sm text-muted-foreground">{lineup.subtitle}</p>
-        <p className="text-xs text-muted-foreground mt-1">Formation: {lineup.formation}</p>
+        <p className="text-xs text-muted-foreground mt-1">{fmt(t.formation, { value: lineup.formation })}</p>
       </div>
 
       <div className="w-full max-w-md grid grid-cols-1 gap-2">
@@ -169,7 +195,7 @@ const LineupGuessGame = ({ setKey, storageKey }: LineupGuessGameProps) => {
             value={guess}
             onChange={(e) => setGuess(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && submit()}
-            placeholder="Type a player's name..."
+            placeholder={t.placeholder}
             className="flex-1 rounded-lg border border-border bg-card px-4 py-2.5 text-foreground placeholder:text-muted-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/50"
             autoFocus
           />
@@ -178,17 +204,17 @@ const LineupGuessGame = ({ setKey, storageKey }: LineupGuessGameProps) => {
             disabled={!guess.trim()}
             className="px-4 py-2 rounded-lg bg-primary text-primary-foreground font-display text-sm hover:bg-primary/90 transition-colors disabled:opacity-50"
           >
-            GUESS
+            {t.guess}
           </button>
         </div>
       )}
 
       <div className="flex items-center gap-3 text-xs text-muted-foreground">
-        <span>Found {found.filter(Boolean).length}/11</span>
+        <span>{fmt(t.found, { n: found.filter(Boolean).length })}</span>
         <span>•</span>
-        <span>Guesses: {guessCount}</span>
+        <span>{fmt(t.guesses, { n: guessCount })}</span>
         <span>•</span>
-        <span>Hints: {hintsUsed}/{MAX_HINTS}</span>
+        <span>{fmt(t.hints, { n: hintsUsed, max: MAX_HINTS })}</span>
       </div>
 
       {!finished && (
@@ -198,13 +224,13 @@ const LineupGuessGame = ({ setKey, storageKey }: LineupGuessGameProps) => {
             disabled={hintsUsed >= MAX_HINTS}
             className="inline-flex items-center gap-1.5 rounded-lg border border-border bg-muted/30 px-3 py-1.5 text-xs hover:bg-muted/50 disabled:opacity-50"
           >
-            <Lightbulb className="w-3.5 h-3.5 text-primary" /> Hint
+            <Lightbulb className="w-3.5 h-3.5 text-primary" /> {t.hint}
           </button>
           <button
             onClick={giveUp}
             className="inline-flex items-center gap-1.5 rounded-lg border border-border bg-muted/30 px-3 py-1.5 text-xs hover:bg-muted/50"
           >
-            <Eye className="w-3.5 h-3.5 text-destructive" /> Give up
+            <Eye className="w-3.5 h-3.5 text-destructive" /> {t.giveUp}
           </button>
         </div>
       )}
@@ -219,18 +245,18 @@ const LineupGuessGame = ({ setKey, storageKey }: LineupGuessGameProps) => {
             {allFound ? (
               <div className="flex items-center justify-center gap-2 text-success">
                 <Trophy className="w-5 h-5" />
-                <span className="font-display">All 11 named!</span>
+                <span className="font-display">{t.allNamed}</span>
               </div>
             ) : (
-              <p className="text-destructive font-display">Better luck tomorrow.</p>
+              <p className="text-destructive font-display">{t.betterLuck}</p>
             )}
             <p className="text-xs text-muted-foreground">{lineup.context}</p>
             <p className="text-xs text-muted-foreground flex items-center justify-center gap-1">
-              <RotateCcw className="w-3 h-3" /> New lineup tomorrow!
+              <RotateCcw className="w-3 h-3" /> {t.newLineupTomorrow}
             </p>
             <div className="mt-2 flex justify-center">
               <ShareResultButton
-                text={`Futbol11 Lineup, ${lineup.title}\n${allFound ? "✅ All 11 named" : `❌ ${found.filter(Boolean).length}/11 named`} in ${guessCount} guesses\nPlay: ${SITE_URL}/game/${SLUG_BY_SET[setKey]}`}
+                text={`Futbol11 Lineup, ${lineup.title}\n${allFound ? t.shareAllNamed : fmt(t.shareNamed, { n: found.filter(Boolean).length })} ${fmt(t.shareGuesses, { n: guessCount })}\n${t.sharePlay} ${SITE_URL}/game/${SLUG_BY_SET[setKey]}`}
               />
             </div>
           </motion.div>

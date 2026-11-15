@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { getDailyWord, evaluateGuess, LetterResult, LetterStatus } from "@/data/wordle-players";
 import { useToast } from "@/hooks/use-toast";
+import { useLocalizedStrings, fmt } from "@/i18n/DictionaryContext";
 import { recordDailyResult } from "@/lib/daily-score";
 import { SITE_URL } from "@/lib/site";
 import ShareResultButton from "@/components/ShareResultButton";
@@ -30,6 +31,18 @@ const keyStatusColors: Record<LetterStatus, string> = {
 };
 
 const WordleGame = () => {
+  const t = useLocalizedStrings("game.wordle", {
+    notEnoughLetters: "Not enough letters",
+    enterSurname: "Enter a 5-letter surname",
+    brilliant: "🎉 Brilliant!",
+    winToastOne: "You got it in 1 try!",
+    winToastMany: "You got it in {n} tries!",
+    gameOver: "Game Over",
+    answerWas: "The answer was {answer}",
+    guessedIt: "🎉 You guessed it in {n}/{max}!",
+    comeBackTomorrow: "Come back tomorrow for a new challenge!",
+    sharePlay: "Play:",
+  });
   const { toast } = useToast();
   const [answer] = useState(() => getDailyWord());
   const [guesses, setGuesses] = useState<LetterResult[][]>([]);
@@ -88,7 +101,7 @@ const WordleGame = () => {
     if (currentGuess.length !== WORD_LENGTH) {
       setShake(true);
       setTimeout(() => setShake(false), 500);
-      toast({ title: "Not enough letters", description: "Enter a 5-letter surname", variant: "destructive" });
+      toast({ title: t.notEnoughLetters, description: t.enterSurname, variant: "destructive" });
       return;
     }
 
@@ -106,15 +119,15 @@ const WordleGame = () => {
       setTimeout(() => {
         setGameOver(true);
         setWon(true);
-        toast({ title: "🎉 Brilliant!", description: `You got it in ${newGuesses.length} ${newGuesses.length === 1 ? "try" : "tries"}!` });
+        toast({ title: t.brilliant, description: newGuesses.length === 1 ? t.winToastOne : fmt(t.winToastMany, { n: newGuesses.length }) });
       }, WORD_LENGTH * 200 + 400);
     } else if (newGuesses.length >= MAX_GUESSES) {
       setTimeout(() => {
         setGameOver(true);
-        toast({ title: "Game Over", description: `The answer was ${answer}` });
+        toast({ title: t.gameOver, description: fmt(t.answerWas, { answer }) });
       }, WORD_LENGTH * 200 + 400);
     }
-  }, [currentGuess, answer, guesses, toast]);
+  }, [currentGuess, answer, guesses, toast, t]);
 
   const handleKey = useCallback((key: string) => {
     if (gameOver) return;
@@ -209,17 +222,17 @@ const WordleGame = () => {
           >
             {won ? (
               <p className="text-success font-display text-lg">
-                🎉 You guessed it in {guesses.length}/{MAX_GUESSES}!
+                {fmt(t.guessedIt, { n: guesses.length, max: MAX_GUESSES })}
               </p>
             ) : (
               <p className="text-danger font-display text-lg">
-                The answer was <span className="text-primary">{answer}</span>
+                {fmt(t.answerWas, { answer: "" })}<span className="text-primary">{answer}</span>
               </p>
             )}
-            <p className="text-muted-foreground text-xs mt-2">Come back tomorrow for a new challenge!</p>
+            <p className="text-muted-foreground text-xs mt-2">{t.comeBackTomorrow}</p>
             <div className="mt-3 flex justify-center">
               <ShareResultButton
-                text={`Futbol11 Wordle ${won ? `${guesses.length}/${MAX_GUESSES}` : `X/${MAX_GUESSES}`}\n${guesses.map((row) => row.map((l) => (l.status === "correct" ? "🟩" : l.status === "present" ? "🟨" : "⬜")).join("")).join("\n")}\nPlay: ${SITE_URL}/game/futbol11-wordle`}
+                text={`Futbol11 Wordle ${won ? `${guesses.length}/${MAX_GUESSES}` : `X/${MAX_GUESSES}`}\n${guesses.map((row) => row.map((l) => (l.status === "correct" ? "🟩" : l.status === "present" ? "🟨" : "⬜")).join("")).join("\n")}\n${t.sharePlay} ${SITE_URL}/game/futbol11-wordle`}
               />
             </div>
           </motion.div>

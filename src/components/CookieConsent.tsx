@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { useLocalizedStrings, useLocale } from "@/i18n/DictionaryContext";
+import { localizePath } from "@/i18n/locales";
 
 const STORAGE_KEY = "f11-cookie-consent";
 
@@ -21,6 +23,14 @@ function updateConsent(granted: boolean) {
 }
 
 const CookieConsent = () => {
+  const locale = useLocale();
+  const t = useLocalizedStrings("cookie", {
+    ariaLabel: "Cookie consent",
+    text: "We use cookies to keep your daily progress and to serve ads. Third parties, including Google, may use cookies to personalise ads.",
+    learnMore: "Learn more",
+    reject: "Reject",
+    accept: "Accept",
+  });
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
@@ -43,15 +53,14 @@ const CookieConsent = () => {
   return (
     <div
       role="dialog"
-      aria-label="Cookie consent"
+      aria-label={t.ariaLabel}
       className="fixed inset-x-0 bottom-0 z-[100] border-t border-border bg-card/95 backdrop-blur"
     >
       <div className="container flex flex-col gap-3 py-4 sm:flex-row sm:items-center sm:justify-between">
         <p className="text-xs text-muted-foreground leading-relaxed max-w-2xl">
-          We use cookies to keep your daily progress and to serve ads. Third parties, including
-          Google, may use cookies to personalise ads.{" "}
-          <Link href="/privacy-policy" className="text-primary hover:underline">
-            Learn more
+          {t.text}{" "}
+          <Link href={localizePath("/privacy-policy", locale)} className="text-primary hover:underline">
+            {t.learnMore}
           </Link>
           .
         </p>
@@ -60,13 +69,13 @@ const CookieConsent = () => {
             onClick={() => choose(false)}
             className="rounded-lg border border-border px-4 py-2 text-xs font-semibold text-foreground hover:bg-muted/40 transition-colors"
           >
-            Reject
+            {t.reject}
           </button>
           <button
             onClick={() => choose(true)}
             className="rounded-lg bg-primary px-4 py-2 text-xs font-display text-primary-foreground hover:bg-primary/90 transition-colors"
           >
-            Accept
+            {t.accept}
           </button>
         </div>
       </div>

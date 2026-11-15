@@ -7,6 +7,7 @@ import {
 } from "@/data/octadle-words";
 import { evaluateGuess, LetterResult, LetterStatus } from "@/data/wordle-players";
 import { useToast } from "@/hooks/use-toast";
+import { useLocalizedStrings, fmt } from "@/i18n/DictionaryContext";
 import { recordDailyResult } from "@/lib/daily-score";
 import { SITE_URL } from "@/lib/site";
 import ShareResultButton from "@/components/ShareResultButton";
@@ -36,6 +37,25 @@ const keyStatusColors: Record<LetterStatus, string> = {
 
 const OctadleGame = () => {
   const { toast } = useToast();
+  const t = useLocalizedStrings("game.octadle", {
+    notEnoughTitle: "Not enough letters",
+    notEnoughDesc: "Enter a 5-letter word",
+    alreadyTitle: "Already guessed",
+    alreadyDesc: "Try a different word",
+    winToastTitle: "🎉 Brilliant!",
+    winToastDesc: "You solved all 8 words in {n} guesses!",
+    loseToastTitle: "Game Over",
+    loseToastDesc: "You solved {n} of 8 words",
+    instructions:
+      "One guess counts for all 8 boards. Green is right letter, right spot. Yellow is right letter, wrong spot.",
+    solvedLine: "Solved {solved}/{total} - {left} guesses left",
+    wordLabel: "Word {n}",
+    winMessage: "You solved all 8 words in {n}/{max}!",
+    loseMessage: "You solved {n} of 8 words. The answers are shown on the boards.",
+    comeBack: "Come back tomorrow for 8 new words!",
+    shareSolved: "solved {n}/8",
+    shareUnsolved: "(unsolved)",
+  });
   const [answers] = useState<string[]>(() => getDailyWords());
   const [guesses, setGuesses] = useState<string[]>([]);
   const [currentGuess, setCurrentGuess] = useState("");
@@ -90,11 +110,11 @@ const OctadleGame = () => {
     if (currentGuess.length !== WORD_LENGTH) {
       setShake(true);
       setTimeout(() => setShake(false), 500);
-      toast({ title: "Not enough letters", description: "Enter a 5-letter word", variant: "destructive" });
+      toast({ title: t.notEnoughTitle, description: t.notEnoughDesc, variant: "destructive" });
       return;
     }
     if (guesses.includes(currentGuess)) {
-      toast({ title: "Already guessed", description: "Try a different word", variant: "destructive" });
+      toast({ title: t.alreadyTitle, description: t.alreadyDesc, variant: "destructive" });
       return;
     }
 
@@ -108,15 +128,15 @@ const OctadleGame = () => {
       setTimeout(() => {
         setGameOver(true);
         setWon(true);
-        toast({ title: "🎉 Brilliant!", description: `You solved all 8 words in ${newGuesses.length} guesses!` });
+        toast({ title: t.winToastTitle, description: fmt(t.winToastDesc, { n: newGuesses.length }) });
       }, 400);
     } else if (newGuesses.length >= OCTADLE_MAX_GUESSES) {
       setTimeout(() => {
         setGameOver(true);
-        toast({ title: "Game Over", description: `You solved ${finalSolved} of 8 words` });
+        toast({ title: t.loseToastTitle, description: fmt(t.loseToastDesc, { n: finalSolved }) });
       }, 400);
     }
-  }, [currentGuess, answers, guesses, toast]);
+  }, [currentGuess, answers, guesses, toast, t]);
 
   const handleKey = useCallback((key: string) => {
     if (gameOver) return;
@@ -160,17 +180,17 @@ const OctadleGame = () => {
         return `${answer}: ${winRow ? winRow.map((l) => (l.status === "correct" ? "🟩" : l.status === "present" ? "🟨" : "⬜")).join("") : ""}`;
       }
       const last = rows[rows.length - 1];
-      return `${answer}: ${last ? last.map((l) => (l.status === "correct" ? "🟩" : l.status === "present" ? "🟨" : "⬜")).join("") : "⬜⬜⬜⬜⬜"} (unsolved)`;
+      return `${answer}: ${last ? last.map((l) => (l.status === "correct" ? "🟩" : l.status === "present" ? "🟨" : "⬜")).join("") : "⬜⬜⬜⬜⬜"} {t.shareUnsolved}`;
     });
-    return `Octadle ${won ? `${guesses.length}/${OCTADLE_MAX_GUESSES}` : `X/${OCTADLE_MAX_GUESSES}`} - solved ${solvedCount}/8\n${lines.join("\n")}\nPlay: ${SITE_URL}/game/octadle`;
+    return `Octadle ${won ? `${guesses.length}/${OCTADLE_MAX_GUESSES}` : `X/${OCTADLE_MAX_GUESSES}`} - ${fmt(t.shareSolved, { n: solvedCount })}\n${lines.join("\n")}\nPlay: ${SITE_URL}/game/octadle`;
   };
 
   return (
     <div className="flex flex-col items-center gap-6">
       <p className="text-center text-sm text-muted-foreground">
-        One guess counts for all 8 boards. Green is right letter, right spot. Yellow is right letter, wrong spot.
+        {t.instructions}
         <span className="block mt-1 font-semibold text-foreground">
-          Solved {solvedCount}/{OCTADLE_WORD_COUNT} - {OCTADLE_MAX_GUESSES - guesses.length} guesses left
+          {fmt(t.solvedLine, { solved: solvedCount, total: OCTADLE_WORD_COUNT, left: OCTADLE_MAX_GUESSES - guesses.length })}
         </span>
       </p>
 
@@ -188,7 +208,7 @@ const OctadleGame = () => {
               }`}
             >
               <div className="flex items-center gap-1 text-[11px] font-display text-muted-foreground">
-                <span>Word {boardIdx + 1}</span>
+                <span>{fmt(t.wordLabel, { n: boardIdx + 1 })}</span>
                 {isSolved && <Check className="w-3.5 h-3.5 text-success" />}
               </div>
               {gameOver && !isSolved && (
@@ -242,14 +262,14 @@ const OctadleGame = () => {
           >
             {won ? (
               <p className="text-success font-display text-lg flex items-center justify-center gap-2">
-                <Trophy className="w-5 h-5" /> You solved all 8 words in {guesses.length}/{OCTADLE_MAX_GUESSES}!
+                <Trophy className="w-5 h-5" /> {fmt(t.winMessage, { n: guesses.length, max: OCTADLE_MAX_GUESSES })}
               </p>
             ) : (
               <p className="text-danger font-display text-lg">
-                You solved {solvedCount} of 8 words. The answers are shown on the boards.
+                {fmt(t.loseMessage, { n: solvedCount })}
               </p>
             )}
-            <p className="text-muted-foreground text-xs mt-2">Come back tomorrow for 8 new words!</p>
+            <p className="text-muted-foreground text-xs mt-2">{t.comeBack}</p>
             <div className="mt-3 flex justify-center">
               <ShareResultButton text={shareText()} />
             </div>

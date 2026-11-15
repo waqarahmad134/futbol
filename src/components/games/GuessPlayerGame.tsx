@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { getDailyGuessPlayer, getClues, GuessPlayer } from "@/data/guess-players";
 import { useToast } from "@/hooks/use-toast";
+import { useLocalizedStrings, fmt } from "@/i18n/DictionaryContext";
 import { recordDailyResult } from "@/lib/daily-score";
 import { SITE_URL } from "@/lib/site";
 import ShareResultButton from "@/components/ShareResultButton";
@@ -10,6 +11,28 @@ import { Eye, HelpCircle, Check, X, Trophy, RotateCcw } from "lucide-react";
 const MAX_GUESSES = 6;
 
 const GuessPlayerGame = () => {
+  const t = useLocalizedStrings("game.guessPlayer", {
+    correct: "🎉 Correct!",
+    identified: "You identified {name}!",
+    gameOver: "Game Over",
+    itWas: "It was {name}",
+    wrong: "❌ Wrong!",
+    newClue: "A new clue has been revealed",
+    clarity: "Clarity:",
+    cluesHeading: "Clues ({n}/{total})",
+    hiddenClue: "Clue {n}: guess wrong to reveal",
+    yourGuesses: "Your Guesses",
+    placeholder: "Type footballer's full name...",
+    guess: "GUESS",
+    youGotIt: "You got it!",
+    guessedIn: "Guessed in {n}/{max} tries with {clues} clues",
+    newPlayerTomorrow: "New player tomorrow!",
+    guessesRemaining: "{n} guesses remaining",
+    shareSolved: "✅ Solved",
+    shareNotSolved: "❌ Not solved",
+    shareGuesses: "in {n}/{max} guesses",
+    sharePlay: "Play:",
+  });
   const { toast } = useToast();
   const [player] = useState<GuessPlayer>(() => getDailyGuessPlayer());
   const [clues] = useState<string[]>(() => getClues(getDailyGuessPlayer()));
@@ -66,7 +89,7 @@ const GuessPlayerGame = () => {
     if (isCorrect) {
       setGameOver(true);
       setWon(true);
-      toast({ title: "🎉 Correct!", description: `You identified ${player.name}!` });
+      toast({ title: t.correct, description: fmt(t.identified, { name: player.name }) });
     } else {
       // Reveal next clue on wrong guess
       if (revealedClues < clues.length) {
@@ -74,12 +97,12 @@ const GuessPlayerGame = () => {
       }
       if (newGuesses.length >= MAX_GUESSES) {
         setGameOver(true);
-        toast({ title: "Game Over", description: `It was ${player.name}` });
+        toast({ title: t.gameOver, description: fmt(t.itWas, { name: player.name }) });
       } else {
-        toast({ title: "❌ Wrong!", description: "A new clue has been revealed", variant: "destructive" });
+        toast({ title: t.wrong, description: t.newClue, variant: "destructive" });
       }
     }
-  }, [guess, player, guesses, revealedClues, clues.length, toast]);
+  }, [guess, player, guesses, revealedClues, clues.length, toast, t]);
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "Enter" && !gameOver) submitGuess();
@@ -125,7 +148,7 @@ const GuessPlayerGame = () => {
 
       {/* Blur indicator */}
       <div className="flex items-center gap-2 text-xs text-muted-foreground">
-        <span>Clarity:</span>
+        <span>{t.clarity}</span>
         <div className="flex gap-0.5">
           {Array.from({ length: 6 }).map((_, i) => (
             <div
@@ -142,7 +165,7 @@ const GuessPlayerGame = () => {
       {/* Clues */}
       <div className="w-full max-w-md space-y-2">
         <h3 className="text-sm font-display text-foreground flex items-center gap-1.5">
-          <HelpCircle className="w-4 h-4 text-primary" /> Clues ({revealedClues}/{clues.length})
+          <HelpCircle className="w-4 h-4 text-primary" /> {fmt(t.cluesHeading, { n: revealedClues, total: clues.length })}
         </h3>
         <div className="space-y-1.5">
           {clues.map((clue, i) => (
@@ -157,7 +180,7 @@ const GuessPlayerGame = () => {
                   : "border-border/30 bg-muted/10 text-muted-foreground"
               }`}
             >
-              {i < revealedClues ? clue : `Clue ${i + 1}: guess wrong to reveal`}
+              {i < revealedClues ? clue : fmt(t.hiddenClue, { n: i + 1 })}
             </motion.div>
           ))}
         </div>
@@ -166,7 +189,7 @@ const GuessPlayerGame = () => {
       {/* Previous Guesses */}
       {guesses.length > 0 && (
         <div className="w-full max-w-md">
-          <h3 className="text-sm font-display text-foreground mb-2">Your Guesses</h3>
+          <h3 className="text-sm font-display text-foreground mb-2">{t.yourGuesses}</h3>
           <div className="space-y-1.5">
             {guesses.map((g, i) => {
               const isCorrect = g.toLowerCase() === player.name.toLowerCase();
@@ -203,7 +226,7 @@ const GuessPlayerGame = () => {
             value={guess}
             onChange={(e) => setGuess(e.target.value)}
             onKeyDown={handleKeyDown}
-            placeholder="Type footballer's full name..."
+            placeholder={t.placeholder}
             className="flex-1 rounded-lg border border-border bg-card px-4 py-3 text-foreground placeholder:text-muted-foreground text-sm font-body focus:outline-none focus:ring-2 focus:ring-primary/50"
             autoFocus
           />
@@ -212,7 +235,7 @@ const GuessPlayerGame = () => {
             disabled={!guess.trim()}
             className="px-5 py-3 rounded-lg bg-primary text-primary-foreground font-display text-sm hover:bg-primary/90 transition-colors disabled:opacity-50"
           >
-            GUESS
+            {t.guess}
           </button>
         </div>
       ) : (
@@ -226,25 +249,25 @@ const GuessPlayerGame = () => {
               <>
                 <div className="flex items-center justify-center gap-2 text-success">
                   <Trophy className="w-5 h-5" />
-                  <span className="font-display text-lg">You got it!</span>
+                  <span className="font-display text-lg">{t.youGotIt}</span>
                 </div>
                 <p className="text-foreground font-display text-xl">{player.name}</p>
                 <p className="text-muted-foreground text-sm">
-                  Guessed in {guesses.length}/{MAX_GUESSES} tries with {revealedClues} clues
+                  {fmt(t.guessedIn, { n: guesses.length, max: MAX_GUESSES, clues: revealedClues })}
                 </p>
               </>
             ) : (
               <>
-                <p className="text-destructive font-display text-lg">Game Over</p>
+                <p className="text-destructive font-display text-lg">{t.gameOver}</p>
                 <p className="text-foreground font-display text-xl">{player.name}</p>
                 <p className="text-muted-foreground text-sm">{player.funFact}</p>
               </>
             )}
             <p className="text-muted-foreground text-xs flex items-center justify-center gap-1">
-              <RotateCcw className="w-3 h-3" /> New player tomorrow!
+              <RotateCcw className="w-3 h-3" /> {t.newPlayerTomorrow}
             </p>
             <ShareResultButton
-              text={`Futbol11 Guess the Footballer\n${won ? "✅ Solved" : "❌ Not solved"} in ${guesses.length}/${MAX_GUESSES} guesses\nPlay: ${SITE_URL}/game/guess-the-footballer`}
+              text={`Futbol11 Guess the Footballer\n${won ? t.shareSolved : t.shareNotSolved} ${fmt(t.shareGuesses, { n: guesses.length, max: MAX_GUESSES })}\n${t.sharePlay} ${SITE_URL}/game/guess-the-footballer`}
             />
           </motion.div>
         </AnimatePresence>
@@ -253,7 +276,7 @@ const GuessPlayerGame = () => {
       {/* Remaining guesses */}
       {!gameOver && (
         <p className="text-xs text-muted-foreground">
-          {MAX_GUESSES - guesses.length} guesses remaining
+          {fmt(t.guessesRemaining, { n: MAX_GUESSES - guesses.length })}
         </p>
       )}
     </div>

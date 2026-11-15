@@ -7,6 +7,7 @@ import { SITE_URL } from "@/lib/site";
 import ShareResultButton from "@/components/ShareResultButton";
 import { getDailyLegend } from "@/data/legacy-legends";
 import { nameMatches } from "@/data/lineups";
+import { useLocalizedStrings, fmt } from "@/i18n/DictionaryContext";
 
 const STORAGE_KEY = "f11-legacy-state";
 const MAX_GUESSES = 5;
@@ -21,6 +22,26 @@ interface SavedState {
 
 const LegacyGame = () => {
   const { toast } = useToast();
+  const t = useLocalizedStrings("game.legacy", {
+    careerClues: "Career Clues",
+    clueHidden: "Clue {n}: guess wrong to reveal",
+    placeholder: "Name the legend...",
+    guess: "GUESS",
+    guessesRemainingOne: "{n} guess remaining",
+    guessesRemainingOther: "{n} guesses remaining",
+    winToastTitle: "🎉 Got it!",
+    winToastDescOne: "{name} - {n} guess",
+    winToastDescOther: "{name} - {n} guesses",
+    outOfGuesses: "Out of guesses",
+    wasName: "It was {name}",
+    wrongTitle: "❌ Wrong",
+    clueRevealed: "Another clue revealed",
+    solved: "Solved!",
+    newTomorrow: "New legend tomorrow!",
+    shareSolved: "✅ Solved",
+    shareNotSolved: "❌ Not solved",
+    shareInGuesses: "in {n}/{max} guesses",
+  });
   const legend = useMemo(() => getDailyLegend(), []);
   const [guess, setGuess] = useState("");
   const [guesses, setGuesses] = useState<string[]>([]);
@@ -65,18 +86,18 @@ const LegacyGame = () => {
     if (correct) {
       setFinished(true);
       setWon(true);
-      toast({ title: "🎉 Got it!", description: `${legend.name} - ${next.length} guess${next.length > 1 ? "es" : ""}` });
+      toast({ title: t.winToastTitle, description: fmt(next.length === 1 ? t.winToastDescOne : t.winToastDescOther, { name: legend.name, n: next.length }) });
       return;
     }
 
     if (next.length >= MAX_GUESSES) {
       setFinished(true);
-      toast({ title: "Out of guesses", description: `It was ${legend.name}`, variant: "destructive" });
+      toast({ title: t.outOfGuesses, description: fmt(t.wasName, { name: legend.name }), variant: "destructive" });
       return;
     }
 
     setCluesShown((c) => Math.min(c + 1, legend.clues.length));
-    toast({ title: "❌ Wrong", description: "Another clue revealed", variant: "destructive" });
+    toast({ title: t.wrongTitle, description: t.clueRevealed, variant: "destructive" });
   }, [guess, finished, legend, guesses, toast]);
 
   const remaining = MAX_GUESSES - guesses.length;
@@ -85,7 +106,7 @@ const LegacyGame = () => {
     <div className="flex flex-col items-center gap-5">
       <div className="flex items-center gap-2 text-foreground">
         <ScrollText className="w-5 h-5 text-primary" />
-        <h3 className="font-display text-lg">Career Clues</h3>
+        <h3 className="font-display text-lg">{t.careerClues}</h3>
       </div>
 
       <div className="w-full max-w-md space-y-2">
@@ -103,7 +124,7 @@ const LegacyGame = () => {
               <span className="w-5 h-5 rounded-full bg-primary/15 text-primary text-xs flex items-center justify-center font-display flex-shrink-0">
                 {i + 1}
               </span>
-              <span>{open ? clue : `Clue ${i + 1}: guess wrong to reveal`}</span>
+              <span>{open ? clue : fmt(t.clueHidden, { n: i + 1 })}</span>
             </motion.div>
           );
         })}
@@ -137,7 +158,7 @@ const LegacyGame = () => {
             value={guess}
             onChange={(e) => setGuess(e.target.value)}
             onKeyDown={(e) => e.key === "Enter" && submit()}
-            placeholder="Name the legend..."
+            placeholder={t.placeholder}
             className="flex-1 rounded-lg border border-border bg-card px-4 py-2.5 text-foreground placeholder:text-muted-foreground text-sm focus:outline-none focus:ring-2 focus:ring-primary/50"
             autoFocus
           />
@@ -146,13 +167,13 @@ const LegacyGame = () => {
             disabled={!guess.trim()}
             className="px-4 py-2 rounded-lg bg-primary text-primary-foreground font-display text-sm hover:bg-primary/90 transition-colors disabled:opacity-50"
           >
-            GUESS
+            {t.guess}
           </button>
         </div>
       )}
 
       {!finished && (
-        <p className="text-xs text-muted-foreground">{remaining} guess{remaining === 1 ? "" : "es"} remaining</p>
+        <p className="text-xs text-muted-foreground">{fmt(remaining === 1 ? t.guessesRemainingOne : t.guessesRemainingOther, { n: remaining })}</p>
       )}
 
       <AnimatePresence>
@@ -165,19 +186,19 @@ const LegacyGame = () => {
             {won ? (
               <div className="flex items-center justify-center gap-2 text-success">
                 <Trophy className="w-5 h-5" />
-                <span className="font-display">Solved!</span>
+                <span className="font-display">{t.solved}</span>
               </div>
             ) : (
-              <p className="text-destructive font-display">Out of guesses</p>
+              <p className="text-destructive font-display">{t.outOfGuesses}</p>
             )}
             <p className="font-display text-foreground">{legend.name}</p>
             <p className="text-xs text-muted-foreground max-w-sm">{legend.funFact}</p>
             <p className="text-xs text-muted-foreground flex items-center justify-center gap-1">
-              <RotateCcw className="w-3 h-3" /> New legend tomorrow!
+              <RotateCcw className="w-3 h-3" /> {t.newTomorrow}
             </p>
             <div className="mt-2 flex justify-center">
               <ShareResultButton
-                text={`Futbol11 Legacy\n${won ? "✅ Solved" : "❌ Not solved"} in ${guesses.length}/${MAX_GUESSES} guesses\nPlay: ${SITE_URL}/game/futbol11-legacy`}
+                text={`Futbol11 Legacy\n${won ? t.shareSolved : t.shareNotSolved} ${fmt(t.shareInGuesses, { n: guesses.length, max: MAX_GUESSES })}\nPlay: ${SITE_URL}/game/futbol11-legacy`}
               />
             </div>
           </motion.div>

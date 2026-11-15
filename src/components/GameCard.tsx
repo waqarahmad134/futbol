@@ -4,6 +4,8 @@ import { motion } from "framer-motion";
 import { Game } from "@/data/games";
 import { Badge } from "@/components/ui/badge";
 import Link from "next/link";
+import { useLocalizedStrings, useLocalizedGame, useLocale } from "@/i18n/DictionaryContext";
+import { localizePath } from "@/i18n/locales";
 
 interface GameCardProps {
   game: Game;
@@ -11,6 +13,12 @@ interface GameCardProps {
 }
 
 const GameCard = ({ game, index }: GameCardProps) => {
+  const locale = useLocale();
+  const localized = useLocalizedGame(game);
+  const t = useLocalizedStrings("common", {
+    play: "PLAY",
+    new: "NEW",
+  });
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -18,7 +26,7 @@ const GameCard = ({ game, index }: GameCardProps) => {
       transition={{ delay: index * 0.05, duration: 0.3 }}
     >
       <Link
-        href={`/game/${game.slug}`}
+        href={localizePath(`/game/${game.slug}`, locale)}
         className="group block rounded-xl border border-border bg-game-card hover:bg-game-card-hover hover:border-game-card-border transition-all duration-300 overflow-hidden"
       >
         <div className="flex items-center justify-center h-36 text-6xl bg-muted/30" aria-hidden="true">
@@ -27,14 +35,14 @@ const GameCard = ({ game, index }: GameCardProps) => {
         <div className="p-4 text-center">
           <div className="flex items-center justify-center gap-2 mb-1">
             {game.isNew && (
-              <Badge className="bg-accent text-accent-foreground text-[10px] px-1.5 py-0">NEW</Badge>
+              <Badge className="bg-accent text-accent-foreground text-[10px] px-1.5 py-0">{t.new}</Badge>
             )}
           </div>
           <span className="font-display text-sm tracking-wide text-primary group-hover:text-foreground transition-colors block">
-            PLAY
+            {t.play}
           </span>
-          <h3 className="font-body text-sm font-semibold text-foreground mt-1">{game.title}</h3>
-          <p className="text-xs text-muted-foreground mt-1 line-clamp-2">{game.description}</p>
+          <h3 className="font-body text-sm font-semibold text-foreground mt-1">{localized.title}</h3>
+          <p className="text-xs text-muted-foreground mt-1 line-clamp-2">{localized.description}</p>
         </div>
       </Link>
     </motion.div>
