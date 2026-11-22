@@ -53,6 +53,7 @@ export const metadata: Metadata = {
     apple: "/apple-touch-icon.png",
   },
   verification: { google: "suOg_EZE-3IE9H0Exjy19Iv3DfeCgqOb6y05czA6I-A" },
+  other: { "google-adsense-account": "ca-pub-6293286506315578" },
 };
 
 export const viewport: Viewport = {
