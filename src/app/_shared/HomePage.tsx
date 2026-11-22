@@ -129,8 +129,8 @@ export default function HomePage({ locale }: { locale: Locale }) {
           <Leaderboard />
           <OtherSites locale={locale} />
           <QuickAnswer answer={t.intro} />
-          <HowToPlay locale={locale} />
-          <SEOContent locale={locale} />
+          <HowToPlay />
+          <SEOContent />
           <FAQ />
         </main>
         <Footer />
