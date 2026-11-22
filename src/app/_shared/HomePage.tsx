@@ -5,19 +5,29 @@ import GameGrid from "@/components/GameGrid";
 import Leaderboard from "@/components/Leaderboard";
 import OtherSites from "@/components/OtherSites";
 import HowToPlay from "@/components/HowToPlay";
+import QuickAnswer from "@/components/QuickAnswer";
 import SEOContent from "@/components/SEOContent";
 import FAQ from "@/components/FAQ";
 import Footer from "@/components/Footer";
 import HashScroll from "@/components/HashScroll";
 import { games } from "@/data/games";
-import { SITE_TAGLINE, SITE_URL, SITE_PUBLISHED, SITE_MODIFIED } from "@/lib/site";
+import {
+  SITE_TAGLINE,
+  SITE_URL,
+  SITE_PUBLISHED,
+  SITE_MODIFIED,
+} from "@/lib/site";
 import type { Locale } from "@/i18n/locales";
 import {
   hreflangAlternates,
   localizedUrl,
   LOCALE_HTML_LANG,
 } from "@/i18n/locales";
-import { localizeStrings, getLocalizedFaqs, localizeGame } from "@/i18n/dictionary";
+import {
+  localizeStrings,
+  getLocalizedFaqs,
+  localizeGame,
+} from "@/i18n/dictionary";
 import { DictionaryProvider } from "@/i18n/DictionaryContext";
 
 export function homeMetadata(locale: Locale): Metadata {
@@ -29,12 +39,22 @@ export function homeMetadata(locale: Locale): Metadata {
   return {
     title: { absolute: t.title },
     description: t.intro,
-    alternates: { canonical: localizedUrl("/", locale), languages: hreflangAlternates("/") },
+    alternates: {
+      canonical: localizedUrl("/", locale),
+      languages: hreflangAlternates("/"),
+    },
     openGraph: {
       title: t.title,
       description: t.intro,
       url: localizedUrl("/", locale),
-      locale: locale === "en" ? "en_US" : locale === "pt" ? "pt_BR" : locale === "es" ? "es_ES" : "fr_FR",
+      locale:
+        locale === "en"
+          ? "en_US"
+          : locale === "pt"
+            ? "pt_BR"
+            : locale === "es"
+              ? "es_ES"
+              : "fr_FR",
     },
     twitter: { title: t.title, description: t.intro },
   };
@@ -87,13 +107,20 @@ export default function HomePage({ locale }: { locale: Locale }) {
   return (
     <DictionaryProvider locale={locale}>
       <div className="min-h-screen bg-background font-body">
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <HashScroll />
         <Header />
         <main>
           <section className="container pt-10 pb-2 text-center">
-            <h1 className="font-display text-3xl sm:text-4xl text-foreground">{t.title}</h1>
-            <p className="mt-3 max-w-2xl mx-auto text-muted-foreground">{t.intro}</p>
+            <h1 className="font-display text-3xl sm:text-4xl text-foreground">
+              {t.title}
+            </h1>
+            <p className="mt-3 max-w-2xl mx-auto text-muted-foreground">
+              {t.intro}
+            </p>
           </section>
           <section className="py-6 flex justify-center">
             <DailyScore />
@@ -101,6 +128,7 @@ export default function HomePage({ locale }: { locale: Locale }) {
           <GameGrid locale={locale} />
           <Leaderboard />
           <OtherSites locale={locale} />
+          <QuickAnswer answer={t.intro} />
           <HowToPlay locale={locale} />
           <SEOContent locale={locale} />
           <FAQ />

@@ -1,10 +1,21 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { games } from "@/data/games";
-import { SITE_NAME, SITE_URL, OG_IMAGE, SITE_PUBLISHED, SITE_MODIFIED } from "@/lib/site";
+import {
+  SITE_NAME,
+  SITE_URL,
+  OG_IMAGE,
+  SITE_PUBLISHED,
+  SITE_MODIFIED,
+} from "@/lib/site";
 import GameView from "@/components/GameView";
+import { buildGameFaqs } from "@/lib/gameFaqs";
 import type { Locale } from "@/i18n/locales";
-import { hreflangAlternates, localizedUrl, LOCALE_HTML_LANG } from "@/i18n/locales";
+import {
+  hreflangAlternates,
+  localizedUrl,
+  LOCALE_HTML_LANG,
+} from "@/i18n/locales";
 import { localizeStrings, localizeGame, fmt } from "@/i18n/dictionary";
 import { DictionaryProvider } from "@/i18n/DictionaryContext";
 
@@ -24,7 +35,10 @@ export function gameMetadata(locale: Locale, slug: string): Metadata {
   return {
     title: { absolute: title },
     description: localized.description,
-    alternates: { canonical: localizedUrl(`/game/${game.slug}`, locale), languages: hreflangAlternates(`/game/${game.slug}`) },
+    alternates: {
+      canonical: localizedUrl(`/game/${game.slug}`, locale),
+      languages: hreflangAlternates(`/game/${game.slug}`),
+    },
     openGraph: {
       title,
       description: localized.description,
@@ -39,7 +53,13 @@ export function gameMetadata(locale: Locale, slug: string): Metadata {
   };
 }
 
-export default function GamePage({ locale, slug }: { locale: Locale; slug: string }) {
+export default function GamePage({
+  locale,
+  slug,
+}: {
+  locale: Locale;
+  slug: string;
+}) {
   const gameEn = games.find((g) => g.slug === slug);
   if (!gameEn) notFound();
   const game = localizeGame(locale, gameEn);
@@ -62,18 +82,45 @@ export default function GamePage({ locale, slug }: { locale: Locale; slug: strin
     },
     {
       "@context": "https://schema.org",
+      "@type": "FAQPage",
+      mainEntity: buildGameFaqs(gameEn).map((faq) => ({
+        "@type": "Question",
+        name: faq.q,
+        acceptedAnswer: { "@type": "Answer", text: faq.a },
+      })),
+    },
+    {
+      "@context": "https://schema.org",
       "@type": "BreadcrumbList",
       itemListElement: [
-        { "@type": "ListItem", position: 1, name: t.home, item: localizedUrl("/", locale) },
-        { "@type": "ListItem", position: 2, name: t.games, item: `${localizedUrl("/", locale)}#games` },
-        { "@type": "ListItem", position: 3, name: game.title, item: localizedUrl(`/game/${game.slug}`, locale) },
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: t.home,
+          item: localizedUrl("/", locale),
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: t.games,
+          item: `${localizedUrl("/", locale)}#games`,
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: game.title,
+          item: localizedUrl(`/game/${game.slug}`, locale),
+        },
       ],
     },
   ];
 
   return (
     <DictionaryProvider locale={locale}>
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <GameView slug={game.slug} />
     </DictionaryProvider>
   );
