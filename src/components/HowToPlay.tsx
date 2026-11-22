@@ -4,7 +4,7 @@ const steps = [
   {
     icon: Gamepad2,
     title: "Pick a Game",
-    desc: "Choose from 20 unique football games, trivia, puzzles, word games, and strategy challenges.",
+    desc: "Choose from 23 unique football games, trivia, puzzles, word games, and strategy challenges.",
   },
   {
     icon: Clock,

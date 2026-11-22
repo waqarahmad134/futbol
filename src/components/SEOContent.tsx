@@ -17,7 +17,7 @@ const SEOContent = () => {
                 football trivia games and puzzles. Whether you're a lifelong
                 supporter who remembers every World Cup lineup since 1966, or a
                 newer fan eager to learn about football history, our collection
-                of 20 unique games offers something for everyone.
+                of 23 unique games offers something for everyone.
               </p>
               <p>
                 Every day at midnight, fresh challenges await. Our games cover
